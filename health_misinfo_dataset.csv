@@ -1,0 +1,923 @@
+claim,source,word_count,has_numbers,has_exclamation,has_question,credibility_keyword_count,misinfo_keyword_count,label,label_text
+"According to doctors, Regular foot care is important for people with diabetes to prevent complications.",Lancet,15,0,0,0,1,0,0,credible
+Studies show that Folate is essential during pregnancy to prevent neural tube defects.,BMJ,13,0,0,0,0,0,0,credible
+Scientists suppressed this: Drinking bleach in small amounts detoxifies your body.,WhatsApp message,11,0,0,0,0,2,1,misinformation
+Studies show that Quitting smoking significantly reduces cardiovascular disease risk within months.,CDC,12,0,0,0,0,0,0,credible
+Exercise improves mood by releasing endorphins.,PubMed,6,0,0,0,0,0,0,credible
+BREAKING: Drinking your own urine heals digestive diseases and boosts immunity.,WhatsApp message,11,0,0,0,0,0,1,misinformation
+Health experts state that HPV vaccines reduce the risk of cervical cancer when given before exposure.,WHO,16,0,0,0,1,0,0,credible
+Metformin is commonly prescribed as a first-line medication for type 2 diabetes.,Mayo Clinic,12,1,0,0,0,0,0,credible
+Share before deleted: Running causes arthritis and damages your knee joints over time.,Email chain,13,0,0,0,0,0,1,misinformation
+Medical evidence indicates that A Mediterranean diet is associated with reduced risk of heart disease.,Lancet,15,0,0,0,1,0,0,credible
+BREAKING: Wearing a face mask causes dangerous oxygen deprivation.,YouTube video,9,0,0,0,0,0,1,misinformation
+"Secret cure: Vaccines cause autism in children, as proven by multiple studies.",Anonymous forum,12,0,0,0,1,2,1,misinformation
+Scientists suppressed this: Magnet therapy can reverse heart disease effectively.,Twitter post,10,0,0,0,0,1,1,misinformation
+Share before deleted: Big pharma hides vaccine injury data to keep profits high.,Telegram channel,13,0,0,0,0,0,1,misinformation
+Antibiotics can cure the common cold and flu effectively.,Facebook post,9,0,0,0,0,1,1,misinformation
+Secret cure: Type 2 diabetes is only caused by consuming too much refined sugar.,Twitter post,14,1,0,0,0,2,1,misinformation
+Sweating during exercise means your body is releasing toxins.,Telegram channel,9,0,0,0,0,0,1,misinformation
+Clinical trials show that Reducing saturated fat intake can lower LDL cholesterol levels.,WebMD,13,0,0,0,2,0,0,credible
+Studies show that Colorectal cancer screening via colonoscopy is recommended starting at age 45.,WebMD,14,1,0,0,0,0,0,credible
+Quitting smoking significantly reduces cardiovascular disease risk within months.,Mayo Clinic,9,0,0,0,0,0,0,credible
+Plant-based diets have been associated with lower rates of heart disease.,BMJ,11,0,0,0,0,0,0,credible
+Fiber from whole grains and vegetables supports digestive health.,Mayo Clinic,9,0,0,0,0,0,0,credible
+Sedentary behavior is linked to increased risk of obesity and metabolic syndrome.,CDC,12,0,0,0,0,0,0,credible
+"Research confirms that Antibiotics are only effective against bacterial infections, not viral ones.",NEJM,13,0,0,0,1,0,0,credible
+Suicide prevention involves recognizing warning signs and providing support.,WHO,9,0,0,0,0,0,0,credible
+Smoking is the leading preventable cause of lung cancer.,Mayo Clinic,9,0,0,0,0,0,0,credible
+"According to doctors, Stress management techniques like mindfulness can reduce anxiety symptoms.",NIH,12,0,0,0,1,0,0,credible
+Studies show that Cognitive behavioral therapy is an evidence-based treatment for anxiety disorders.,NHS,13,0,0,0,1,0,0,credible
+Health experts state that Sexually transmitted infections can be prevented using barrier methods.,Lancet,13,0,0,0,1,0,0,credible
+Research confirms that Potassium-rich foods like bananas help regulate blood pressure.,Mayo Clinic,11,0,0,0,1,0,0,credible
+Share before deleted: Vaccines have never been proven to be safe by any scientific study.,Instagram reel,15,0,0,0,2,0,1,misinformation
+Scientists suppressed this: Activated charcoal removes all toxins from your blood.,Facebook post,11,0,0,0,0,1,1,misinformation
+Medical evidence indicates that Radiation therapy uses high-energy beams to destroy cancer cells.,NHS,13,0,0,0,1,0,0,credible
+Doctors don't want you to know that Coconut oil is a heart-healthy food that clears clogged arteries.,Telegram channel,17,0,0,0,1,0,1,misinformation
+The COVID-19 vaccine contains microchips to track people.,YouTube video,8,1,0,0,0,0,1,misinformation
+Research confirms that Antioxidants found in berries may help reduce oxidative stress.,Lancet,12,0,0,0,1,0,0,credible
+Health experts state that Stress management techniques like mindfulness can reduce anxiety symptoms.,WebMD,13,0,0,0,1,0,0,credible
+Share before deleted: The MMR vaccine was recalled due to widespread harmful side effects.,Twitter post,14,0,0,0,0,0,1,misinformation
+Shocking truth: Sleeping with your head pointing north causes brain damage.,Facebook post,11,0,0,0,0,2,1,misinformation
+Research confirms that Annual flu vaccination is recommended for people over 65 and those with chronic conditions.,WHO,17,1,0,0,1,0,0,credible
+Studies show that Alcohol consumption above recommended limits increases health risks.,PubMed,11,0,0,0,0,0,0,credible
+Share before deleted: The polio vaccine caused cancer in millions of people in secret.,YouTube video,14,0,0,0,0,1,1,misinformation
+Blood sugar monitoring is essential for managing diabetes.,Mayo Clinic,8,0,0,0,0,0,0,credible
+Doctors don't want you to know that Doctors hide cancer cures to keep pharmaceutical profits high.,Telegram channel,16,0,0,0,1,1,1,misinformation
+Doctors don't want you to know that Eating only apricot seeds provides the best natural cure for cancer.,YouTube video,18,0,0,0,1,1,1,misinformation
+Clinical trials show that Post-traumatic stress disorder can develop after exposure to traumatic events.,Mayo Clinic,14,0,0,0,2,0,0,credible
+Vaccines do not contain live viruses in the case of inactivated or mRNA vaccines.,WebMD,14,0,0,0,0,0,0,credible
+Clinical trials show that Atrial fibrillation increases the risk of stroke and requires management.,NEJM,14,0,0,0,2,0,0,credible
+BREAKING: Sunscreen causes skin cancer due to its toxic chemical ingredients.,Instagram reel,11,0,0,0,0,0,1,misinformation
+All pharmaceutical drugs are poison and natural remedies are always safer.,Blog post,11,0,0,0,0,1,1,misinformation
+"According to doctors, High blood pressure is a major risk factor for heart attack and stroke.",CDC,16,0,0,0,1,0,0,credible
+BREAKING: Anger has no relationship with heart attack risk.,WhatsApp message,9,0,0,0,0,0,1,misinformation
+ADHD is not a real medical condition and is invented by drug companies.,Twitter post,13,0,0,0,0,0,1,misinformation
+Share before deleted: Eating celery juice every morning cures all chronic diseases.,Instagram reel,12,0,0,0,0,1,1,misinformation
+Share before deleted: Cardiac arrest can be cured at home using only cold water splashes on the face.,YouTube video,18,0,0,0,0,1,1,misinformation
+BREAKING: ADHD is not a real medical condition and is invented by drug companies.,Email chain,14,0,0,0,0,0,1,misinformation
+Hydration is important for kidney function and overall health.,PubMed,9,0,0,0,0,0,0,credible
+"According to doctors, CPR can help maintain circulation in a person experiencing cardiac arrest.",PubMed,14,0,0,0,1,0,0,credible
+Medical evidence indicates that Regular health checkups help detect problems early.,Lancet,11,0,0,0,1,0,0,credible
+Clinical trials show that Iron-rich foods like spinach and legumes help prevent anemia.,PubMed,13,0,0,0,2,0,0,credible
+Shocking truth: All chronic diseases are caused by toxins from modern food that can be removed.,TikTok video,16,0,0,0,0,2,1,misinformation
+Clinical trials show that COVID-19 spreads primarily through respiratory droplets and aerosols.,CDC,12,1,0,0,2,0,0,credible
+Scientists suppressed this: Doctors never tell you that all diseases can be cured with proper hydration alone.,Blog post,17,0,0,0,1,2,1,misinformation
+Health experts state that A low-glycemic diet can help manage blood sugar levels in diabetics.,PubMed,15,0,0,0,1,0,0,credible
+Share before deleted: Sugar causes cancer directly and cutting it starves cancer cells.,WhatsApp message,13,0,0,0,0,0,1,misinformation
+Doctors don't want you to know that Weight loss supplements approved by celebrities are clinically proven to work.,Instagram reel,18,0,0,0,3,0,1,misinformation
+"According to doctors, Type 2 diabetes is strongly associated with obesity and physical inactivity.",CDC,14,1,0,0,1,0,0,credible
+People with mental illness are always dangerous and violent.,Email chain,9,0,0,0,0,0,1,misinformation
+Shocking truth: Muscle can turn to fat if you stop exercising regularly.,TikTok video,12,0,0,0,0,2,1,misinformation
+Scientists suppressed this: Spot reduction of fat is possible through targeted exercises.,WhatsApp message,12,0,0,0,0,1,1,misinformation
+Shocking truth: Big pharma hides vaccine injury data to keep profits high.,WhatsApp message,12,0,0,0,0,2,1,misinformation
+Secret cure: Cancer is caused by repressed emotions and can be healed by emotional release.,Facebook post,15,0,0,0,0,2,1,misinformation
+Clinical trials show that Tuberculosis is a bacterial infection that primarily affects the lungs.,Mayo Clinic,14,0,0,0,2,0,0,credible
+Studies show that Regular foot care is important for people with diabetes to prevent complications.,NEJM,15,0,0,0,0,0,0,credible
+Clinical trials show that Early intervention in mental health conditions leads to better outcomes.,NIH,14,0,0,0,2,0,0,credible
+Doctors don't want you to know that Children with autism are just spoiled and need better discipline.,Email chain,17,0,0,0,1,0,1,misinformation
+"According to doctors, Social support is an important factor in mental health and recovery.",PubMed,14,0,0,0,1,0,0,credible
+Doctors don't want you to know that Type 2 diabetes is only caused by consuming too much refined sugar.,YouTube video,19,1,0,0,1,0,1,misinformation
+Depression is a medical condition that can be treated with therapy and medication.,PubMed,13,0,0,0,0,0,0,credible
+Doctors don't want you to know that Essential oils cure cancer better than radiation or surgery.,Instagram reel,16,0,0,0,1,1,1,misinformation
+Scientists suppressed this: 5G towers caused the COVID-19 pandemic by weakening immune systems.,TikTok video,13,1,0,0,0,1,1,misinformation
+BREAKING: Magnet therapy can reverse heart disease effectively.,Instagram reel,8,0,0,0,0,0,1,misinformation
+Medical evidence indicates that Regular physical activity reduces the risk of cardiovascular disease.,PubMed,13,0,0,0,1,0,0,credible
+Calcium and vitamin D are important for bone health.,Mayo Clinic,9,0,0,0,0,0,0,credible
+Medical evidence indicates that High blood pressure is a major risk factor for heart attack and stroke.,NHS,17,0,0,0,1,0,0,credible
+Doctors don't want you to know that Running causes arthritis and damages your knee joints over time.,Telegram channel,17,0,0,0,1,0,1,misinformation
+Clinical trials show that Lifestyle factors like diet and exercise influence cancer risk.,Mayo Clinic,13,0,0,0,2,0,0,credible
+Garlic capsules cure COVID-19 infection within 48 hours.,Twitter post,8,1,0,0,0,1,1,misinformation
+Doctors hide cancer cures to keep pharmaceutical profits high.,Facebook post,9,0,0,0,1,1,1,misinformation
+Research confirms that Tuberculosis is a bacterial infection that primarily affects the lungs.,PubMed,13,0,0,0,1,0,0,credible
+Secret cure: Talking about suicide plants the idea in people's heads and causes it.,TikTok video,14,0,0,0,0,2,1,misinformation
+Research confirms that Whole grains have a lower glycemic index than refined grains.,Lancet,13,0,0,0,1,0,0,credible
+Scientists suppressed this: Cannabis oil alone can fully cure all types of cancer.,WhatsApp message,13,0,0,0,0,2,1,misinformation
+A low-glycemic diet can help manage blood sugar levels in diabetics.,WHO,11,0,0,0,0,0,0,credible
+BREAKING: Vaccine manufacturers are legally immune from all consequences.,TikTok video,9,0,0,0,0,0,1,misinformation
+Cannabis oil alone can fully cure all types of cancer.,Facebook post,10,0,0,0,0,1,1,misinformation
+Clinical trials show that Strength training helps maintain muscle mass as people age.,CDC,13,0,0,0,2,0,0,credible
+Secret cure: Mental illness is caused by spiritual weakness and can be cured by prayer alone.,Blog post,16,0,0,0,0,2,1,misinformation
+Health experts state that Regular physical activity reduces the risk of cardiovascular disease.,WebMD,13,0,0,0,1,0,0,credible
+Scientists suppressed this: Herbal teas remove the need for diabetes medication completely.,Blog post,12,0,0,0,0,1,1,misinformation
+Shocking truth: Schizophrenia is caused by watching too much television.,Telegram channel,10,0,0,0,0,2,1,misinformation
+Secret cure: Statins cause more heart attacks than they prevent.,Email chain,10,0,0,0,0,2,1,misinformation
+Medical evidence indicates that Processed foods high in sodium contribute to hypertension.,Mayo Clinic,12,0,0,0,1,0,0,credible
+Social support is an important factor in mental health and recovery.,NEJM,11,0,0,0,0,0,0,credible
+Studies show that Adults should aim for at least 150 minutes of moderate aerobic activity per week.,NHS,17,1,0,0,0,0,0,credible
+Clinical trials show that Omega-3 fatty acids found in fish support heart health.,NHS,13,1,0,0,2,0,0,credible
+"According to doctors, The hepatitis B vaccine is given to newborns to prevent chronic infection.",NIH,15,0,0,0,1,0,0,credible
+Medical evidence indicates that Potassium-rich foods like bananas help regulate blood pressure.,CDC,12,0,0,0,1,0,0,credible
+Wearing tight bras causes breast cancer in all women.,Anonymous forum,9,0,0,0,0,0,1,misinformation
+Medical evidence indicates that Herd immunity requires a high percentage of the population to be vaccinated.,NIH,16,0,0,0,1,0,0,credible
+Doctors don't want you to know that Sunscreen causes skin cancer due to its toxic chemical ingredients.,Email chain,17,0,0,0,1,0,1,misinformation
+Studies show that Mental and physical health are closely interconnected.,PubMed,10,0,0,0,0,0,0,credible
+Weight loss supplements approved by celebrities are clinically proven to work.,YouTube video,11,0,0,0,2,0,1,misinformation
+Shocking truth: Diabetics should avoid all carbohydrates entirely including fruit and vegetables.,Anonymous forum,12,0,0,0,0,2,1,misinformation
+Shocking truth: All pharmaceutical drugs are poison and natural remedies are always safer.,WhatsApp message,13,0,0,0,0,3,1,misinformation
+Tuberculosis can be cured completely by sunbathing for two weeks.,Email chain,10,0,0,0,0,1,1,misinformation
+Studies show that Iron-rich foods like spinach and legumes help prevent anemia.,WebMD,12,0,0,0,0,0,0,credible
+BREAKING: Wearing tight bras causes breast cancer in all women.,Instagram reel,10,0,0,0,0,0,1,misinformation
+Clinical trials show that Statins are medications used to lower LDL cholesterol and reduce cardiovascular risk.,Lancet,16,0,0,0,2,0,0,credible
+Medical evidence indicates that Depression is a medical condition that can be treated with therapy and medication.,WHO,17,0,0,0,1,0,0,credible
+Health experts state that Heart failure means the heart cannot pump blood as efficiently as needed.,NHS,16,0,0,0,1,0,0,credible
+Medical evidence indicates that Insulin therapy is required for most people with type 1 diabetes.,Mayo Clinic,15,1,0,0,1,0,0,credible
+BREAKING: Vaccines are filled with harmful toxins that damage your immune system permanently.,Twitter post,13,0,0,0,0,0,1,misinformation
+Organic food has zero pesticides and prevents all lifestyle diseases.,YouTube video,10,0,0,0,0,0,1,misinformation
+Share before deleted: Cannabis oil alone can fully cure all types of cancer.,Blog post,13,0,0,0,0,1,1,misinformation
+Secret cure: Hand sanitizers cause antibiotic resistance in viruses.,Twitter post,9,0,0,0,0,2,1,misinformation
+Regular physical activity reduces the risk of cardiovascular disease.,Mayo Clinic,9,0,0,0,0,0,0,credible
+Medical evidence indicates that Mental health conditions are not a sign of weakness and are common worldwide.,CDC,17,0,0,0,1,0,0,credible
+Secret cure: Cinnamon alone can replace insulin for people with type 1 diabetes.,TikTok video,13,1,0,0,0,2,1,misinformation
+Scientists suppressed this: Cinnamon alone can replace insulin for people with type 1 diabetes.,Facebook post,14,1,0,0,0,1,1,misinformation
+Doctors don't want you to know that You cannot get HIV from sharing needles if they look clean.,Instagram reel,18,0,0,0,1,0,1,misinformation
+Medical evidence indicates that Smoking is the leading preventable cause of lung cancer.,Mayo Clinic,13,0,0,0,1,0,0,credible
+Scientists suppressed this: Earth grounding or walking barefoot cures autoimmune diseases.,Twitter post,11,0,0,0,0,2,1,misinformation
+Health experts state that Smoking is the leading preventable cause of lung cancer.,WebMD,13,0,0,0,1,0,0,credible
+Share before deleted: Coconut oil is a heart-healthy food that clears clogged arteries.,WhatsApp message,13,0,0,0,0,0,1,misinformation
+Clinical trials show that Mental and physical health are closely interconnected.,WebMD,11,0,0,0,2,0,0,credible
+Scientists suppressed this: Drinking your own urine heals digestive diseases and boosts immunity.,YouTube video,13,0,0,0,0,1,1,misinformation
+Doctors don't want you to know that Stretching before exercise prevents all types of injuries.,Blog post,15,0,0,0,1,0,1,misinformation
+Health experts state that Regular foot care is important for people with diabetes to prevent complications.,Mayo Clinic,16,0,0,0,1,0,0,credible
+Research confirms that Physical activity helps regulate blood sugar in people with type 2 diabetes.,CDC,15,1,0,0,1,0,0,credible
+Medical evidence indicates that Contact tracing helps identify and isolate people exposed to infectious diseases.,NIH,15,0,0,0,1,0,0,credible
+Health experts state that Folate is essential during pregnancy to prevent neural tube defects.,Mayo Clinic,14,0,0,0,1,0,0,credible
+Shocking truth: Cancer is caused by repressed emotions and can be healed by emotional release.,Twitter post,15,0,0,0,0,2,1,misinformation
+Scientists suppressed this: Statins cause more heart attacks than they prevent.,Email chain,11,0,0,0,0,1,1,misinformation
+Medical evidence indicates that Hand washing with soap for 20 seconds reduces transmission of many infections.,WHO,16,1,0,0,1,0,0,credible
+Medical evidence indicates that Vaccine side effects like mild fever and soreness are normal immune responses.,CDC,16,0,0,0,1,0,0,credible
+Essential oils cure cancer better than radiation or surgery.,TikTok video,9,0,0,0,0,1,1,misinformation
+Shocking truth: Sweating during exercise means your body is releasing toxins.,WhatsApp message,11,0,0,0,0,2,1,misinformation
+Health experts state that Herd immunity requires a high percentage of the population to be vaccinated.,NIH,16,0,0,0,1,0,0,credible
+BREAKING: Drinking red wine daily completely protects you from heart attacks.,Telegram channel,11,0,0,0,0,0,1,misinformation
+Studies show that Tdap booster is recommended every 10 years for adults to maintain tetanus immunity.,Lancet,16,1,0,0,0,0,0,credible
+Doctors don't want you to know that Cardiac arrest can be cured at home using only cold water splashes on the face.,Twitter post,22,0,0,0,1,1,1,misinformation
+Scientists suppressed this: Organic food has zero pesticides and prevents all lifestyle diseases.,Telegram channel,13,0,0,0,0,1,1,misinformation
+Studies show that Suicide prevention involves recognizing warning signs and providing support.,NIH,12,0,0,0,0,0,0,credible
+BREAKING: Insulin therapy causes obesity and makes diabetes worse in the long run.,YouTube video,13,0,0,0,0,0,1,misinformation
+Share before deleted: Eating only apricot seeds provides the best natural cure for cancer.,YouTube video,14,0,0,0,0,1,1,misinformation
+"Clinical trials show that Preventive healthcare includes vaccinations, screenings, and lifestyle modifications.",Lancet,12,0,0,0,2,0,0,credible
+BREAKING: Coconut oil reverses Alzheimer's disease within weeks.,TikTok video,8,0,0,0,0,0,1,misinformation
+Research confirms that Immunotherapy helps the immune system recognize and fight cancer cells.,NIH,13,0,0,0,1,0,0,credible
+Secret cure: The moon cycle directly controls human hormones and disease patterns.,TikTok video,12,0,0,0,0,2,1,misinformation
+Medical evidence indicates that Social support is an important factor in mental health and recovery.,BMJ,15,0,0,0,1,0,0,credible
+"According to doctors, Hydration is important for kidney function and overall health.",WebMD,12,0,0,0,1,0,0,credible
+Scientists suppressed this: The MMR vaccine was recalled due to widespread harmful side effects.,WhatsApp message,14,0,0,0,0,1,1,misinformation
+Doctors don't want you to know that Exercising on an empty stomach burns three times more fat.,TikTok video,17,0,0,0,1,0,1,misinformation
+Doctors don't want you to know that The flu vaccine gives you the flu every time you take it.,Blog post,19,0,0,0,1,0,1,misinformation
+Clinical trials show that Hand washing with soap for 20 seconds reduces transmission of many infections.,WHO,16,1,0,0,2,0,0,credible
+Health experts state that Physical activity helps regulate blood sugar in people with type 2 diabetes.,Mayo Clinic,16,1,0,0,1,0,0,credible
+Children who are not vaccinated are healthier than vaccinated children.,Blog post,10,0,0,0,0,0,1,misinformation
+Health experts state that Type 2 diabetes is strongly associated with obesity and physical inactivity.,NEJM,15,1,0,0,1,0,0,credible
+Scientists suppressed this: A coffee enema cures stage 4 cancer more effectively than standard treatment.,YouTube video,15,1,0,0,0,2,1,misinformation
+"Medical evidence indicates that Smoking cessation reduces risk of lung cancer, heart disease, and stroke.",WebMD,15,0,0,0,1,0,0,credible
+Share before deleted: Stretching before exercise prevents all types of injuries.,Twitter post,11,0,0,0,0,0,1,misinformation
+Studies show that Calcium and vitamin D are important for bone health.,PubMed,12,0,0,0,0,0,0,credible
+BREAKING: Alkaline water cures cancer by changing your body's pH.,Blog post,10,0,0,0,0,1,1,misinformation
+Studies show that Stress management techniques like mindfulness can reduce anxiety symptoms.,Mayo Clinic,12,0,0,0,0,0,0,credible
+Chemotherapy kills more people than cancer itself.,Twitter post,7,0,0,0,0,0,1,misinformation
+BREAKING: Injecting bleach can provide the same immunity as a COVID-19 vaccine.,Instagram reel,12,1,0,0,0,0,1,misinformation
+The flu vaccine gives you the flu every time you take it.,Telegram channel,12,0,0,0,0,0,1,misinformation
+Hepatitis can be cured by a strict vegan diet alone.,Email chain,10,0,0,0,0,1,1,misinformation
+Share before deleted: Children who are not vaccinated are healthier than vaccinated children.,Telegram channel,13,0,0,0,0,0,1,misinformation
+Secret cure: Vaccine manufacturers are legally immune from all consequences.,TikTok video,10,0,0,0,0,2,1,misinformation
+"Smoking cessation reduces risk of lung cancer, heart disease, and stroke.",PubMed,11,0,0,0,0,0,0,credible
+"According to doctors, Antibiotic resistance is a global health crisis caused by overuse of antibiotics.",NHS,15,0,0,0,1,0,0,credible
+Share before deleted: Wearing tight bras causes breast cancer in all women.,Telegram channel,12,0,0,0,0,0,1,misinformation
+Clinical trials show that Yellow fever vaccination is required for travel to certain countries.,WebMD,14,0,0,0,2,0,0,credible
+BREAKING: Vaccines cause more deaths than the diseases they prevent.,Blog post,10,0,0,0,0,0,1,misinformation
+Scientists suppressed this: Fluoride in water causes brain damage and is used to control populations.,TikTok video,15,0,0,0,0,1,1,misinformation
+Medical evidence indicates that Atrial fibrillation increases the risk of stroke and requires management.,Mayo Clinic,14,0,0,0,2,0,0,credible
+"According to doctors, Weight loss can significantly improve blood sugar control in type 2 diabetes.",NHS,15,1,0,0,1,0,0,credible
+Share before deleted: Cancer is caused by repressed emotions and can be healed by emotional release.,YouTube video,16,0,0,0,0,0,1,misinformation
+BREAKING: Talking about suicide plants the idea in people's heads and causes it.,Telegram channel,13,0,0,0,0,0,1,misinformation
+Share before deleted: Chemotherapy kills more people than cancer itself.,TikTok video,10,0,0,0,0,0,1,misinformation
+Shocking truth: Cardiac arrest can be cured at home using only cold water splashes on the face.,Email chain,17,0,0,0,0,3,1,misinformation
+Regular exercise is associated with lower rates of depression and anxiety.,NIH,11,0,0,0,0,0,0,credible
+Mental and physical health are closely interconnected.,NIH,7,0,0,0,0,0,0,credible
+Research confirms that Adequate sleep of 7-9 hours per night is important for adults' health.,PubMed,15,1,0,0,1,0,0,credible
+"According to doctors, Sedentary behavior is linked to increased risk of obesity and metabolic syndrome.",Mayo Clinic,15,0,0,0,1,0,0,credible
+Shocking truth: Vaccines cause more deaths than the diseases they prevent.,YouTube video,11,0,0,0,0,2,1,misinformation
+The moon cycle directly controls human hormones and disease patterns.,YouTube video,10,0,0,0,0,0,1,misinformation
+Anxiety can always be cured without any medication through willpower alone.,TikTok video,11,0,0,0,0,1,1,misinformation
+Secret cure: Tuberculosis can be cured completely by sunbathing for two weeks.,Instagram reel,12,0,0,0,0,2,1,misinformation
+Secret cure: Alkaline water cures cancer by changing your body's pH.,Email chain,11,0,0,0,0,2,1,misinformation
+"According to doctors, The polio vaccine has nearly eradicated polio worldwide.",NIH,11,0,0,0,1,0,0,credible
+Secret cure: All artificial sweeteners cause cancer and brain damage.,Facebook post,10,0,0,0,0,2,1,misinformation
+"According to doctors, Adults should aim for at least 150 minutes of moderate aerobic activity per week.",PubMed,17,1,0,0,1,0,0,credible
+Share before deleted: Doctors never tell you that all diseases can be cured with proper hydration alone.,Email chain,17,0,0,0,1,1,1,misinformation
+"According to doctors, HPV vaccines reduce the risk of cervical cancer when given before exposure.",Mayo Clinic,15,0,0,0,1,0,0,credible
+Muscle can turn to fat if you stop exercising regularly.,Email chain,10,0,0,0,0,0,1,misinformation
+Clinical trials show that Sedentary behavior is linked to increased risk of obesity and metabolic syndrome.,Lancet,16,0,0,0,2,0,0,credible
+Research confirms that Weight loss can significantly improve blood sugar control in type 2 diabetes.,NIH,15,1,0,0,1,0,0,credible
+Health experts state that Quitting smoking significantly reduces cardiovascular disease risk within months.,NHS,13,0,0,0,1,0,0,credible
+Studies show that Flu vaccines are reformulated each year to match circulating strains.,WebMD,13,0,0,0,0,0,0,credible
+Secret cure: Salt has no effect on blood pressure for most people.,Twitter post,12,0,0,0,0,2,1,misinformation
+"According to doctors, Antibiotics are only effective against bacterial infections, not viral ones.",WebMD,13,0,0,0,1,0,0,credible
+Medical evidence indicates that Chemotherapy works by targeting rapidly dividing cancer cells.,Lancet,12,0,0,0,1,0,0,credible
+BREAKING: Eating celery juice every morning cures all chronic diseases.,Email chain,10,0,0,0,0,1,1,misinformation
+Studies show that Omega-3 fatty acids found in fish support heart health.,BMJ,12,1,0,0,0,0,0,credible
+"According to doctors, COVID-19 spreads primarily through respiratory droplets and aerosols.",NHS,11,1,0,0,1,0,0,credible
+Clinical trials show that Plant-based diets have been associated with lower rates of heart disease.,PubMed,15,0,0,0,2,0,0,credible
+"The MMR vaccine protects against measles, mumps, and rubella.",WHO,9,0,0,0,0,0,0,credible
+COVID-19 spreads primarily through respiratory droplets and aerosols.,NEJM,8,1,0,0,0,0,0,credible
+BREAKING: Doctors never tell you that all diseases can be cured with proper hydration alone.,WhatsApp message,15,0,0,0,1,1,1,misinformation
+Share before deleted: You can cure type 2 diabetes permanently by eating only raw food.,Instagram reel,15,1,0,0,0,1,1,misinformation
+Share before deleted: You can lose 10 kg in one week by following this special detox plan.,Facebook post,17,1,0,0,0,1,1,misinformation
+Clinical trials show that High-intensity interval training can improve cardiovascular fitness efficiently.,Lancet,12,0,0,0,2,0,0,credible
+The COVID-19 mRNA vaccine permanently alters your DNA.,Twitter post,8,1,0,0,0,0,1,misinformation
+Doctors don't want you to know that Garlic capsules cure COVID-19 infection within 48 hours.,YouTube video,15,1,0,0,1,1,1,misinformation
+Research confirms that Suicide prevention involves recognizing warning signs and providing support.,WHO,12,0,0,0,1,0,0,credible
+Share before deleted: Tuberculosis can be cured completely by sunbathing for two weeks.,TikTok video,13,0,0,0,0,1,1,misinformation
+Doctors don't want you to know that Salt has no effect on blood pressure for most people.,Blog post,17,0,0,0,1,0,1,misinformation
+"According to doctors, Chemotherapy works by targeting rapidly dividing cancer cells.",Lancet,11,0,0,0,1,0,0,credible
+Doctors don't want you to know that Drinking okra water overnight cures diabetes permanently.,Instagram reel,14,0,0,0,1,1,1,misinformation
+Cinnamon alone can replace insulin for people with type 1 diabetes.,Facebook post,11,1,0,0,0,0,1,misinformation
+"A balanced diet includes fruits, vegetables, whole grains, lean proteins, and healthy fats.",WebMD,13,0,0,0,0,0,0,credible
+Health experts state that Suicide prevention involves recognizing warning signs and providing support.,NEJM,13,0,0,0,1,0,0,credible
+"According to doctors, Processed foods high in sodium contribute to hypertension.",NEJM,11,0,0,0,1,0,0,credible
+Shocking truth: Vaccine manufacturers are legally immune from all consequences.,Anonymous forum,10,0,0,0,0,2,1,misinformation
+BREAKING: You need to exercise at least 3 hours every day to maintain good health.,TikTok video,15,1,0,0,0,0,1,misinformation
+Doctors don't want you to know that Insulin therapy causes obesity and makes diabetes worse in the long run.,Instagram reel,19,0,0,0,1,0,1,misinformation
+Scientists suppressed this: Drinking red wine daily completely protects you from heart attacks.,Email chain,13,0,0,0,0,1,1,misinformation
+Doctors don't want you to know that Heart disease is entirely genetic and lifestyle changes have no impact.,Blog post,18,0,0,0,1,0,1,misinformation
+"According to doctors, Regular physical activity reduces the risk of cardiovascular disease.",WebMD,12,0,0,0,1,0,0,credible
+Alcohol consumption above recommended limits increases health risks.,CDC,8,0,0,0,0,0,0,credible
+Share before deleted: Activated charcoal removes all toxins from your blood.,Instagram reel,11,0,0,0,0,0,1,misinformation
+Share before deleted: Heart disease is entirely genetic and lifestyle changes have no impact.,Email chain,14,0,0,0,0,0,1,misinformation
+COVID-19 booster doses help maintain protection as immunity wanes over time.,WebMD,11,1,0,0,0,0,0,credible
+Share before deleted: Salt has no effect on blood pressure for most people.,Anonymous forum,13,0,0,0,0,0,1,misinformation
+BREAKING: The polio vaccine caused cancer in millions of people in secret.,Anonymous forum,12,0,0,0,0,1,1,misinformation
+Tdap booster is recommended every 10 years for adults to maintain tetanus immunity.,NEJM,13,1,0,0,0,0,0,credible
+Medical evidence indicates that Early intervention in mental health conditions leads to better outcomes.,NEJM,14,0,0,0,1,0,0,credible
+Shocking truth: You cannot get HIV from sharing needles if they look clean.,Blog post,13,0,0,0,0,2,1,misinformation
+Studies show that Blood pressure should be measured regularly as hypertension often has no symptoms.,NHS,15,0,0,0,0,0,0,credible
+Blood pressure medication causes kidney failure in all long-term users.,Facebook post,10,0,0,0,0,0,1,misinformation
+Scientists suppressed this: Baking soda cures cancer by making the body alkaline.,TikTok video,12,0,0,0,0,2,1,misinformation
+BREAKING: All artificial sweeteners cause cancer and brain damage.,YouTube video,9,0,0,0,0,0,1,misinformation
+Research confirms that Post-traumatic stress disorder can develop after exposure to traumatic events.,Mayo Clinic,13,0,0,0,1,0,0,credible
+BREAKING: Big pharma hides vaccine injury data to keep profits high.,Twitter post,11,0,0,0,0,0,1,misinformation
+Studies show that Blood sugar monitoring is essential for managing diabetes.,NIH,11,0,0,0,0,0,0,credible
+Studies show that Genetic factors can increase predisposition to certain diseases.,NIH,11,0,0,0,0,0,0,credible
+Doctors don't want you to know that Vitamin C injections provide better protection than any vaccine.,TikTok video,16,0,0,0,1,0,1,misinformation
+Clinical trials show that Radiation therapy uses high-energy beams to destroy cancer cells.,BMJ,13,0,0,0,2,0,0,credible
+Research confirms that Sun exposure and UV radiation increase the risk of skin cancer.,WebMD,14,0,0,0,1,0,0,credible
+Health experts state that COVID-19 vaccines have been tested in large clinical trials involving tens of thousands of participants.,WHO,19,1,0,0,3,0,0,credible
+Doctors don't want you to know that 5G towers caused the COVID-19 pandemic by weakening immune systems.,Instagram reel,17,1,0,0,1,0,1,misinformation
+Shocking truth: Herbal teas remove the need for diabetes medication completely.,TikTok video,11,0,0,0,0,2,1,misinformation
+Scientists suppressed this: Eating raw garlic every day cures hypertension completely without medication.,Twitter post,13,0,0,0,0,2,1,misinformation
+BREAKING: Vaccines have never been proven to be safe by any scientific study.,Blog post,13,0,0,0,2,0,1,misinformation
+You cannot get HIV from sharing needles if they look clean.,WhatsApp message,11,0,0,0,0,0,1,misinformation
+"Studies show that A balanced diet includes fruits, vegetables, whole grains, lean proteins, and healthy fats.",WebMD,16,0,0,0,0,0,0,credible
+Share before deleted: Coconut oil reverses Alzheimer's disease within weeks.,Twitter post,10,0,0,0,0,0,1,misinformation
+Share before deleted: Insulin therapy causes obesity and makes diabetes worse in the long run.,Telegram channel,15,0,0,0,0,0,1,misinformation
+Shocking truth: You can lose 10 kg in one week by following this special detox plan.,Instagram reel,16,1,0,0,0,3,1,misinformation
+Clinical trials show that COVID-19 booster doses help maintain protection as immunity wanes over time.,PubMed,15,1,0,0,2,0,0,credible
+Clinical trials show that Walking is a low-impact exercise suitable for most age groups.,NHS,14,0,0,0,2,0,0,credible
+Secret cure: The COVID-19 mRNA vaccine permanently alters your DNA.,Telegram channel,10,1,0,0,0,2,1,misinformation
+Secret cure: Eating certain seeds kills cancer cells more effectively than chemotherapy.,Telegram channel,12,0,0,0,0,2,1,misinformation
+"Secret cure: A gluten-free diet improves health for everyone, not just celiac patients.",Telegram channel,13,0,0,0,0,2,1,misinformation
+Studies show that Mammograms are used to screen for breast cancer in women over 40.,NIH,15,1,0,0,0,0,0,credible
+"According to doctors, Malaria is caused by a parasite transmitted through infected mosquito bites.",Mayo Clinic,14,0,0,0,1,0,0,credible
+Scientists suppressed this: Vitamin C injections provide better protection than any vaccine.,Email chain,12,0,0,0,0,1,1,misinformation
+"According to doctors, Colorectal cancer screening via colonoscopy is recommended starting at age 45.",Mayo Clinic,14,1,0,0,1,0,0,credible
+HbA1c tests measure average blood sugar levels over the past 2-3 months.,WHO,12,1,0,0,0,0,0,credible
+Vitamin C injections provide better protection than any vaccine.,TikTok video,9,0,0,0,0,0,1,misinformation
+Yellow fever vaccination is required for travel to certain countries.,NHS,10,0,0,0,0,0,0,credible
+BREAKING: Children who are not vaccinated are healthier than vaccinated children.,Anonymous forum,11,0,0,0,0,0,1,misinformation
+BREAKING: Antidepressants are addictive and make mental health permanently worse.,Facebook post,10,0,0,0,0,0,1,misinformation
+The human body heals itself from all diseases without any medical intervention.,YouTube video,12,0,0,0,0,0,1,misinformation
+Share before deleted: Baking soda cures cancer by making the body alkaline.,Telegram channel,12,0,0,0,0,1,1,misinformation
+"Preventive healthcare includes vaccinations, screenings, and lifestyle modifications.",NIH,8,0,0,0,0,0,0,credible
+Herbal teas remove the need for diabetes medication completely.,Email chain,9,0,0,0,0,0,1,misinformation
+"According to doctors, Early intervention in mental health conditions leads to better outcomes.",Lancet,13,0,0,0,1,0,0,credible
+"According to doctors, Alcohol consumption above recommended limits increases health risks.",BMJ,11,0,0,0,1,0,0,credible
+Health experts state that Hand washing with soap for 20 seconds reduces transmission of many infections.,CDC,16,1,0,0,1,0,0,credible
+Scientists suppressed this: Diabetics should avoid all carbohydrates entirely including fruit and vegetables.,Facebook post,13,0,0,0,0,1,1,misinformation
+Shocking truth: Statins cause more heart attacks than they prevent.,Email chain,10,0,0,0,0,2,1,misinformation
+Shocking truth: Running causes arthritis and damages your knee joints over time.,Twitter post,12,0,0,0,0,2,1,misinformation
+BREAKING: The moon cycle directly controls human hormones and disease patterns.,WhatsApp message,11,0,0,0,0,0,1,misinformation
+Studies show that Annual flu vaccination is recommended for people over 65 and those with chronic conditions.,NHS,17,1,0,0,0,0,0,credible
+Share before deleted: People with diabetes should fast for 3 days to reset their pancreas.,YouTube video,15,1,0,0,0,0,1,misinformation
+BREAKING: Depression is just sadness and can be cured by thinking positively.,YouTube video,12,0,0,0,0,1,1,misinformation
+"Health experts state that Obesity increases risk of diabetes, heart disease, and certain cancers.",WebMD,14,0,0,0,1,0,0,credible
+Share before deleted: Drinking red wine daily completely protects you from heart attacks.,TikTok video,13,0,0,0,0,0,1,misinformation
+Medical evidence indicates that Vaccines do not contain live viruses in the case of inactivated or mRNA vaccines.,PubMed,18,0,0,0,1,0,0,credible
+Secret cure: Earth grounding or walking barefoot cures autoimmune diseases.,Blog post,10,0,0,0,0,2,1,misinformation
+"According to doctors, Tuberculosis is a bacterial infection that primarily affects the lungs.",WebMD,13,0,0,0,1,0,0,credible
+Doctors don't want you to know that High cholesterol is a myth invented by pharmaceutical companies.,Telegram channel,16,0,0,0,1,0,1,misinformation
+Health experts state that High-intensity interval training can improve cardiovascular fitness efficiently.,Lancet,12,0,0,0,1,0,0,credible
+Studies show that COVID-19 booster doses help maintain protection as immunity wanes over time.,NEJM,14,1,0,0,0,0,0,credible
+Talking about suicide plants the idea in people's heads and causes it.,Facebook post,12,0,0,0,0,0,1,misinformation
+Health experts state that Tuberculosis is a bacterial infection that primarily affects the lungs.,NHS,14,0,0,0,1,0,0,credible
+Research confirms that Genetic factors can increase predisposition to certain diseases.,NIH,11,0,0,0,1,0,0,credible
+Share before deleted: Schizophrenia is caused by watching too much television.,Blog post,11,0,0,0,0,0,1,misinformation
+Blood pressure should be measured regularly as hypertension often has no symptoms.,PubMed,12,0,0,0,0,0,0,credible
+"Shocking truth: A gluten-free diet improves health for everyone, not just celiac patients.",Blog post,13,0,0,0,0,2,1,misinformation
+Secret cure: Schizophrenia is caused by watching too much television.,Telegram channel,10,0,0,0,0,2,1,misinformation
+"Research confirms that The MMR vaccine protects against measles, mumps, and rubella.",CDC,12,0,0,0,1,0,0,credible
+Health experts state that CPR can help maintain circulation in a person experiencing cardiac arrest.,Lancet,15,0,0,0,1,0,0,credible
+Scientists suppressed this: Vaccine manufacturers are legally immune from all consequences.,WhatsApp message,11,0,0,0,0,1,1,misinformation
+Shocking truth: Spot reduction of fat is possible through targeted exercises.,Telegram channel,11,0,0,0,0,2,1,misinformation
+Share before deleted: Drinking your own urine heals digestive diseases and boosts immunity.,Anonymous forum,13,0,0,0,0,0,1,misinformation
+Secret cure: You can reverse obesity completely by drinking lemon water every morning.,Telegram channel,13,0,0,0,0,2,1,misinformation
+Doctors don't want you to know that Eating raw garlic every day cures hypertension completely without medication.,Blog post,17,0,0,0,1,1,1,misinformation
+Shocking truth: You need to exercise at least 3 hours every day to maintain good health.,Twitter post,16,1,0,0,0,2,1,misinformation
+An EKG measures the electrical activity of the heart.,BMJ,9,0,0,0,0,0,0,credible
+BREAKING: Hepatitis can be cured by a strict vegan diet alone.,Instagram reel,11,0,0,0,0,1,1,misinformation
+Health experts state that Strength training helps maintain muscle mass as people age.,NIH,13,0,0,0,1,0,0,credible
+Studies show that CPR can help maintain circulation in a person experiencing cardiac arrest.,WebMD,14,0,0,0,0,0,0,credible
+Secret cure: You cannot get HIV from sharing needles if they look clean.,Telegram channel,13,0,0,0,0,2,1,misinformation
+Health experts state that The hepatitis B vaccine is given to newborns to prevent chronic infection.,Lancet,16,0,0,0,1,0,0,credible
+Scientists suppressed this: Antidepressants are addictive and make mental health permanently worse.,Blog post,12,0,0,0,0,1,1,misinformation
+Shocking truth: Weight loss supplements approved by celebrities are clinically proven to work.,Anonymous forum,13,0,0,0,2,2,1,misinformation
+"According to doctors, High-intensity interval training can improve cardiovascular fitness efficiently.",PubMed,11,0,0,0,1,0,0,credible
+Secret cure: Antibiotics can cure the common cold and flu effectively.,Email chain,11,0,0,0,0,2,1,misinformation
+"According to doctors, Strength training helps maintain muscle mass as people age.",WHO,12,0,0,0,1,0,0,credible
+Research confirms that Antibiotic resistance is a global health crisis caused by overuse of antibiotics.,CDC,15,0,0,0,1,0,0,credible
+Studies show that Stretching before and after exercise reduces injury risk.,NEJM,11,0,0,0,0,0,0,credible
+"According to doctors, Obesity increases risk of diabetes, heart disease, and certain cancers.",CDC,13,0,0,0,1,0,0,credible
+Depression is just sadness and can be cured by thinking positively.,YouTube video,11,0,0,0,0,1,1,misinformation
+Health experts state that COVID-19 booster doses help maintain protection as immunity wanes over time.,Lancet,15,1,0,0,1,0,0,credible
+"Research confirms that Preventive healthcare includes vaccinations, screenings, and lifestyle modifications.",BMJ,11,0,0,0,1,0,0,credible
+Scientists suppressed this: All pharmaceutical drugs are poison and natural remedies are always safer.,Instagram reel,14,0,0,0,0,2,1,misinformation
+"According to doctors, Suicide prevention involves recognizing warning signs and providing support.",PubMed,12,0,0,0,1,0,0,credible
+"Shocking truth: Cancer cannot survive in an alkaline body, so eating alkaline foods cures it.",Instagram reel,15,0,0,0,0,3,1,misinformation
+Scientists suppressed this: You can reverse obesity completely by drinking lemon water every morning.,Twitter post,14,0,0,0,0,1,1,misinformation
+Secret cure: Sunscreen causes skin cancer due to its toxic chemical ingredients.,Twitter post,12,0,0,0,0,2,1,misinformation
+Shocking truth: Mental health therapy is ineffective and a waste of money.,Instagram reel,12,0,0,0,0,2,1,misinformation
+Shocking truth: Salt has no effect on blood pressure for most people.,TikTok video,12,0,0,0,0,2,1,misinformation
+Share before deleted: Type 2 diabetes can always be completely reversed in 30 days with supplements.,TikTok video,16,1,0,0,0,0,1,misinformation
+Secret cure: Doctors never tell you that all diseases can be cured with proper hydration alone.,Blog post,16,0,0,0,1,2,1,misinformation
+BREAKING: Malaria is spread by eating contaminated food rather than mosquito bites.,Twitter post,12,0,0,0,0,0,1,misinformation
+Share before deleted: Type 2 diabetes is only caused by consuming too much refined sugar.,Email chain,15,1,0,0,0,0,1,misinformation
+Share before deleted: Statins cause more heart attacks than they prevent.,Instagram reel,11,0,0,0,0,0,1,misinformation
+Medical evidence indicates that Blood sugar monitoring is essential for managing diabetes.,BMJ,12,0,0,0,1,0,0,credible
+Share before deleted: Injecting bleach can provide the same immunity as a COVID-19 vaccine.,Facebook post,14,1,0,0,0,0,1,misinformation
+Share before deleted: Eating too much sugar directly causes type 1 diabetes.,Instagram reel,12,1,0,0,0,0,1,misinformation
+Secret cure: Eating only apricot seeds provides the best natural cure for cancer.,YouTube video,13,0,0,0,0,2,1,misinformation
+BREAKING: Anxiety can always be cured without any medication through willpower alone.,Anonymous forum,12,0,0,0,0,1,1,misinformation
+"According to doctors, Reducing saturated fat intake can lower LDL cholesterol levels.",NEJM,12,0,0,0,1,0,0,credible
+Cancer is caused by repressed emotions and can be healed by emotional release.,Email chain,13,0,0,0,0,0,1,misinformation
+Doctors don't want you to know that Drinking your own urine heals digestive diseases and boosts immunity.,TikTok video,17,0,0,0,1,0,1,misinformation
+"According to doctors, Sexually transmitted infections can be prevented using barrier methods.",Mayo Clinic,12,0,0,0,1,0,0,credible
+Secret cure: Mental health therapy is ineffective and a waste of money.,YouTube video,12,0,0,0,0,2,1,misinformation
+Secret cure: Diabetics should avoid all carbohydrates entirely including fruit and vegetables.,WhatsApp message,12,0,0,0,0,2,1,misinformation
+Clinical trials show that Alcohol consumption above recommended limits increases health risks.,BMJ,12,0,0,0,2,0,0,credible
+A coffee enema cures stage 4 cancer more effectively than standard treatment.,Twitter post,12,1,0,0,0,1,1,misinformation
+Studies show that Regular exercise is associated with lower rates of depression and anxiety.,NHS,14,0,0,0,0,0,0,credible
+Secret cure: Regular health screenings cause more harm than they prevent.,Blog post,11,0,0,0,0,2,1,misinformation
+Health experts state that Eating a variety of colorful vegetables provides different essential nutrients.,WHO,14,0,0,0,1,0,0,credible
+BREAKING: Sleeping with your head pointing north causes brain damage.,YouTube video,10,0,0,0,0,0,1,misinformation
+Stretching before and after exercise reduces injury risk.,NHS,8,0,0,0,0,0,0,credible
+Research confirms that Hepatitis C can now be cured with direct-acting antiviral medications.,Mayo Clinic,13,0,0,0,1,1,0,credible
+Health experts state that Fiber from whole grains and vegetables supports digestive health.,WebMD,13,0,0,0,1,0,0,credible
+Doctors don't want you to know that The COVID-19 vaccine contains microchips to track people.,Instagram reel,15,1,0,0,1,0,1,misinformation
+Shocking truth: Essential oils cure cancer better than radiation or surgery.,Anonymous forum,11,0,0,0,0,3,1,misinformation
+"Scientists suppressed this: Cancer cannot survive in an alkaline body, so eating alkaline foods cures it.",Anonymous forum,16,0,0,0,0,2,1,misinformation
+Health experts state that Processed foods high in sodium contribute to hypertension.,NEJM,12,0,0,0,1,0,0,credible
+BREAKING: Blood pressure medication causes kidney failure in all long-term users.,TikTok video,11,0,0,0,0,0,1,misinformation
+"According to doctors, Regular health checkups help detect problems early.",Lancet,10,0,0,0,1,0,0,credible
+BREAKING: Eating certain seeds kills cancer cells more effectively than chemotherapy.,WhatsApp message,11,0,0,0,0,0,1,misinformation
+Scientists suppressed this: Wearing tight bras causes breast cancer in all women.,Facebook post,12,0,0,0,0,1,1,misinformation
+Eating certain seeds kills cancer cells more effectively than chemotherapy.,Telegram channel,10,0,0,0,0,0,1,misinformation
+Shocking truth: Anxiety can always be cured without any medication through willpower alone.,Anonymous forum,13,0,0,0,0,3,1,misinformation
+Health experts state that Early intervention in mental health conditions leads to better outcomes.,NHS,14,0,0,0,1,0,0,credible
+Clinical trials show that Herd immunity requires a high percentage of the population to be vaccinated.,Mayo Clinic,16,0,0,0,2,0,0,credible
+Malaria is spread by eating contaminated food rather than mosquito bites.,WhatsApp message,11,0,0,0,0,0,1,misinformation
+Scientists suppressed this: Cancer is caused by repressed emotions and can be healed by emotional release.,Anonymous forum,16,0,0,0,0,1,1,misinformation
+Share before deleted: ADHD is not a real medical condition and is invented by drug companies.,Twitter post,16,0,0,0,0,0,1,misinformation
+Health experts state that Annual flu vaccination is recommended for people over 65 and those with chronic conditions.,NEJM,18,1,0,0,1,0,0,credible
+Share before deleted: Exercising on an empty stomach burns three times more fat.,Email chain,13,0,0,0,0,0,1,misinformation
+Clinical trials show that Hydration is important for kidney function and overall health.,BMJ,13,0,0,0,2,0,0,credible
+Secret cure: Exercising on an empty stomach burns three times more fat.,Anonymous forum,12,0,0,0,0,2,1,misinformation
+"According to doctors, Exercise improves mood by releasing endorphins.",NIH,9,0,0,0,1,0,0,credible
+"According to doctors, Diabetes increases the risk of cardiovascular disease and kidney damage.",Mayo Clinic,13,0,0,0,1,0,0,credible
+Share before deleted: The COVID-19 mRNA vaccine permanently alters your DNA.,Instagram reel,11,1,0,0,0,0,1,misinformation
+Research confirms that Stretching before and after exercise reduces injury risk.,NIH,11,0,0,0,1,0,0,credible
+Shocking truth: Drinking okra water overnight cures diabetes permanently.,Instagram reel,9,0,0,0,0,3,1,misinformation
+Secret cure: Drinking okra water overnight cures diabetes permanently.,YouTube video,9,0,0,0,0,2,1,misinformation
+Medical evidence indicates that Folate is essential during pregnancy to prevent neural tube defects.,CDC,14,0,0,0,1,0,0,credible
+Health experts state that Environmental factors like air pollution contribute to respiratory disease.,NEJM,13,0,0,0,1,0,0,credible
+Medical evidence indicates that Plant-based diets have been associated with lower rates of heart disease.,Lancet,15,0,0,0,1,0,0,credible
+Research confirms that Excessive sugar consumption is linked to increased risk of type 2 diabetes.,BMJ,15,1,0,0,1,0,0,credible
+All chronic diseases are caused by toxins from modern food that can be removed.,Email chain,14,0,0,0,0,0,1,misinformation
+Clinical trials show that Immunotherapy helps the immune system recognize and fight cancer cells.,Lancet,14,0,0,0,2,0,0,credible
+Shocking truth: Insulin therapy causes obesity and makes diabetes worse in the long run.,Facebook post,14,0,0,0,0,2,1,misinformation
+"Vaccines cause autism in children, as proven by multiple studies.",TikTok video,10,0,0,0,1,0,1,misinformation
+Share before deleted: Alkaline water cures cancer by changing your body's pH.,TikTok video,12,0,0,0,0,1,1,misinformation
+Scientists suppressed this: People with diabetes should fast for 3 days to reset their pancreas.,Email chain,15,1,0,0,0,1,1,misinformation
+"According to doctors, HIV is transmitted through blood, sexual contact, and from mother to child during birth.",PubMed,17,0,0,0,1,0,0,credible
+"Doctors don't want you to know that A gluten-free diet improves health for everyone, not just celiac patients.",Blog post,18,0,0,0,1,0,1,misinformation
+Bitter melon juice is more effective than metformin for controlling blood sugar.,Email chain,12,0,0,0,0,0,1,misinformation
+Medical evidence indicates that The hepatitis B vaccine is given to newborns to prevent chronic infection.,NIH,16,0,0,0,1,0,0,credible
+Doctors don't want you to know that HIV does not cause AIDS according to many scientists.,Twitter post,16,0,0,0,1,0,1,misinformation
+Health experts state that Reducing saturated fat intake can lower LDL cholesterol levels.,WHO,13,0,0,0,1,0,0,credible
+Clinical trials show that Antibiotic resistance is a global health crisis caused by overuse of antibiotics.,Lancet,16,0,0,0,2,0,0,credible
+Medical evidence indicates that Type 1 diabetes is an autoimmune condition where the pancreas produces little insulin.,BMJ,17,1,0,0,1,0,0,credible
+Clinical trials show that Social support is an important factor in mental health and recovery.,WHO,15,0,0,0,2,0,0,credible
+Scientists suppressed this: Eating certain seeds kills cancer cells more effectively than chemotherapy.,Anonymous forum,13,0,0,0,0,1,1,misinformation
+Vaccines have never been proven to be safe by any scientific study.,YouTube video,12,0,0,0,2,0,1,misinformation
+Doctors don't want you to know that Hand sanitizers cause antibiotic resistance in viruses.,Telegram channel,14,0,0,0,1,0,1,misinformation
+Doctors don't want you to know that Sweating during exercise means your body is releasing toxins.,Telegram channel,16,0,0,0,1,0,1,misinformation
+BREAKING: Cannabis oil alone can fully cure all types of cancer.,Instagram reel,11,0,0,0,0,1,1,misinformation
+Doctors don't want you to know that You can reverse obesity completely by drinking lemon water every morning.,WhatsApp message,18,0,0,0,1,0,1,misinformation
+Scientists suppressed this: HIV does not cause AIDS according to many scientists.,YouTube video,12,0,0,0,0,1,1,misinformation
+Clinical trials show that Adequate sleep of 7-9 hours per night is important for adults' health.,CDC,16,1,0,0,2,0,0,credible
+Secret cure: Antidepressants are addictive and make mental health permanently worse.,Anonymous forum,11,0,0,0,0,2,1,misinformation
+BREAKING: Mental illness is caused by spiritual weakness and can be cured by prayer alone.,YouTube video,15,0,0,0,0,1,1,misinformation
+Children with autism are just spoiled and need better discipline.,Email chain,10,0,0,0,0,0,1,misinformation
+"Clinical trials show that The MMR vaccine protects against measles, mumps, and rubella.",Lancet,13,0,0,0,2,0,0,credible
+"According to doctors, Potassium-rich foods like bananas help regulate blood pressure.",NEJM,11,0,0,0,1,0,0,credible
+"Clinical trials show that HIV is transmitted through blood, sexual contact, and from mother to child during birth.",WebMD,18,0,0,0,2,0,0,credible
+Scientists suppressed this: Eating only apricot seeds provides the best natural cure for cancer.,Anonymous forum,14,0,0,0,0,2,1,misinformation
+Clinical trials show that An EKG measures the electrical activity of the heart.,NHS,13,0,0,0,2,0,0,credible
+BREAKING: You can cure type 2 diabetes permanently by eating only raw food.,YouTube video,13,1,0,0,0,1,1,misinformation
+Secret cure: Big pharma hides vaccine injury data to keep profits high.,Facebook post,12,0,0,0,0,2,1,misinformation
+BREAKING: Colloidal silver is a natural antibiotic better than prescribed antibiotics.,Telegram channel,11,0,0,0,0,0,1,misinformation
+Medical evidence indicates that Quitting smoking significantly reduces cardiovascular disease risk within months.,NIH,13,0,0,0,1,0,0,credible
+Research confirms that Environmental factors like air pollution contribute to respiratory disease.,WHO,12,0,0,0,1,0,0,credible
+"According to doctors, A Mediterranean diet is associated with reduced risk of heart disease.",PubMed,14,0,0,0,1,0,0,credible
+Secret cure: The COVID-19 vaccine contains microchips to track people.,Blog post,10,1,0,0,0,2,1,misinformation
+Doctors don't want you to know that Sugar causes cancer directly and cutting it starves cancer cells.,Email chain,17,0,0,0,1,0,1,misinformation
+Share before deleted: Wearing a face mask causes dangerous oxygen deprivation.,Email chain,11,0,0,0,0,0,1,misinformation
+Shocking truth: Vaccines are filled with harmful toxins that damage your immune system permanently.,Twitter post,14,0,0,0,0,2,1,misinformation
+Clinical trials show that Aspirin therapy may be recommended for certain high-risk individuals to prevent heart attacks.,CDC,17,0,0,0,2,0,0,credible
+Research confirms that Flu vaccines are reformulated each year to match circulating strains.,CDC,13,0,0,0,1,0,0,credible
+Health experts state that Type 1 diabetes is an autoimmune condition where the pancreas produces little insulin.,BMJ,17,1,0,0,1,0,0,credible
+Research confirms that Metformin is commonly prescribed as a first-line medication for type 2 diabetes.,WebMD,15,1,0,0,1,0,0,credible
+Scientists suppressed this: All artificial sweeteners cause cancer and brain damage.,TikTok video,11,0,0,0,0,1,1,misinformation
+Studies show that Herd immunity requires a high percentage of the population to be vaccinated.,BMJ,15,0,0,0,0,0,0,credible
+Research confirms that Sedentary behavior is linked to increased risk of obesity and metabolic syndrome.,Mayo Clinic,15,0,0,0,1,0,0,credible
+Research confirms that Sleep deprivation negatively affects cognitive function and mood.,NIH,11,0,0,0,1,0,0,credible
+Share before deleted: Muscle can turn to fat if you stop exercising regularly.,Anonymous forum,13,0,0,0,0,0,1,misinformation
+Medical evidence indicates that Yellow fever vaccination is required for travel to certain countries.,PubMed,14,0,0,0,1,0,0,credible
+Scientists suppressed this: The COVID-19 vaccine contains microchips to track people.,Facebook post,11,1,0,0,0,1,1,misinformation
+Secret cure: Fluoride in water causes brain damage and is used to control populations.,WhatsApp message,14,0,0,0,0,2,1,misinformation
+Shocking truth: People with mental illness are always dangerous and violent.,YouTube video,11,0,0,0,0,2,1,misinformation
+Shocking truth: You can cure type 2 diabetes permanently by eating only raw food.,YouTube video,14,1,0,0,0,3,1,misinformation
+Secret cure: You can lose 10 kg in one week by following this special detox plan.,Telegram channel,16,1,0,0,0,3,1,misinformation
+Scientists suppressed this: The polio vaccine caused cancer in millions of people in secret.,WhatsApp message,14,0,0,0,0,2,1,misinformation
+Scientists suppressed this: Detox teas remove toxins from your liver better than any medical treatment.,Email chain,15,0,0,0,0,2,1,misinformation
+"Shocking truth: Vaccines cause autism in children, as proven by multiple studies.",WhatsApp message,12,0,0,0,1,2,1,misinformation
+Clinical trials show that Folate is essential during pregnancy to prevent neural tube defects.,NHS,14,0,0,0,2,0,0,credible
+Share before deleted: Antidepressants are addictive and make mental health permanently worse.,Instagram reel,12,0,0,0,0,0,1,misinformation
+Secret cure: Baking soda cures cancer by making the body alkaline.,Anonymous forum,11,0,0,0,0,2,1,misinformation
+Clinical trials show that Whole grains have a lower glycemic index than refined grains.,NIH,14,0,0,0,2,0,0,credible
+Share before deleted: Drinking bleach in small amounts detoxifies your body.,TikTok video,11,0,0,0,0,1,1,misinformation
+Medical evidence indicates that Regular foot care is important for people with diabetes to prevent complications.,WHO,16,0,0,0,1,0,0,credible
+Studies show that HbA1c tests measure average blood sugar levels over the past 2-3 months.,WHO,15,1,0,0,0,0,0,credible
+Scientists suppressed this: Big pharma hides vaccine injury data to keep profits high.,YouTube video,13,0,0,0,0,1,1,misinformation
+Health experts state that Coronary artery disease is caused by plaque buildup in the arteries.,PubMed,15,0,0,0,1,0,0,credible
+Studies show that Vaccines do not contain live viruses in the case of inactivated or mRNA vaccines.,WHO,17,0,0,0,0,0,0,credible
+Shocking truth: Children who are not vaccinated are healthier than vaccinated children.,Facebook post,12,0,0,0,0,2,1,misinformation
+Clinical trials show that Adults should aim for at least 150 minutes of moderate aerobic activity per week.,WebMD,18,1,0,0,2,0,0,credible
+Secret cure: Malaria is spread by eating contaminated food rather than mosquito bites.,Twitter post,13,0,0,0,0,2,1,misinformation
+Antibiotic resistance is a global health crisis caused by overuse of antibiotics.,WebMD,12,0,0,0,0,0,0,credible
+Lifestyle factors like diet and exercise influence cancer risk.,WHO,9,0,0,0,0,0,0,credible
+Research confirms that HPV vaccines reduce the risk of cervical cancer when given before exposure.,CDC,15,0,0,0,1,0,0,credible
+Wearing a face mask causes dangerous oxygen deprivation.,Blog post,8,0,0,0,0,0,1,misinformation
+Secret cure: Injecting bleach can provide the same immunity as a COVID-19 vaccine.,Instagram reel,13,1,0,0,0,2,1,misinformation
+Clinical trials show that Environmental factors like air pollution contribute to respiratory disease.,BMJ,13,0,0,0,2,0,0,credible
+"According to doctors, Coronary artery disease is caused by plaque buildup in the arteries.",WebMD,14,0,0,0,1,0,0,credible
+Medical evidence indicates that Vaccines undergo multiple phases of clinical trials before receiving regulatory approval.,WHO,15,0,0,0,3,0,0,credible
+BREAKING: Type 2 diabetes can always be completely reversed in 30 days with supplements.,Email chain,14,1,0,0,0,0,1,misinformation
+Medical evidence indicates that The polio vaccine has nearly eradicated polio worldwide.,WHO,12,0,0,0,1,0,0,credible
+Doctors don't want you to know that Vaccines cause more deaths than the diseases they prevent.,YouTube video,16,0,0,0,1,0,1,misinformation
+Share before deleted: Bitter melon juice is more effective than metformin for controlling blood sugar.,TikTok video,15,0,0,0,0,0,1,misinformation
+"According to doctors, A balanced diet includes fruits, vegetables, whole grains, lean proteins, and healthy fats.",NHS,16,0,0,0,1,0,0,credible
+Medical evidence indicates that Whole grains have a lower glycemic index than refined grains.,CDC,14,0,0,0,1,0,0,credible
+BREAKING: Garlic capsules cure COVID-19 infection within 48 hours.,TikTok video,9,1,0,0,0,1,1,misinformation
+Share before deleted: All chronic diseases are caused by toxins from modern food that can be removed.,WhatsApp message,17,0,0,0,0,0,1,misinformation
+"According to doctors, A low-glycemic diet can help manage blood sugar levels in diabetics.",WHO,14,0,0,0,1,0,0,credible
+Medical evidence indicates that Genetic factors can increase predisposition to certain diseases.,BMJ,12,0,0,0,1,0,0,credible
+Health experts state that Immunotherapy helps the immune system recognize and fight cancer cells.,Lancet,14,0,0,0,1,0,0,credible
+Health experts state that Chemotherapy works by targeting rapidly dividing cancer cells.,WHO,12,0,0,0,1,0,0,credible
+Clinical trials show that Eating a variety of colorful vegetables provides different essential nutrients.,Lancet,14,0,0,0,2,0,0,credible
+Doctors don't want you to know that Muscle can turn to fat if you stop exercising regularly.,Twitter post,17,0,0,0,1,0,1,misinformation
+BREAKING: Coconut oil is a heart-healthy food that clears clogged arteries.,Blog post,11,0,0,0,0,0,1,misinformation
+Research confirms that Some cancers are linked to viral infections such as HPV and hepatitis B.,Lancet,16,0,0,0,1,0,0,credible
+Shocking truth: Eating raw garlic every day cures hypertension completely without medication.,Anonymous forum,12,0,0,0,0,3,1,misinformation
+BREAKING: Type 2 diabetes is only caused by consuming too much refined sugar.,Blog post,13,1,0,0,0,0,1,misinformation
+"Research confirms that Regular screening can detect certain cancers at earlier, more treatable stages.",CDC,14,0,0,0,1,0,0,credible
+"According to doctors, Aspirin therapy may be recommended for certain high-risk individuals to prevent heart attacks.",Lancet,16,0,0,0,1,0,0,credible
+Magnet therapy can reverse heart disease effectively.,WhatsApp message,7,0,0,0,0,0,1,misinformation
+Early intervention in mental health conditions leads to better outcomes.,BMJ,10,0,0,0,0,0,0,credible
+Research confirms that Mental health conditions are not a sign of weakness and are common worldwide.,Lancet,16,0,0,0,1,0,0,credible
+Share before deleted: Blood pressure medication causes kidney failure in all long-term users.,Telegram channel,13,0,0,0,0,0,1,misinformation
+Secret cure: You can cure type 2 diabetes permanently by eating only raw food.,TikTok video,14,1,0,0,0,2,1,misinformation
+Studies show that Yellow fever vaccination is required for travel to certain countries.,CDC,13,0,0,0,0,0,0,credible
+Fluoride in water causes brain damage and is used to control populations.,Twitter post,12,0,0,0,0,0,1,misinformation
+BREAKING: The COVID-19 vaccine contains microchips to track people.,Facebook post,9,1,0,0,0,0,1,misinformation
+Scientists suppressed this: Exercising on an empty stomach burns three times more fat.,Facebook post,13,0,0,0,0,1,1,misinformation
+Clinical trials show that Flu vaccines are reformulated each year to match circulating strains.,NHS,14,0,0,0,2,0,0,credible
+BREAKING: Diabetics should avoid all carbohydrates entirely including fruit and vegetables.,Anonymous forum,11,0,0,0,0,0,1,misinformation
+"According to doctors, Type 1 diabetes is an autoimmune condition where the pancreas produces little insulin.",WebMD,16,1,0,0,1,0,0,credible
+Health experts state that Adequate sleep of 7-9 hours per night is important for adults' health.,Lancet,16,1,0,0,1,0,0,credible
+Clinical trials show that Antioxidants found in berries may help reduce oxidative stress.,Lancet,13,0,0,0,2,0,0,credible
+Doctors don't want you to know that The moon cycle directly controls human hormones and disease patterns.,Instagram reel,17,0,0,0,1,0,1,misinformation
+"Clinical trials show that Antibiotics are only effective against bacterial infections, not viral ones.",PubMed,14,0,0,0,2,0,0,credible
+"Cancer cannot survive in an alkaline body, so eating alkaline foods cures it.",Instagram reel,13,0,0,0,0,1,1,misinformation
+Secret cure: Detox teas remove toxins from your liver better than any medical treatment.,Instagram reel,14,0,0,0,0,3,1,misinformation
+Malaria is caused by a parasite transmitted through infected mosquito bites.,PubMed,11,0,0,0,0,0,0,credible
+Research confirms that A Mediterranean diet is associated with reduced risk of heart disease.,NIH,14,0,0,0,1,0,0,credible
+BREAKING: The COVID-19 mRNA vaccine permanently alters your DNA.,TikTok video,9,1,0,0,0,0,1,misinformation
+Research confirms that Childhood vaccines follow a schedule recommended by pediatric health authorities.,Lancet,13,0,0,0,1,0,0,credible
+Health experts state that Vaccine side effects like mild fever and soreness are normal immune responses.,BMJ,16,0,0,0,1,0,0,credible
+Health experts state that Some cancers are linked to viral infections such as HPV and hepatitis B.,Mayo Clinic,17,0,0,0,1,0,0,credible
+Medical evidence indicates that Sun exposure and UV radiation increase the risk of skin cancer.,WebMD,15,0,0,0,1,0,0,credible
+Secret cure: Children with autism are just spoiled and need better discipline.,Twitter post,12,0,0,0,0,2,1,misinformation
+Studies show that Radiation therapy uses high-energy beams to destroy cancer cells.,WebMD,12,0,0,0,0,0,0,credible
+Scientists suppressed this: Doctors hide cancer cures to keep pharmaceutical profits high.,Blog post,12,0,0,0,1,2,1,misinformation
+Share before deleted: 5G towers caused the COVID-19 pandemic by weakening immune systems.,Telegram channel,13,1,0,0,0,0,1,misinformation
+Stretching before exercise prevents all types of injuries.,Blog post,8,0,0,0,0,0,1,misinformation
+"Medical evidence indicates that Antibiotics are only effective against bacterial infections, not viral ones.",PubMed,14,0,0,0,1,0,0,credible
+Secret cure: Stretching before exercise prevents all types of injuries.,Instagram reel,10,0,0,0,0,2,1,misinformation
+Clinical trials show that Colorectal cancer screening via colonoscopy is recommended starting at age 45.,WebMD,15,1,0,0,2,0,0,credible
+"Studies show that Antibiotics are only effective against bacterial infections, not viral ones.",BMJ,13,0,0,0,0,0,0,credible
+Scientists suppressed this: Drinking okra water overnight cures diabetes permanently.,Instagram reel,10,0,0,0,0,2,1,misinformation
+Medical evidence indicates that Post-traumatic stress disorder can develop after exposure to traumatic events.,Mayo Clinic,14,0,0,0,1,0,0,credible
+Doctors don't want you to know that The MMR vaccine was recalled due to widespread harmful side effects.,YouTube video,18,0,0,0,1,0,1,misinformation
+"According to doctors, Antidepressants work by affecting neurotransmitter levels in the brain.",NEJM,12,0,0,0,1,0,0,credible
+Share before deleted: Earth grounding or walking barefoot cures autoimmune diseases.,Blog post,11,0,0,0,0,1,1,misinformation
+Scientists suppressed this: Weight loss supplements approved by celebrities are clinically proven to work.,Blog post,14,0,0,0,2,1,1,misinformation
+Share before deleted: HIV does not cause AIDS according to many scientists.,WhatsApp message,12,0,0,0,0,0,1,misinformation
+Doctors don't want you to know that Natural immunity is always superior to vaccine-induced immunity for all diseases.,Instagram reel,18,0,0,0,1,0,1,misinformation
+Studies show that Physical activity helps regulate blood sugar in people with type 2 diabetes.,NIH,15,1,0,0,0,0,0,credible
+Natural immunity is always superior to vaccine-induced immunity for all diseases.,Blog post,11,0,0,0,0,0,1,misinformation
+Clinical trials show that Mammograms are used to screen for breast cancer in women over 40.,WebMD,16,1,0,0,2,0,0,credible
+Scientists suppressed this: You cannot get HIV from sharing needles if they look clean.,Blog post,14,0,0,0,0,1,1,misinformation
+Research confirms that Walking is a low-impact exercise suitable for most age groups.,Mayo Clinic,13,0,0,0,1,0,0,credible
+Scientists suppressed this: Type 2 diabetes is only caused by consuming too much refined sugar.,TikTok video,15,1,0,0,0,1,1,misinformation
+People with diabetes should fast for 3 days to reset their pancreas.,YouTube video,12,1,0,0,0,0,1,misinformation
+Doctors don't want you to know that Vaccines have never been proven to be safe by any scientific study.,Twitter post,19,0,0,0,3,0,1,misinformation
+Shocking truth: Sugar causes cancer directly and cutting it starves cancer cells.,Blog post,12,0,0,0,0,2,1,misinformation
+Clinical trials show that Coronary artery disease is caused by plaque buildup in the arteries.,WHO,15,0,0,0,2,0,0,credible
+Medical evidence indicates that CPR can help maintain circulation in a person experiencing cardiac arrest.,PubMed,15,0,0,0,1,0,0,credible
+Medical evidence indicates that Statins are medications used to lower LDL cholesterol and reduce cardiovascular risk.,NHS,16,0,0,0,1,0,0,credible
+Health experts state that Alcohol consumption above recommended limits increases health risks.,WebMD,12,0,0,0,1,0,0,credible
+Secret cure: People with mental illness are always dangerous and violent.,YouTube video,11,0,0,0,0,2,1,misinformation
+Studies show that Exercise improves mood by releasing endorphins.,NIH,9,0,0,0,0,0,0,credible
+"According to doctors, Walking is a low-impact exercise suitable for most age groups.",Mayo Clinic,13,0,0,0,1,0,0,credible
+Health experts state that Mental health conditions are not a sign of weakness and are common worldwide.,Lancet,17,0,0,0,1,0,0,credible
+Research confirms that Coronary artery disease is caused by plaque buildup in the arteries.,Lancet,14,0,0,0,1,0,0,credible
+Studies show that Antibiotic resistance is a global health crisis caused by overuse of antibiotics.,NEJM,15,0,0,0,0,0,0,credible
+Shocking truth: Colloidal silver is a natural antibiotic better than prescribed antibiotics.,WhatsApp message,12,0,0,0,0,2,1,misinformation
+CPR can help maintain circulation in a person experiencing cardiac arrest.,WebMD,11,0,0,0,0,0,0,credible
+Some cancers are linked to viral infections such as HPV and hepatitis B.,PubMed,13,0,0,0,0,0,0,credible
+Research confirms that Radiation therapy uses high-energy beams to destroy cancer cells.,NIH,12,0,0,0,1,0,0,credible
+Health experts state that Atrial fibrillation increases the risk of stroke and requires management.,PubMed,14,0,0,0,2,0,0,credible
+Research confirms that Aspirin therapy may be recommended for certain high-risk individuals to prevent heart attacks.,NIH,16,0,0,0,1,0,0,credible
+Studies show that Childhood vaccines follow a schedule recommended by pediatric health authorities.,Mayo Clinic,13,0,0,0,0,0,0,credible
+Medical evidence indicates that Stretching before and after exercise reduces injury risk.,NEJM,12,0,0,0,1,0,0,credible
+Research confirms that Stress management techniques like mindfulness can reduce anxiety symptoms.,NIH,12,0,0,0,1,0,0,credible
+Scientists suppressed this: All chronic diseases are caused by toxins from modern food that can be removed.,Anonymous forum,17,0,0,0,0,1,1,misinformation
+Doctors don't want you to know that Detox teas remove toxins from your liver better than any medical treatment.,Blog post,19,0,0,0,1,1,1,misinformation
+Studies show that Vaccine side effects like mild fever and soreness are normal immune responses.,NEJM,15,0,0,0,0,0,0,credible
+Medical evidence indicates that Hydration is important for kidney function and overall health.,PubMed,13,0,0,0,1,0,0,credible
+"According to doctors, Folate is essential during pregnancy to prevent neural tube defects.",NHS,13,0,0,0,1,0,0,credible
+Medical evidence indicates that Heart failure means the heart cannot pump blood as efficiently as needed.,Mayo Clinic,16,0,0,0,1,0,0,credible
+Secret cure: The flu vaccine gives you the flu every time you take it.,TikTok video,14,0,0,0,0,2,1,misinformation
+Annual flu vaccination is recommended for people over 65 and those with chronic conditions.,Lancet,14,1,0,0,0,0,0,credible
+Coconut oil reverses Alzheimer's disease within weeks.,Anonymous forum,7,0,0,0,0,0,1,misinformation
+Share before deleted: People with mental illness are always dangerous and violent.,Blog post,12,0,0,0,0,0,1,misinformation
+Sun exposure and UV radiation increase the risk of skin cancer.,Lancet,11,0,0,0,0,0,0,credible
+"According to doctors, Hand washing with soap for 20 seconds reduces transmission of many infections.",BMJ,15,1,0,0,1,0,0,credible
+"According to doctors, Smoking cessation reduces risk of lung cancer, heart disease, and stroke.",PubMed,14,0,0,0,1,0,0,credible
+Research confirms that Hydration is important for kidney function and overall health.,WHO,12,0,0,0,1,0,0,credible
+Shocking truth: Children with autism are just spoiled and need better discipline.,Facebook post,12,0,0,0,0,2,1,misinformation
+Secret cure: The MMR vaccine was recalled due to widespread harmful side effects.,Blog post,13,0,0,0,0,2,1,misinformation
+BREAKING: Heart disease is entirely genetic and lifestyle changes have no impact.,Facebook post,12,0,0,0,0,0,1,misinformation
+"According to doctors, Some cancers are linked to viral infections such as HPV and hepatitis B.",NEJM,16,0,0,0,1,0,0,credible
+"Regular screening can detect certain cancers at earlier, more treatable stages.",WebMD,11,0,0,0,0,0,0,credible
+Doctors don't want you to know that Anxiety can always be cured without any medication through willpower alone.,Blog post,18,0,0,0,1,1,1,misinformation
+"According to doctors, Annual flu vaccination is recommended for people over 65 and those with chronic conditions.",BMJ,17,1,0,0,1,0,0,credible
+Shocking truth: Injecting bleach can provide the same immunity as a COVID-19 vaccine.,YouTube video,13,1,0,0,0,2,1,misinformation
+BREAKING: Regular health screenings cause more harm than they prevent.,Anonymous forum,10,0,0,0,0,0,1,misinformation
+Health experts state that Antidepressants work by affecting neurotransmitter levels in the brain.,BMJ,13,0,0,0,1,0,0,credible
+Share before deleted: Colloidal silver is a natural antibiotic better than prescribed antibiotics.,Blog post,13,0,0,0,0,0,1,misinformation
+Shocking truth: A coffee enema cures stage 4 cancer more effectively than standard treatment.,WhatsApp message,14,1,0,0,0,3,1,misinformation
+Type 1 diabetes is an autoimmune condition where the pancreas produces little insulin.,NEJM,13,1,0,0,0,0,0,credible
+Doctors don't want you to know that You can cure type 2 diabetes permanently by eating only raw food.,Instagram reel,19,1,0,0,1,1,1,misinformation
+"According to doctors, Blood pressure should be measured regularly as hypertension often has no symptoms.",Lancet,15,0,0,0,1,0,0,credible
+Doctors don't want you to know that Colloidal silver is a natural antibiotic better than prescribed antibiotics.,Twitter post,17,0,0,0,1,0,1,misinformation
+Shocking truth: The moon cycle directly controls human hormones and disease patterns.,Email chain,12,0,0,0,0,2,1,misinformation
+Mental health therapy is ineffective and a waste of money.,YouTube video,10,0,0,0,0,0,1,misinformation
+Shocking truth: Regular health screenings cause more harm than they prevent.,Twitter post,11,0,0,0,0,2,1,misinformation
+Scientists suppressed this: Regular health screenings cause more harm than they prevent.,Anonymous forum,12,0,0,0,0,1,1,misinformation
+Health experts state that Contact tracing helps identify and isolate people exposed to infectious diseases.,NEJM,15,0,0,0,1,0,0,credible
+"According to doctors, Contact tracing helps identify and isolate people exposed to infectious diseases.",NHS,14,0,0,0,1,0,0,credible
+Secret cure: A coffee enema cures stage 4 cancer more effectively than standard treatment.,Twitter post,14,1,0,0,0,2,1,misinformation
+"BREAKING: A gluten-free diet improves health for everyone, not just celiac patients.",WhatsApp message,12,0,0,0,0,0,1,misinformation
+Clinical trials show that CPR can help maintain circulation in a person experiencing cardiac arrest.,NHS,15,0,0,0,2,0,0,credible
+"Health experts state that Regular screening can detect certain cancers at earlier, more treatable stages.",NEJM,15,0,0,0,1,0,0,credible
+Medical evidence indicates that Immunotherapy helps the immune system recognize and fight cancer cells.,Mayo Clinic,14,0,0,0,1,0,0,credible
+Share before deleted: Vaccines are filled with harmful toxins that damage your immune system permanently.,Instagram reel,15,0,0,0,0,0,1,misinformation
+Secret cure: Coconut oil is a heart-healthy food that clears clogged arteries.,Blog post,12,0,0,0,0,2,1,misinformation
+"According to doctors, Excessive sugar consumption is linked to increased risk of type 2 diabetes.",NEJM,15,1,0,0,1,0,0,credible
+Health experts state that Diabetes increases the risk of cardiovascular disease and kidney damage.,CDC,14,0,0,0,1,0,0,credible
+Studies show that Whole grains have a lower glycemic index than refined grains.,NEJM,13,0,0,0,0,0,0,credible
+Secret cure: Drinking red wine daily completely protects you from heart attacks.,Instagram reel,12,0,0,0,0,2,1,misinformation
+Clinical trials show that Potassium-rich foods like bananas help regulate blood pressure.,CDC,12,0,0,0,2,0,0,credible
+Studies show that COVID-19 vaccines have been tested in large clinical trials involving tens of thousands of participants.,WebMD,18,1,0,0,2,0,0,credible
+Health experts state that Omega-3 fatty acids found in fish support heart health.,WHO,13,1,0,0,1,0,0,credible
+Studies show that A Mediterranean diet is associated with reduced risk of heart disease.,WebMD,14,0,0,0,0,0,0,credible
+Health experts state that Malaria is caused by a parasite transmitted through infected mosquito bites.,Lancet,15,0,0,0,1,0,0,credible
+Type 2 diabetes can always be completely reversed in 30 days with supplements.,TikTok video,13,1,0,0,0,0,1,misinformation
+Baking soda cures cancer by making the body alkaline.,TikTok video,9,0,0,0,0,1,1,misinformation
+Exercising on an empty stomach burns three times more fat.,Facebook post,10,0,0,0,0,0,1,misinformation
+Health experts state that Sleep deprivation negatively affects cognitive function and mood.,WebMD,12,0,0,0,1,0,0,credible
+Studies show that HPV vaccines reduce the risk of cervical cancer when given before exposure.,NHS,15,0,0,0,0,0,0,credible
+"According to doctors, Iron-rich foods like spinach and legumes help prevent anemia.",NHS,12,0,0,0,1,0,0,credible
+BREAKING: The flu vaccine gives you the flu every time you take it.,Email chain,13,0,0,0,0,0,1,misinformation
+Clinical trials show that COVID-19 vaccines have been tested in large clinical trials involving tens of thousands of participants.,CDC,19,1,0,0,2,0,0,credible
+Doctors don't want you to know that Eating too much sugar directly causes type 1 diabetes.,Email chain,16,1,0,0,1,0,1,misinformation
+Shocking truth: Drinking your own urine heals digestive diseases and boosts immunity.,TikTok video,12,0,0,0,0,2,1,misinformation
+"According to doctors, Regular exercise is associated with lower rates of depression and anxiety.",NHS,14,0,0,0,1,0,0,credible
+Eating a variety of colorful vegetables provides different essential nutrients.,NHS,10,0,0,0,0,0,0,credible
+"Clinical trials show that Regular screening can detect certain cancers at earlier, more treatable stages.",Lancet,15,0,0,0,2,0,0,credible
+Doctors don't want you to know that You can lose 10 kg in one week by following this special detox plan.,Email chain,21,1,0,0,1,1,1,misinformation
+Doctors don't want you to know that Vaccine manufacturers are legally immune from all consequences.,Twitter post,15,0,0,0,1,0,1,misinformation
+Research confirms that Regular health checkups help detect problems early.,CDC,10,0,0,0,1,0,0,credible
+"According to doctors, Tdap booster is recommended every 10 years for adults to maintain tetanus immunity.",NEJM,16,1,0,0,1,0,0,credible
+Weight loss can significantly improve blood sugar control in type 2 diabetes.,NHS,12,1,0,0,0,0,0,credible
+Health experts state that Flu vaccines are reformulated each year to match circulating strains.,BMJ,14,0,0,0,1,0,0,credible
+Secret cure: Spot reduction of fat is possible through targeted exercises.,Twitter post,11,0,0,0,0,2,1,misinformation
+Secret cure: Anger has no relationship with heart attack risk.,Email chain,10,0,0,0,0,2,1,misinformation
+Activated charcoal removes all toxins from your blood.,WhatsApp message,8,0,0,0,0,0,1,misinformation
+Secret cure: Herbal teas remove the need for diabetes medication completely.,Telegram channel,11,0,0,0,0,2,1,misinformation
+Clinical trials show that Antidepressants work by affecting neurotransmitter levels in the brain.,CDC,13,0,0,0,2,0,0,credible
+Shocking truth: Bitter melon juice is more effective than metformin for controlling blood sugar.,Twitter post,14,0,0,0,0,2,1,misinformation
+"Studies show that Obesity increases risk of diabetes, heart disease, and certain cancers.",BMJ,13,0,0,0,0,0,0,credible
+Share before deleted: You can reverse obesity completely by drinking lemon water every morning.,WhatsApp message,14,0,0,0,0,0,1,misinformation
+Shocking truth: Eating celery juice every morning cures all chronic diseases.,Facebook post,11,0,0,0,0,3,1,misinformation
+Medical evidence indicates that Lifestyle factors like diet and exercise influence cancer risk.,NEJM,13,0,0,0,1,0,0,credible
+Statins are medications used to lower LDL cholesterol and reduce cardiovascular risk.,NHS,12,0,0,0,0,0,0,credible
+Clinical trials show that High blood pressure is a major risk factor for heart attack and stroke.,BMJ,17,0,0,0,2,0,0,credible
+"According to doctors, Sun exposure and UV radiation increase the risk of skin cancer.",WebMD,14,0,0,0,1,0,0,credible
+Scientists suppressed this: Heart disease is entirely genetic and lifestyle changes have no impact.,WhatsApp message,14,0,0,0,0,1,1,misinformation
+Scientists suppressed this: Alkaline water cures cancer by changing your body's pH.,Email chain,12,0,0,0,0,2,1,misinformation
+You can reverse obesity completely by drinking lemon water every morning.,TikTok video,11,0,0,0,0,0,1,misinformation
+Medical evidence indicates that Blood pressure should be measured regularly as hypertension often has no symptoms.,WebMD,16,0,0,0,1,0,0,credible
+Scientists suppressed this: Chemotherapy kills more people than cancer itself.,Anonymous forum,10,0,0,0,0,1,1,misinformation
+Radiation therapy uses high-energy beams to destroy cancer cells.,Lancet,9,0,0,0,0,0,0,credible
+Medical evidence indicates that Physical activity helps regulate blood sugar in people with type 2 diabetes.,WHO,16,1,0,0,1,0,0,credible
+Share before deleted: Sweating during exercise means your body is releasing toxins.,Email chain,12,0,0,0,0,0,1,misinformation
+Research confirms that Tdap booster is recommended every 10 years for adults to maintain tetanus immunity.,Lancet,16,1,0,0,1,0,0,credible
+BREAKING: Sweating during exercise means your body is releasing toxins.,Instagram reel,10,0,0,0,0,0,1,misinformation
+Earth grounding or walking barefoot cures autoimmune diseases.,Instagram reel,8,0,0,0,0,1,1,misinformation
+Secret cure: Chemotherapy kills more people than cancer itself.,YouTube video,9,0,0,0,0,2,1,misinformation
+Clinical trials show that Cognitive behavioral therapy is an evidence-based treatment for anxiety disorders.,WebMD,14,0,0,0,3,0,0,credible
+Medical evidence indicates that High-intensity interval training can improve cardiovascular fitness efficiently.,Mayo Clinic,12,0,0,0,1,0,0,credible
+Sunscreen causes skin cancer due to its toxic chemical ingredients.,Blog post,10,0,0,0,0,0,1,misinformation
+Shocking truth: Hand sanitizers cause antibiotic resistance in viruses.,Facebook post,9,0,0,0,0,2,1,misinformation
+Doctors don't want you to know that People with mental illness are always dangerous and violent.,TikTok video,16,0,0,0,1,0,1,misinformation
+"HIV is transmitted through blood, sexual contact, and from mother to child during birth.",BMJ,14,0,0,0,0,0,0,credible
+Studies show that Diabetes increases the risk of cardiovascular disease and kidney damage.,WHO,13,0,0,0,0,0,0,credible
+Folate is essential during pregnancy to prevent neural tube defects.,WHO,10,0,0,0,0,0,0,credible
+Shocking truth: Eating too much sugar directly causes type 1 diabetes.,Twitter post,11,1,0,0,0,2,1,misinformation
+Health experts state that Regular health checkups help detect problems early.,WHO,11,0,0,0,1,0,0,credible
+Research confirms that Diabetes increases the risk of cardiovascular disease and kidney damage.,PubMed,13,0,0,0,1,0,0,credible
+"Medical evidence indicates that Regular screening can detect certain cancers at earlier, more treatable stages.",BMJ,15,0,0,0,1,0,0,credible
+BREAKING: 5G towers caused the COVID-19 pandemic by weakening immune systems.,Blog post,11,1,0,0,0,0,1,misinformation
+Antidepressants work by affecting neurotransmitter levels in the brain.,Lancet,9,0,0,0,0,0,0,credible
+Health experts state that Colorectal cancer screening via colonoscopy is recommended starting at age 45.,CDC,15,1,0,0,1,0,0,credible
+Studies show that A low-glycemic diet can help manage blood sugar levels in diabetics.,NHS,14,0,0,0,0,0,0,credible
+Clinical trials show that Heart failure means the heart cannot pump blood as efficiently as needed.,CDC,16,0,0,0,2,0,0,credible
+Research confirms that Strength training helps maintain muscle mass as people age.,PubMed,12,0,0,0,1,0,0,credible
+Shocking truth: High cholesterol is a myth invented by pharmaceutical companies.,Twitter post,11,0,0,0,0,2,1,misinformation
+Research confirms that Iron-rich foods like spinach and legumes help prevent anemia.,NIH,12,0,0,0,1,0,0,credible
+Research confirms that Plant-based diets have been associated with lower rates of heart disease.,Mayo Clinic,14,0,0,0,1,0,0,credible
+"Antibiotics are only effective against bacterial infections, not viral ones.",BMJ,10,0,0,0,0,0,0,credible
+Scientists suppressed this: Mental illness is caused by spiritual weakness and can be cured by prayer alone.,Instagram reel,17,0,0,0,0,2,1,misinformation
+BREAKING: Spot reduction of fat is possible through targeted exercises.,Twitter post,10,0,0,0,0,0,1,misinformation
+Sleeping with your head pointing north causes brain damage.,TikTok video,9,0,0,0,0,0,1,misinformation
+Clinical trials show that Type 2 diabetes is strongly associated with obesity and physical inactivity.,BMJ,15,1,0,0,2,0,0,credible
+Medical evidence indicates that Aspirin therapy may be recommended for certain high-risk individuals to prevent heart attacks.,WHO,17,0,0,0,1,0,0,credible
+Doctors don't want you to know that Drinking bleach in small amounts detoxifies your body.,Blog post,15,0,0,0,1,1,1,misinformation
+Research confirms that Quitting smoking significantly reduces cardiovascular disease risk within months.,NHS,12,0,0,0,1,0,0,credible
+Studies show that Hepatitis C can now be cured with direct-acting antiviral medications.,Mayo Clinic,13,0,0,0,0,1,0,credible
+Doctors don't want you to know that You need to exercise at least 3 hours every day to maintain good health.,YouTube video,21,1,0,0,1,0,1,misinformation
+Medical evidence indicates that Hepatitis C can now be cured with direct-acting antiviral medications.,CDC,14,0,0,0,1,1,0,credible
+Doctors don't want you to know that The human body heals itself from all diseases without any medical intervention.,Anonymous forum,19,0,0,0,1,0,1,misinformation
+BREAKING: Detox teas remove toxins from your liver better than any medical treatment.,TikTok video,13,0,0,0,0,1,1,misinformation
+Chemotherapy works by targeting rapidly dividing cancer cells.,PubMed,8,0,0,0,0,0,0,credible
+Share before deleted: Regular health screenings cause more harm than they prevent.,Twitter post,12,0,0,0,0,0,1,misinformation
+Studies show that Heart failure means the heart cannot pump blood as efficiently as needed.,BMJ,15,0,0,0,0,0,0,credible
+Scientists suppressed this: Eating too much sugar directly causes type 1 diabetes.,WhatsApp message,12,1,0,0,0,1,1,misinformation
+Share before deleted: Magnet therapy can reverse heart disease effectively.,Blog post,10,0,0,0,0,0,1,misinformation
+Shocking truth: Organic food has zero pesticides and prevents all lifestyle diseases.,Twitter post,12,0,0,0,0,2,1,misinformation
+Clinical trials show that The hepatitis B vaccine is given to newborns to prevent chronic infection.,NEJM,16,0,0,0,2,0,0,credible
+"According to doctors, An EKG measures the electrical activity of the heart.",WHO,12,0,0,0,1,0,0,credible
+"Doctors don't want you to know that Vaccines cause autism in children, as proven by multiple studies.",WhatsApp message,17,0,0,0,2,0,1,misinformation
+Studies show that Eating a variety of colorful vegetables provides different essential nutrients.,PubMed,13,0,0,0,0,0,0,credible
+Health experts state that Excessive sugar consumption is linked to increased risk of type 2 diabetes.,BMJ,16,1,0,0,1,0,0,credible
+Shocking truth: The polio vaccine caused cancer in millions of people in secret.,Email chain,13,0,0,0,0,3,1,misinformation
+Omega-3 fatty acids found in fish support heart health.,BMJ,9,1,0,0,0,0,0,credible
+Studies show that Vaccines undergo multiple phases of clinical trials before receiving regulatory approval.,Mayo Clinic,14,0,0,0,2,0,0,credible
+Contact tracing helps identify and isolate people exposed to infectious diseases.,PubMed,11,0,0,0,0,0,0,credible
+Shocking truth: Depression is just sadness and can be cured by thinking positively.,Facebook post,13,0,0,0,0,3,1,misinformation
+Clinical trials show that Genetic factors can increase predisposition to certain diseases.,NIH,12,0,0,0,2,0,0,credible
+Scientists suppressed this: Children with autism are just spoiled and need better discipline.,Instagram reel,13,0,0,0,0,1,1,misinformation
+BREAKING: Vitamin C injections provide better protection than any vaccine.,TikTok video,10,0,0,0,0,0,1,misinformation
+Research confirms that Vaccines do not contain live viruses in the case of inactivated or mRNA vaccines.,NEJM,17,0,0,0,1,0,0,credible
+Clinical trials show that Sleep deprivation negatively affects cognitive function and mood.,CDC,12,0,0,0,2,0,0,credible
+Medical evidence indicates that Cognitive behavioral therapy is an evidence-based treatment for anxiety disorders.,NHS,14,0,0,0,1,0,0,credible
+Medical evidence indicates that Excessive sugar consumption is linked to increased risk of type 2 diabetes.,NHS,16,1,0,0,1,0,0,credible
+BREAKING: High cholesterol is a myth invented by pharmaceutical companies.,Telegram channel,10,0,0,0,0,0,1,misinformation
+"According to doctors, Physical activity helps regulate blood sugar in people with type 2 diabetes.",CDC,15,1,0,0,1,0,0,credible
+Clinical trials show that Metformin is commonly prescribed as a first-line medication for type 2 diabetes.,NIH,16,1,0,0,2,0,0,credible
+Medical evidence indicates that Reducing saturated fat intake can lower LDL cholesterol levels.,Mayo Clinic,13,0,0,0,1,0,0,credible
+Regular health checkups help detect problems early.,NHS,7,0,0,0,0,0,0,credible
+Studies show that Antioxidants found in berries may help reduce oxidative stress.,CDC,12,0,0,0,0,0,0,credible
+Regular health screenings cause more harm than they prevent.,Anonymous forum,9,0,0,0,0,0,1,misinformation
+Health experts state that An EKG measures the electrical activity of the heart.,Lancet,13,0,0,0,1,0,0,credible
+Research confirms that Contact tracing helps identify and isolate people exposed to infectious diseases.,NIH,14,0,0,0,1,0,0,credible
+Shocking truth: The MMR vaccine was recalled due to widespread harmful side effects.,Telegram channel,13,0,0,0,0,2,1,misinformation
+Studies show that Smoking is the leading preventable cause of lung cancer.,WHO,12,0,0,0,0,0,0,credible
+"Doctors don't want you to know that Cancer cannot survive in an alkaline body, so eating alkaline foods cures it.",WhatsApp message,20,0,0,0,1,1,1,misinformation
+"Research confirms that Obesity increases risk of diabetes, heart disease, and certain cancers.",Lancet,13,0,0,0,1,0,0,credible
+Drinking bleach in small amounts detoxifies your body.,Telegram channel,8,0,0,0,0,1,1,misinformation
+Scientists suppressed this: Eating celery juice every morning cures all chronic diseases.,Email chain,12,0,0,0,0,2,1,misinformation
+Secret cure: Drinking bleach in small amounts detoxifies your body.,YouTube video,10,0,0,0,0,3,1,misinformation
+BREAKING: Herbal teas remove the need for diabetes medication completely.,Instagram reel,10,0,0,0,0,0,1,misinformation
+"According to doctors, Childhood vaccines follow a schedule recommended by pediatric health authorities.",Mayo Clinic,13,0,0,0,1,0,0,credible
+Doctors don't want you to know that Earth grounding or walking barefoot cures autoimmune diseases.,YouTube video,15,0,0,0,1,1,1,misinformation
+Studies show that The polio vaccine has nearly eradicated polio worldwide.,Mayo Clinic,11,0,0,0,0,0,0,credible
+Scientists suppressed this: Vaccines have never been proven to be safe by any scientific study.,Facebook post,15,0,0,0,2,1,1,misinformation
+Environmental factors like air pollution contribute to respiratory disease.,CDC,9,0,0,0,0,0,0,credible
+Share before deleted: All artificial sweeteners cause cancer and brain damage.,Telegram channel,11,0,0,0,0,0,1,misinformation
+Health experts state that Antioxidants found in berries may help reduce oxidative stress.,Mayo Clinic,13,0,0,0,1,0,0,credible
+Shocking truth: Sunscreen causes skin cancer due to its toxic chemical ingredients.,Twitter post,12,0,0,0,0,2,1,misinformation
+Shocking truth: Exercising on an empty stomach burns three times more fat.,Facebook post,12,0,0,0,0,2,1,misinformation
+Scientists suppressed this: Natural immunity is always superior to vaccine-induced immunity for all diseases.,TikTok video,14,0,0,0,0,1,1,misinformation
+Health experts state that Genetic factors can increase predisposition to certain diseases.,Lancet,12,0,0,0,1,0,0,credible
+Doctors don't want you to know that All pharmaceutical drugs are poison and natural remedies are always safer.,Anonymous forum,18,0,0,0,1,1,1,misinformation
+Share before deleted: Weight loss supplements approved by celebrities are clinically proven to work.,Facebook post,14,0,0,0,2,0,1,misinformation
+Clinical trials show that Vaccines do not contain live viruses in the case of inactivated or mRNA vaccines.,PubMed,18,0,0,0,2,0,0,credible
+Doctors don't want you to know that Type 2 diabetes can always be completely reversed in 30 days with supplements.,YouTube video,20,1,0,0,1,0,1,misinformation
+"Studies show that Smoking cessation reduces risk of lung cancer, heart disease, and stroke.",CDC,14,0,0,0,0,0,0,credible
+HPV vaccines reduce the risk of cervical cancer when given before exposure.,PubMed,12,0,0,0,0,0,0,credible
+"Medical evidence indicates that Preventive healthcare includes vaccinations, screenings, and lifestyle modifications.",Mayo Clinic,12,0,0,0,1,0,0,credible
+BREAKING: Essential oils cure cancer better than radiation or surgery.,Facebook post,10,0,0,0,0,1,1,misinformation
+Medical evidence indicates that Calcium and vitamin D are important for bone health.,BMJ,13,0,0,0,1,0,0,credible
+Secret cure: Hepatitis can be cured by a strict vegan diet alone.,YouTube video,12,0,0,0,0,2,1,misinformation
+BREAKING: Antibiotics can cure the common cold and flu effectively.,TikTok video,10,0,0,0,0,1,1,misinformation
+Secret cure: Vaccines are filled with harmful toxins that damage your immune system permanently.,Email chain,14,0,0,0,0,2,1,misinformation
+Anger has no relationship with heart attack risk.,Email chain,8,0,0,0,0,0,1,misinformation
+Vaccines undergo multiple phases of clinical trials before receiving regulatory approval.,NHS,11,0,0,0,2,0,0,credible
+Health experts state that Exercise improves mood by releasing endorphins.,WHO,10,0,0,0,1,0,0,credible
+Doctors don't want you to know that Depression is just sadness and can be cured by thinking positively.,WhatsApp message,18,0,0,0,1,1,1,misinformation
+Research confirms that Chemotherapy works by targeting rapidly dividing cancer cells.,NHS,11,0,0,0,1,0,0,credible
+Health experts state that Walking is a low-impact exercise suitable for most age groups.,NHS,14,0,0,0,1,0,0,credible
+BREAKING: People with diabetes should fast for 3 days to reset their pancreas.,Anonymous forum,13,1,0,0,0,0,1,misinformation
+Medical evidence indicates that Some cancers are linked to viral infections such as HPV and hepatitis B.,WebMD,17,0,0,0,1,0,0,credible
+Medical evidence indicates that HbA1c tests measure average blood sugar levels over the past 2-3 months.,CDC,16,1,0,0,1,0,0,credible
+Medical evidence indicates that Antidepressants work by affecting neurotransmitter levels in the brain.,WebMD,13,0,0,0,1,0,0,credible
+Medical evidence indicates that COVID-19 booster doses help maintain protection as immunity wanes over time.,NEJM,15,1,0,0,1,0,0,credible
+Share before deleted: The human body heals itself from all diseases without any medical intervention.,TikTok video,15,0,0,0,0,0,1,misinformation
+Studies show that Atrial fibrillation increases the risk of stroke and requires management.,NHS,13,0,0,0,1,0,0,credible
+Clinical trials show that Vaccine side effects like mild fever and soreness are normal immune responses.,NEJM,16,0,0,0,2,0,0,credible
+Research confirms that Insulin therapy is required for most people with type 1 diabetes.,WebMD,14,1,0,0,1,0,0,credible
+Doctors don't want you to know that The COVID-19 mRNA vaccine permanently alters your DNA.,Blog post,15,1,0,0,1,0,1,misinformation
+"Medical evidence indicates that The MMR vaccine protects against measles, mumps, and rubella.",NEJM,13,0,0,0,1,0,0,credible
+Share before deleted: The flu vaccine gives you the flu every time you take it.,Email chain,15,0,0,0,0,0,1,misinformation
+Doctors don't want you to know that Mental health therapy is ineffective and a waste of money.,Twitter post,17,0,0,0,1,0,1,misinformation
+Shocking truth: Activated charcoal removes all toxins from your blood.,Anonymous forum,10,0,0,0,0,2,1,misinformation
+Share before deleted: Vaccines cause more deaths than the diseases they prevent.,WhatsApp message,12,0,0,0,0,0,1,misinformation
+Secret cure: Eating raw garlic every day cures hypertension completely without medication.,Instagram reel,12,0,0,0,0,2,1,misinformation
+Studies show that Walking is a low-impact exercise suitable for most age groups.,NIH,13,0,0,0,0,0,0,credible
+Shocking truth: Natural immunity is always superior to vaccine-induced immunity for all diseases.,Instagram reel,13,0,0,0,0,2,1,misinformation
+Childhood vaccines follow a schedule recommended by pediatric health authorities.,Lancet,10,0,0,0,0,0,0,credible
+Mental health conditions are not a sign of weakness and are common worldwide.,NIH,13,0,0,0,0,0,0,credible
+Secret cure: Wearing a face mask causes dangerous oxygen deprivation.,Instagram reel,10,0,0,0,0,2,1,misinformation
+BREAKING: Doctors hide cancer cures to keep pharmaceutical profits high.,Telegram channel,10,0,0,0,1,1,1,misinformation
+Research confirms that Mammograms are used to screen for breast cancer in women over 40.,PubMed,15,1,0,0,1,0,0,credible
+Doctors don't want you to know that Eating certain seeds kills cancer cells more effectively than chemotherapy.,Instagram reel,17,0,0,0,1,0,1,misinformation
+Shocking truth: Heart disease is entirely genetic and lifestyle changes have no impact.,Blog post,13,0,0,0,0,2,1,misinformation
+Type 2 diabetes is only caused by consuming too much refined sugar.,Telegram channel,12,1,0,0,0,0,1,misinformation
+Research confirms that The polio vaccine has nearly eradicated polio worldwide.,NEJM,11,0,0,0,1,0,0,credible
+Doctors don't want you to know that Antibiotics can cure the common cold and flu effectively.,Anonymous forum,16,0,0,0,1,1,1,misinformation
+Research confirms that Atrial fibrillation increases the risk of stroke and requires management.,WHO,13,0,0,0,2,0,0,credible
+Share before deleted: A coffee enema cures stage 4 cancer more effectively than standard treatment.,TikTok video,15,1,0,0,0,1,1,misinformation
+Clinical trials show that Excessive sugar consumption is linked to increased risk of type 2 diabetes.,NHS,16,1,0,0,2,0,0,credible
+Studies show that Immunotherapy helps the immune system recognize and fight cancer cells.,NIH,13,0,0,0,0,0,0,credible
+Share before deleted: Mental health therapy is ineffective and a waste of money.,TikTok video,13,0,0,0,0,0,1,misinformation
+Shocking truth: Alkaline water cures cancer by changing your body's pH.,TikTok video,11,0,0,0,0,3,1,misinformation
+Share before deleted: Cinnamon alone can replace insulin for people with type 1 diabetes.,Blog post,14,1,0,0,0,0,1,misinformation
+Health experts state that Plant-based diets have been associated with lower rates of heart disease.,NEJM,15,0,0,0,1,0,0,credible
+Medical evidence indicates that Regular exercise is associated with lower rates of depression and anxiety.,WebMD,15,0,0,0,1,0,0,credible
+Share before deleted: High cholesterol is a myth invented by pharmaceutical companies.,TikTok video,12,0,0,0,0,0,1,misinformation
+Sexually transmitted infections can be prevented using barrier methods.,CDC,9,0,0,0,0,0,0,credible
+Medical evidence indicates that Tdap booster is recommended every 10 years for adults to maintain tetanus immunity.,NEJM,17,1,0,0,1,0,0,credible
+Studies show that Coronary artery disease is caused by plaque buildup in the arteries.,BMJ,14,0,0,0,0,0,0,credible
+Medical evidence indicates that COVID-19 vaccines have been tested in large clinical trials involving tens of thousands of participants.,Mayo Clinic,19,1,0,0,3,0,0,credible
+Secret cure: Eating too much sugar directly causes type 1 diabetes.,WhatsApp message,11,1,0,0,0,2,1,misinformation
+Secret cure: The human body heals itself from all diseases without any medical intervention.,Email chain,14,0,0,0,0,2,1,misinformation
+Secret cure: Magnet therapy can reverse heart disease effectively.,WhatsApp message,9,0,0,0,0,2,1,misinformation
+Scientists suppressed this: Vaccines are filled with harmful toxins that damage your immune system permanently.,YouTube video,15,0,0,0,0,1,1,misinformation
+"According to doctors, Sleep deprivation negatively affects cognitive function and mood.",NHS,11,0,0,0,1,0,0,credible
+Scientists suppressed this: Schizophrenia is caused by watching too much television.,Twitter post,11,0,0,0,0,1,1,misinformation
+Doctors don't want you to know that Baking soda cures cancer by making the body alkaline.,Twitter post,16,0,0,0,1,1,1,misinformation
+Medical evidence indicates that Flu vaccines are reformulated each year to match circulating strains.,Mayo Clinic,14,0,0,0,1,0,0,credible
+Eating only apricot seeds provides the best natural cure for cancer.,Twitter post,11,0,0,0,0,1,1,misinformation
+Studies show that Type 1 diabetes is an autoimmune condition where the pancreas produces little insulin.,Mayo Clinic,16,1,0,0,0,0,0,credible
+Health experts state that Sun exposure and UV radiation increase the risk of skin cancer.,NIH,15,0,0,0,1,0,0,credible
+Health experts state that Mammograms are used to screen for breast cancer in women over 40.,WHO,16,1,0,0,1,0,0,credible
+Share before deleted: Children with autism are just spoiled and need better discipline.,Facebook post,13,0,0,0,0,0,1,misinformation
+The polio vaccine has nearly eradicated polio worldwide.,PubMed,8,0,0,0,0,0,0,credible
+BREAKING: Chemotherapy kills more people than cancer itself.,Instagram reel,8,0,0,0,0,0,1,misinformation
+Studies show that Aspirin therapy may be recommended for certain high-risk individuals to prevent heart attacks.,WHO,16,0,0,0,0,0,0,credible
+Studies show that Depression is a medical condition that can be treated with therapy and medication.,BMJ,16,0,0,0,0,0,0,credible
+BREAKING: Hand sanitizers cause antibiotic resistance in viruses.,TikTok video,8,0,0,0,0,0,1,misinformation
+Shocking truth: Chemotherapy kills more people than cancer itself.,Anonymous forum,9,0,0,0,0,2,1,misinformation
+Hepatitis C can now be cured with direct-acting antiviral medications.,BMJ,10,0,0,0,0,1,0,credible
+"According to doctors, HbA1c tests measure average blood sugar levels over the past 2-3 months.",NIH,15,1,0,0,1,0,0,credible
+"Health experts state that The MMR vaccine protects against measles, mumps, and rubella.",NEJM,13,0,0,0,1,0,0,credible
+Secret cure: Doctors hide cancer cures to keep pharmaceutical profits high.,YouTube video,11,0,0,0,1,2,1,misinformation
+Health experts state that Insulin therapy is required for most people with type 1 diabetes.,NIH,15,1,0,0,1,0,0,credible
+Shocking truth: Tuberculosis can be cured completely by sunbathing for two weeks.,Instagram reel,12,0,0,0,0,3,1,misinformation
+Doctors don't want you to know that Schizophrenia is caused by watching too much television.,Blog post,15,0,0,0,1,0,1,misinformation
+Shocking truth: Baking soda cures cancer by making the body alkaline.,YouTube video,11,0,0,0,0,3,1,misinformation
+HIV does not cause AIDS according to many scientists.,Telegram channel,9,0,0,0,0,0,1,misinformation
+"Research confirms that HIV is transmitted through blood, sexual contact, and from mother to child during birth.",Mayo Clinic,17,0,0,0,1,0,0,credible
+Clinical trials show that A Mediterranean diet is associated with reduced risk of heart disease.,NHS,15,0,0,0,2,0,0,credible
+"Health experts state that Smoking cessation reduces risk of lung cancer, heart disease, and stroke.",NEJM,15,0,0,0,1,0,0,credible
+COVID-19 vaccines have been tested in large clinical trials involving tens of thousands of participants.,BMJ,15,1,0,0,2,0,0,credible
+Doctors don't want you to know that Coconut oil reverses Alzheimer's disease within weeks.,Telegram channel,14,0,0,0,1,0,1,misinformation
+Research confirms that Antidepressants work by affecting neurotransmitter levels in the brain.,WHO,12,0,0,0,1,0,0,credible
+Spot reduction of fat is possible through targeted exercises.,Blog post,9,0,0,0,0,0,1,misinformation
+Scientists suppressed this: Wearing a face mask causes dangerous oxygen deprivation.,WhatsApp message,11,0,0,0,0,1,1,misinformation
+Colorectal cancer screening via colonoscopy is recommended starting at age 45.,WebMD,11,1,0,0,0,0,0,credible
+"According to doctors, Calcium and vitamin D are important for bone health.",WHO,12,0,0,0,1,0,0,credible
+Cognitive behavioral therapy is an evidence-based treatment for anxiety disorders.,NHS,10,0,0,0,1,0,0,credible
+"According to doctors, Genetic factors can increase predisposition to certain diseases.",NHS,11,0,0,0,1,0,0,credible
+Scientists suppressed this: Muscle can turn to fat if you stop exercising regularly.,Email chain,13,0,0,0,0,1,1,misinformation
+Sugar causes cancer directly and cutting it starves cancer cells.,Instagram reel,10,0,0,0,0,0,1,misinformation
+Post-traumatic stress disorder can develop after exposure to traumatic events.,Lancet,10,0,0,0,0,0,0,credible
+Studies show that Strength training helps maintain muscle mass as people age.,WHO,12,0,0,0,0,0,0,credible
+The hepatitis B vaccine is given to newborns to prevent chronic infection.,Lancet,12,0,0,0,0,0,0,credible
+Scientists suppressed this: Blood pressure medication causes kidney failure in all long-term users.,Telegram channel,13,0,0,0,0,1,1,misinformation
+Secret cure: 5G towers caused the COVID-19 pandemic by weakening immune systems.,Telegram channel,12,1,0,0,0,2,1,misinformation
+Share before deleted: The moon cycle directly controls human hormones and disease patterns.,Anonymous forum,13,0,0,0,0,0,1,misinformation
+Research confirms that Fiber from whole grains and vegetables supports digestive health.,WebMD,12,0,0,0,1,0,0,credible
+Antidepressants are addictive and make mental health permanently worse.,Email chain,9,0,0,0,0,0,1,misinformation
+Studies show that Insulin therapy is required for most people with type 1 diabetes.,NHS,14,1,0,0,0,0,0,credible
+Research confirms that Blood pressure should be measured regularly as hypertension often has no symptoms.,WebMD,15,0,0,0,1,0,0,credible
+High-intensity interval training can improve cardiovascular fitness efficiently.,NEJM,8,0,0,0,0,0,0,credible
+Secret cure: All pharmaceutical drugs are poison and natural remedies are always safer.,Email chain,13,0,0,0,0,3,1,misinformation
+Shocking truth: Fluoride in water causes brain damage and is used to control populations.,Telegram channel,14,0,0,0,0,2,1,misinformation
+Insulin therapy causes obesity and makes diabetes worse in the long run.,Twitter post,12,0,0,0,0,0,1,misinformation
+Research confirms that Cognitive behavioral therapy is an evidence-based treatment for anxiety disorders.,BMJ,13,0,0,0,2,0,0,credible
+Eating too much sugar directly causes type 1 diabetes.,Blog post,9,1,0,0,0,0,1,misinformation
+Colloidal silver is a natural antibiotic better than prescribed antibiotics.,Anonymous forum,10,0,0,0,0,0,1,misinformation
+Studies show that Chemotherapy works by targeting rapidly dividing cancer cells.,Lancet,11,0,0,0,0,0,0,credible
+Shocking truth: Anger has no relationship with heart attack risk.,Blog post,10,0,0,0,0,2,1,misinformation
+Research confirms that COVID-19 vaccines have been tested in large clinical trials involving tens of thousands of participants.,WebMD,18,1,0,0,3,0,0,credible
+Health experts state that Depression is a medical condition that can be treated with therapy and medication.,NIH,17,0,0,0,1,0,0,credible
+"According to doctors, Omega-3 fatty acids found in fish support heart health.",BMJ,12,1,0,0,1,0,0,credible
+Health experts state that Iron-rich foods like spinach and legumes help prevent anemia.,Mayo Clinic,13,0,0,0,1,0,0,credible
+Scientists suppressed this: The human body heals itself from all diseases without any medical intervention.,Facebook post,15,0,0,0,0,1,1,misinformation
+BREAKING: All pharmaceutical drugs are poison and natural remedies are always safer.,TikTok video,12,0,0,0,0,1,1,misinformation
+Secret cure: Type 2 diabetes can always be completely reversed in 30 days with supplements.,Blog post,15,1,0,0,0,2,1,misinformation
+Research confirms that COVID-19 spreads primarily through respiratory droplets and aerosols.,Lancet,11,1,0,0,1,0,0,credible
+Research confirms that A low-glycemic diet can help manage blood sugar levels in diabetics.,PubMed,14,0,0,0,1,0,0,credible
+Health experts state that Tdap booster is recommended every 10 years for adults to maintain tetanus immunity.,WHO,17,1,0,0,1,0,0,credible
+Adequate sleep of 7-9 hours per night is important for adults' health.,BMJ,12,1,0,0,0,0,0,credible
+Doctors don't want you to know that Anger has no relationship with heart attack risk.,WhatsApp message,15,0,0,0,1,0,1,misinformation
+Scientists suppressed this: Hand sanitizers cause antibiotic resistance in viruses.,Email chain,10,0,0,0,0,1,1,misinformation
+Shocking truth: The human body heals itself from all diseases without any medical intervention.,Blog post,14,0,0,0,0,2,1,misinformation
+Detox teas remove toxins from your liver better than any medical treatment.,Instagram reel,12,0,0,0,0,1,1,misinformation
+Research confirms that Heart failure means the heart cannot pump blood as efficiently as needed.,WHO,15,0,0,0,1,0,0,credible
+Clinical trials show that Some cancers are linked to viral infections such as HPV and hepatitis B.,NEJM,17,0,0,0,2,0,0,credible
+Studies show that Weight loss can significantly improve blood sugar control in type 2 diabetes.,Mayo Clinic,15,1,0,0,0,0,0,credible
+Secret cure: Sleeping with your head pointing north causes brain damage.,Instagram reel,11,0,0,0,0,2,1,misinformation
+Shocking truth: Cinnamon alone can replace insulin for people with type 1 diabetes.,Email chain,13,1,0,0,0,2,1,misinformation
+"Share before deleted: A gluten-free diet improves health for everyone, not just celiac patients.",YouTube video,14,0,0,0,0,0,1,misinformation
+Share before deleted: Drinking okra water overnight cures diabetes permanently.,Instagram reel,10,0,0,0,0,1,1,misinformation
+Studies show that Processed foods high in sodium contribute to hypertension.,WHO,11,0,0,0,0,0,0,credible
+Research confirms that Herd immunity requires a high percentage of the population to be vaccinated.,Mayo Clinic,15,0,0,0,1,0,0,credible
+Physical activity helps regulate blood sugar in people with type 2 diabetes.,WebMD,12,1,0,0,0,0,0,credible
+BREAKING: Cardiac arrest can be cured at home using only cold water splashes on the face.,Email chain,16,0,0,0,0,1,1,misinformation
+Share before deleted: Anger has no relationship with heart attack risk.,Telegram channel,11,0,0,0,0,0,1,misinformation
+Secret cure: Bitter melon juice is more effective than metformin for controlling blood sugar.,Instagram reel,14,0,0,0,0,2,1,misinformation
+Scientists suppressed this: High cholesterol is a myth invented by pharmaceutical companies.,Telegram channel,12,0,0,0,0,1,1,misinformation
+Scientists suppressed this: Insulin therapy causes obesity and makes diabetes worse in the long run.,TikTok video,15,0,0,0,0,1,1,misinformation
+Studies show that Fiber from whole grains and vegetables supports digestive health.,CDC,12,0,0,0,0,0,0,credible
+Health experts state that Adults should aim for at least 150 minutes of moderate aerobic activity per week.,WebMD,18,1,0,0,1,0,0,credible
+Doctors don't want you to know that Bitter melon juice is more effective than metformin for controlling blood sugar.,Facebook post,19,0,0,0,1,0,1,misinformation
+Doctors don't want you to know that A coffee enema cures stage 4 cancer more effectively than standard treatment.,WhatsApp message,19,1,0,0,1,1,1,misinformation
+Scientists suppressed this: Hepatitis can be cured by a strict vegan diet alone.,WhatsApp message,13,0,0,0,0,2,1,misinformation
+Studies show that Tuberculosis is a bacterial infection that primarily affects the lungs.,Mayo Clinic,13,0,0,0,0,0,0,credible
+Medical evidence indicates that An EKG measures the electrical activity of the heart.,Lancet,13,0,0,0,1,0,0,credible
+Shocking truth: Talking about suicide plants the idea in people's heads and causes it.,Facebook post,14,0,0,0,0,2,1,misinformation
+Shocking truth: Stretching before exercise prevents all types of injuries.,Twitter post,10,0,0,0,0,2,1,misinformation
+Health experts state that Lifestyle factors like diet and exercise influence cancer risk.,BMJ,13,0,0,0,1,0,0,credible
+Doctors don't want you to know that Cannabis oil alone can fully cure all types of cancer.,Anonymous forum,17,0,0,0,1,1,1,misinformation
+"Medical evidence indicates that A balanced diet includes fruits, vegetables, whole grains, lean proteins, and healthy fats.",NIH,17,0,0,0,1,0,0,credible
+Shocking truth: People with diabetes should fast for 3 days to reset their pancreas.,Blog post,14,1,0,0,0,2,1,misinformation
+Health experts state that Statins are medications used to lower LDL cholesterol and reduce cardiovascular risk.,CDC,16,0,0,0,1,0,0,credible
+Clinical trials show that HbA1c tests measure average blood sugar levels over the past 2-3 months.,NEJM,16,1,0,0,2,0,0,credible
+Shocking truth: All artificial sweeteners cause cancer and brain damage.,TikTok video,10,0,0,0,0,2,1,misinformation
+"Obesity increases risk of diabetes, heart disease, and certain cancers.",BMJ,10,0,0,0,0,0,0,credible
+You can lose 10 kg in one week by following this special detox plan.,Anonymous forum,14,1,0,0,0,1,1,misinformation
+Clinical trials show that Type 1 diabetes is an autoimmune condition where the pancreas produces little insulin.,NIH,17,1,0,0,2,0,0,credible
