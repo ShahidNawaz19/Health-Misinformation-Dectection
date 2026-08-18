@@ -254,9 +254,8 @@ html, body, [class*="css"], .stApp {
 @st.cache_resource
 def load_model():
     import os
-    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model')
-    m = joblib.load(f"{base}\\svm_model.pkl")
-    v = joblib.load(f"{base}\\tfidf_vectorizer.pkl")
+    m = joblib.load("svm_model.pkl")
+    v = joblib.load("tfidf_vectorizer.pkl")
     return m, v
  
 try:
