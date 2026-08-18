@@ -321,12 +321,7 @@ if btn:
             "misinfo_keyword_count": sum(1 for w in ["secret","shocking","cure","detox","miracle","suppressed","hidden","poison","scam","truth"] if w in claim_text),
         }
  
-        X_text = vectorizer.transform([claim_text])
-        X_extra = csr_matrix([[extra["word_count"], extra["has_numbers"],
-                               extra["has_exclamation"], extra["has_question"],
-                               extra["credibility_keyword_count"], extra["misinfo_keyword_count"]]])
-        X_input = hstack([X_text, X_extra])
- 
+        X_input = vectorizer.transform([claim_text])
         pred = model.predict(X_input)[0]
         st.session_state.total += 1
  
