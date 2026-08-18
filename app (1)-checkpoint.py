@@ -265,7 +265,8 @@ html, body, [class*="css"], .stApp {
 # ── Load Model ──────────────────────────────────────────────────────────────────
 @st.cache_resource
 def load_model():
-    base = r"C:\Users\LENOVO\Desktop\datascience project"
+    import os
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'model')
     m = joblib.load(f"{base}\\health_model.pkl")
     v = joblib.load(f"{base}\\vectorizer.pkl")
     return m, v
