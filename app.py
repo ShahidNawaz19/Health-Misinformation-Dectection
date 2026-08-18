@@ -3,7 +3,7 @@ import streamlit as st
 import joblib
 import time
 from scipy.sparse import hstack, csr_matrix
- 
+
 st.set_page_config(
     page_title="Health Claim Checker",
     page_icon="🏥",
