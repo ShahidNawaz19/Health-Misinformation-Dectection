@@ -373,7 +373,6 @@ def load_model():
     m = joblib.load("svm_model.pkl")
     v = joblib.load("tfidf_vectorizer.pkl")
     return m, v
-
 try:
     model, vectorizer = load_model()
     model_ok = True
@@ -381,7 +380,7 @@ except Exception as e:
     model_ok = False
     st.error("Model load nahi hua: " + str(e))
 
-for key, val in [("history",[]),("total",0),("fake",0),("cred",0)]:
+for key, val in [("history",[]),("total",0),("fake",0),("cred",0), ("last_pred", None)]:
     if key not in st.session_state:
         st.session_state[key] = val
 
@@ -410,7 +409,7 @@ user_input = st.text_area("x", placeholder="Type or paste a health claim here...
 btn = st.button("🔍   Analyze Claim", use_container_width=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
-# ── PREDICTION ──────────────────────────────────────────────────────────────────
+# ── PREDICTION LOGIC ────────────────────────────────────────────────────────────
 if btn:
     if not user_input.strip():
         st.warning("Please enter a health claim first.")
@@ -421,26 +420,33 @@ if btn:
             time.sleep(0.5)
         pred = model.predict(vectorizer.transform([user_input.lower().strip()]))[0]
         st.session_state.total += 1
+        st.session_state.last_pred = pred
         if pred == 0:
             st.session_state.fake += 1
-            st.markdown("""
-            <div class="result result-fake">
-                <span class="result-icon">🚨</span>
-                <div><span class="result-tag result-tag-fake">Warning</span></div>
-                <div class="result-label-fake">Misinformation Detected</div>
-                <div class="result-desc">This claim appears to be medically false or misleading.<br>Always verify with certified medical professionals or trusted health organizations.</div>
-            </div>""", unsafe_allow_html=True)
             st.session_state.history.insert(0, ("❌", user_input.strip(), "f"))
         else:
             st.session_state.cred += 1
-            st.markdown("""
-            <div class="result result-true">
-                <span class="result-icon">✅</span>
-                <div><span class="result-tag result-tag-true">Verified</span></div>
-                <div class="result-label-true">Credible Claim</div>
-                <div class="result-desc">This claim appears to be medically accurate and evidence-based.<br>It aligns with established scientific and medical knowledge.</div>
-            </div>""", unsafe_allow_html=True)
             st.session_state.history.insert(0, ("✅", user_input.strip(), "t"))
+        st.rerun()
+
+# ── DISPLAY RESULT ──────────────────────────────────────────────────────────────
+if st.session_state.last_pred is not None:
+    if st.session_state.last_pred == 0:
+        st.markdown("""
+        <div class="result result-fake">
+            <span class="result-icon">🚨</span>
+            <div><span class="result-tag result-tag-fake">Warning</span></div>
+            <div class="result-label-fake">Misinformation Detected</div>
+            <div class="result-desc">This claim appears to be medically false or misleading.<br>Always verify with certified medical professionals or trusted health organizations.</div>
+        </div>""", unsafe_allow_html=True)
+    else:
+        st.markdown("""
+        <div class="result result-true">
+            <span class="result-icon">✅</span>
+            <div><span class="result-tag result-tag-true">Verified</span></div>
+            <div class="result-label-true">Credible Claim</div>
+            <div class="result-desc">This claim appears to be medically accurate and evidence-based.<br>It aligns with established scientific and medical knowledge.</div>
+        </div>""", unsafe_allow_html=True)
 
 # ── DIVIDER ─────────────────────────────────────────────────────────────────────
 st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
@@ -474,7 +480,7 @@ if st.session_state.history:
         short = claim[:68] + "..." if len(claim) > 68 else claim
         st.markdown(f'<div class="h-item {css}"><span>{icon}</span><span>{short}</span></div>', unsafe_allow_html=True)
     if st.button("🗑  Clear History"):
-        for k, v in [("history",[]),("total",0),("fake",0),("cred",0)]:
+        for k, v in [("history",[]),("total",0),("fake",0),("cred",0), ("last_pred", None)]:
             st.session_state[k] = v
         st.rerun()
 
