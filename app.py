@@ -166,21 +166,8 @@ for key, val in [("history",[]),("total",0),("fake",0),("cred",0)]:
         st.session_state[key] = val
 
 # ── HERO ────────────────────────────────────────────────────────────────────────
-import base64 as _b64, os as _os2
-def _img_b64(path):
-    try:
-        with open(path, "rb") as f:
-            return _b64.b64encode(f.read()).decode()
-    except:
-        return None
-
-_thumb = _os2.path.join(_os2.path.dirname(_os2.path.abspath(__file__)), "thumbnail.png")
-_b64img = _img_b64(_thumb)
-_thumb_html = (f'<img src="data:image/png;base64,{_b64img}" style="width:100%;border-radius:16px;margin-bottom:1.2rem;box-shadow:0 8px 40px rgba(99,57,242,0.3);" />') if _b64img else ""
-
-st.markdown(f"""
+st.markdown("""
 <div class="hero">
-    {_thumb_html}
     <div>
         <span class="hero-badge">🔬 AI Powered Detection</span>
         <span class="security-badge">🔒 Secured</span>
