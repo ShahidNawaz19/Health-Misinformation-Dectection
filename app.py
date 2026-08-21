@@ -115,6 +115,8 @@ html, body, [class*="css"], .stApp {
 .footer-logo { font-size: 1rem; font-weight: 800; color: #e2e8f0; margin-bottom: 4px; }
 .footer-sub { font-size: 0.75rem; color: #1e293b; font-weight: 500; line-height: 1.8; }
 .security-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.2); border-radius: 999px; padding: 3px 12px; font-size: 0.62rem; font-weight: 700; color: #34d399; letter-spacing: 1.5px; text-transform: uppercase; margin-left: 8px; }
+.dev-credit { text-align:center; color:#475569; font-size:0.82rem; font-weight:500; margin-top:-0.8rem; margin-bottom:0.5rem; }
+.dev-credit strong { color:#a78bfa; }
 @keyframes popIn { 0% { opacity:0; transform: scale(0.88) translateY(14px); } 100% { opacity:1; transform: scale(1) translateY(0); } }
 </style>
 """, unsafe_allow_html=True)
@@ -164,14 +166,28 @@ for key, val in [("history",[]),("total",0),("fake",0),("cred",0)]:
         st.session_state[key] = val
 
 # ── HERO ────────────────────────────────────────────────────────────────────────
-st.markdown("""
+import base64 as _b64, os as _os2
+def _img_b64(path):
+    try:
+        with open(path, "rb") as f:
+            return _b64.b64encode(f.read()).decode()
+    except:
+        return None
+
+_thumb = _os2.path.join(_os2.path.dirname(_os2.path.abspath(__file__)), "thumbnail.png")
+_b64img = _img_b64(_thumb)
+_thumb_html = (f'<img src="data:image/png;base64,{_b64img}" style="width:100%;border-radius:16px;margin-bottom:1.2rem;box-shadow:0 8px 40px rgba(99,57,242,0.3);" />') if _b64img else ""
+
+st.markdown(f"""
 <div class="hero">
+    {_thumb_html}
     <div>
         <span class="hero-badge">🔬 AI Powered Detection</span>
         <span class="security-badge">🔒 Secured</span>
     </div>
     <div class="hero-title">Health Claim<br>Checker</div>
     <div class="hero-sub">Instantly detect if any health claim is medically credible or dangerous misinformation — powered by Machine Learning.</div>
+    <div class="dev-credit">👨‍💻 Developed by <strong>Shahid Nawaz</strong> &nbsp;·&nbsp; SoftaVerse Tech House</div>
 </div>
 """, unsafe_allow_html=True)
 
