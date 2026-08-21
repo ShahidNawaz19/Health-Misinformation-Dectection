@@ -1,39 +1,22 @@
-AI Health Misinformation Detection System
-A machine learning web application built during an internship at SoftaVerse Tech House that detects whether a health claim is misinformation or credible using Natural Language Processing and SVM classifier.
-About the Project
-This project addresses the growing problem of health misinformation spread through social media and messaging platforms. The system analyzes any health-related claim entered by the user and predicts whether it is medically credible or misinformation, with confidence percentage.
+AI Health Misinformation Detection
+A Machine Learning web application that detects whether a health claim is credible or misinformation.
+Built for: SoftaVerse Tech House Internship
+Developer: Shahid Nawaz
+Helpers: Alya Ibrar, Laraib Asraf
 Features
-Real-time health claim analysis
-SVM classifier trained on 922 health claims
-TF-IDF vectorization with bigrams
-Prediction history tracking
-Stats dashboard (total checked, credible, misinformation count)
-Dark themed modern UI built with Streamlit
+Real-time health claim classification
+NLP-based text processing (TF-IDF)
+Naive Bayes ML model (82.5% CV accuracy)
+Security hardened input validation
+Live prediction statistics
+Recent checks history
 Tech Stack
-Python
-Scikit-learn (SVM, TF-IDF)
-Streamlit
-Pandas, NumPy
-Joblib, SciPy
-
-Project Structure
-datascience project/
-├── app/app.py           Streamlit frontend
-├── model/               Trained SVM model & vectorizer
-├── data/                Dataset (922 rows)
-├── charts/              Visualization charts
-├── notebook/            Jupyter notebook
-└── Run App.bat          One-click launcher
-
-Double click Run App.bat
-cd app
+Python 3 | Scikit-learn | Streamlit | Pandas | Joblib
+Setup
+pip install -r requirements.txt
 streamlit run app.py
-
-Dataset
-922 rows, balanced classes
-Topics: vaccines, cancer, diabetes, mental health, heart disease, diet, exercise, infectious diseases
-Label: 0 = Credible, 1 = Misinformation
-
-Developed by: Shahid
-Organization: SoftaVerse Tech House
-Internship Project: AI Health Misinformation Detection
+Security Features (v2.0)
+Input length validation (10–500 chars)
+HTML injection prevention (XSS protection)
+Character whitelist validation
+Structured error handling & logging
