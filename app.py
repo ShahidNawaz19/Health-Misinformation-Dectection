@@ -529,7 +529,7 @@ if btn:
             except Exception as e:
                 logging.error(f"Prediction error: {e}")
                 st.error("An error occurred. Please try again.")
-        st.rerun()
+        
 
 # ── EXAMPLES ─────────────────────────────────────────────────────────────────
 st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
