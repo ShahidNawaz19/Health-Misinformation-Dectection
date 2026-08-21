@@ -20,7 +20,11 @@ MODEL_PATH = "svm_model.pkl"
 VEC_PATH   = "tfidf_vectorizer.pkl"
 ALLOWED_PATTERN = re.compile(r"^[a-zA-Z0-9\s\.\,\!\?\-\'\"\(\)]+$")
 
-st.set_page_config(page_title="Health Claim Checker", page_icon="🏥", layout="centered")
+st.set_page_config(page_title="MedVerify AI", page_icon="🔬", layout="centered")
+st.markdown("""
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+""", unsafe_allow_html=True)
 
 st.markdown("""
 <style>
