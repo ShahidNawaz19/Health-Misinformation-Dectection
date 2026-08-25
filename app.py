@@ -565,10 +565,9 @@ with tab1:
                     else:
                         st.session_state.cred += 1
                         status_str = "Credible Claim"
-                        st.markdown(
+                        st.markdown( 
                             '<div class="result result-true">'
                             '<span class="result-emoji">✅</span>'
                             '<div><span class="result-tag result-tag-true">✓ Verified</span></div>'
                             '<div class="result-title-true">Credible Claim</div>'
-                            '<div class="result-desc">This claim appears to be medically accurate and evidence-based.<br>It aligns with established scientific and medical knowledge.</div>'
-                            )
+                            '<div class="result-desc">This claim appears to be medically accurate and evidence-based.<br>It aligns with established scientific and medical knowledge.</div>')
