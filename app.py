@@ -11,409 +11,290 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 
+# Logging Configuration
 logging.basicConfig(
     filename="app_logs.txt",
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s"
 )
 
+# Constants & Guardrails
 MIN_CHARS = 10
 MAX_CHARS = 500
 ALLOWED_PATTERN = re.compile(r"^[a-zA-Z0-9\s\.\,\!\?\-\'\"\(\)]+$")
 
-st.set_page_config(page_title="MedVerify AI - Pro", page_icon="🔬", layout="centered")
+# Page Configuration
+st.set_page_config(
+    page_title="MedVerify AI | Professional Medical Fact Checker",
+    page_icon="🔬",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
 
+# Professional Custom CSS Styling
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; }
 
 html, body, [class*="css"], .stApp {
     font-family: 'Plus Jakarta Sans', sans-serif !important;
-    background: #03040f !important;
+    background-color: #0b0f19 !important;
+    color: #f1f5f9;
 }
 
 .stApp {
-    background:
-        radial-gradient(ellipse 90% 70% at 15% -5%, rgba(109,40,217,0.45) 0%, transparent 55%),
-        radial-gradient(ellipse 70% 60% at 85% 105%, rgba(16,185,129,0.25) 0%, transparent 50%),
-        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(79,70,229,0.08) 0%, transparent 70%),
-        #03040f !important;
+    background: 
+        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.12) 0%, transparent 40%),
+        #0b0f19 !important;
     min-height: 100vh;
 }
 
-.block-container { padding: 0 1.5rem 3rem !important; max-width: 720px !important; }
+.block-container { 
+    padding: 1.5rem 1rem 3rem !important; 
+    max-width: 800px !important; 
+}
+
 #MainMenu, footer, header { visibility: hidden; }
 
+/* Top Navigation Bar */
 .topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.2rem 0 0.5rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 0.8rem 1.2rem;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    margin-bottom: 2rem;
 }
 .topbar-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 .topbar-icon {
-    width: 36px; height: 36px;
-    background: linear-gradient(135deg, #6d28d9, #4f46e5);
-    border-radius: 10px;
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 15px rgba(109,40,217,0.5);
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
 }
 .topbar-name {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 800;
-    color: #f8fafc;
+    color: #ffffff;
     letter-spacing: -0.3px;
 }
-.topbar-name span { color: #a78bfa; }
+.topbar-name span { color: #818cf8; }
 .topbar-badge {
-    background: rgba(52,211,153,0.1);
-    border: 1px solid rgba(52,211,153,0.25);
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
     border-radius: 999px;
-    padding: 4px 12px;
-    font-size: 0.62rem;
+    padding: 4px 14px;
+    font-size: 0.7rem;
     font-weight: 700;
     color: #34d399;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
 }
 
+/* Hero Banner */
 .hero {
     text-align: center;
-    padding: 2rem 1rem 1rem;
+    padding: 1rem 0 2rem;
 }
 .hero-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(109,40,217,0.15);
-    border: 1px solid rgba(139,92,246,0.3);
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.25);
     border-radius: 999px;
-    padding: 6px 20px;
-    font-size: 0.68rem;
+    padding: 6px 18px;
+    font-size: 0.72rem;
     font-weight: 700;
-    color: #c4b5fd;
-    letter-spacing: 2px;
+    color: #a5b4fc;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-bottom: 1.2rem;
-}
-.hero-eyebrow-dot {
-    width: 6px; height: 6px;
-    background: #a78bfa;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
+    margin-bottom: 1rem;
 }
 .hero-title {
-    font-size: 2.8rem;
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -1.8px;
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
     margin-bottom: 0.8rem;
-    background: linear-gradient(135deg, #ffffff 0%, #e2d9f3 40%, #a78bfa 70%, #34d399 100%);
+    background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 70%, #34d399 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 .hero-desc {
     color: #94a3b8;
-    font-size: 0.92rem;
-    font-weight: 500;
+    font-size: 0.98rem;
+    font-weight: 400;
     line-height: 1.6;
-    max-width: 440px;
-    margin: 0 auto 0.6rem;
+    max-width: 520px;
+    margin: 0 auto 0.5rem;
 }
 .hero-credit {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: #64748b;
     font-weight: 500;
-    margin-bottom: 1.5rem;
 }
-.hero-credit strong { color: #a78bfa; }
+.hero-credit strong { color: #818cf8; }
 
-.stats {
+/* Dashboard Metrics Grid */
+.stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.8rem;
-    margin: 1rem 0 1.5rem;
+    gap: 1rem;
+    margin: 1.5rem 0 2rem;
 }
-.stat {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 20px;
-    padding: 1.1rem 0.8rem 0.9rem;
+.stat-card {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    padding: 1.2rem 1rem;
     text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 }
-.stat:hover { border-color: rgba(255,255,255,0.12); transform: translateY(-2px); }
-.stat::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    border-radius: 0 0 20px 20px;
+.stat-card:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+    transform: translateY(-2px);
 }
-.stat.purple::after { background: linear-gradient(90deg, transparent, #7c3aed, transparent); }
-.stat.green::after  { background: linear-gradient(90deg, transparent, #10b981, transparent); }
-.stat.red::after    { background: linear-gradient(90deg, transparent, #ef4444, transparent); }
-.stat-icon { font-size: 1.1rem; margin-bottom: 3px; }
-.stat-n { font-size: 2rem; font-weight: 900; letter-spacing: -1.5px; line-height: 1; }
-.stat-n.purple { color: #a78bfa; }
-.stat-n.green  { color: #34d399; }
-.stat-n.red    { color: #f87171; }
-.stat-l { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #64748b; margin-top: 4px; }
+.stat-val { font-size: 1.8rem; font-weight: 800; line-height: 1.1; margin-bottom: 4px; }
+.stat-val.purple { color: #818cf8; }
+.stat-val.green  { color: #34d399; }
+.stat-val.red    { color: #f87171; }
+.stat-lbl { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #64748b; }
 
+/* UI Inputs & Cards */
 .input-card {
-    background: rgba(255,255,255,0.025);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 24px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
     padding: 1.5rem;
-    backdrop-filter: blur(30px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
-    margin-bottom: 0.5rem;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
-.input-label {
-    font-size: 0.65rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    color: #64748b;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.input-label::before {
-    content: '';
-    display: block;
-    width: 3px; height: 14px;
-    background: linear-gradient(180deg, #7c3aed, #4f46e5);
-    border-radius: 2px;
-}
-.char-bar-wrap { margin-top: 8px; }
-.char-bar-bg { background: rgba(255,255,255,0.05); border-radius: 999px; height: 3px; overflow: hidden; }
-.char-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #7c3aed, #4f46e5); transition: width 0.3s; }
-.char-text { font-size: 0.65rem; color: #64748b; text-align: right; margin-top: 4px; font-weight: 600; }
-.char-warn { color: #f87171 !important; }
 
 .stTextArea > div > div > textarea {
-    background: rgba(3,4,15,0.8) !important;
-    color: #e2e8f0 !important;
-    border: 1.5px solid rgba(255,255,255,0.07) !important;
-    border-radius: 16px !important;
+    background: rgba(3, 7, 18, 0.6) !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 14px !important;
     font-size: 0.95rem !important;
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-weight: 500 !important;
-    padding: 16px !important;
-    line-height: 1.6 !important;
-    caret-color: #a78bfa !important;
-    resize: none !important;
-    transition: all 0.25s !important;
-}
-.stTextArea > div > div > textarea::placeholder { color: #475569 !important; }
-.stTextArea > div > div > textarea:hover {
-    border-color: rgba(139,92,246,0.4) !important;
-    box-shadow: 0 0 0 4px rgba(109,40,217,0.08) !important;
+    padding: 14px !important;
+    line-height: 1.5 !important;
 }
 .stTextArea > div > div > textarea:focus {
-    border-color: rgba(139,92,246,0.75) !important;
-    box-shadow: 0 0 0 5px rgba(109,40,217,0.15) !important;
-    background: rgba(109,40,217,0.05) !important;
-    outline: none !important;
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
 }
 
 .stButton > button {
-    width: 100% !important;
-    background: linear-gradient(135deg, #6d28d9 0%, #4f46e5 100%) !important;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
     color: #ffffff !important;
     border: none !important;
-    border-radius: 16px !important;
-    padding: 0.9rem 1.5rem !important;
-    font-size: 0.98rem !important;
+    border-radius: 12px !important;
+    padding: 0.85rem 1.5rem !important;
+    font-size: 0.95rem !important;
     font-weight: 700 !important;
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    margin-top: 1rem !important;
-    box-shadow: 0 8px 30px rgba(109,40,217,0.45), inset 0 1px 0 rgba(255,255,255,0.15) !important;
-    transition: all 0.25s !important;
     letter-spacing: 0.3px !important;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35) !important;
+    transition: all 0.2s ease !important;
 }
 .stButton > button:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 15px 40px rgba(109,40,217,0.6), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 24px rgba(99, 102, 241, 0.5) !important;
 }
 
-.result {
-    border-radius: 20px;
-    padding: 1.8rem 1.5rem;
-    text-align: center;
-    margin: 1.2rem 0;
-    position: relative;
-    overflow: hidden;
-}
-.result::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-}
-.result-fake {
-    background: linear-gradient(135deg, rgba(220,38,38,0.12), rgba(239,68,68,0.04));
-    border: 1.5px solid rgba(239,68,68,0.35);
-    box-shadow: 0 0 50px rgba(239,68,68,0.12);
-}
-.result-fake::before { background: linear-gradient(90deg, transparent, #ef4444, transparent); }
-.result-true {
-    background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(52,211,153,0.04));
-    border: 1.5px solid rgba(52,211,153,0.35);
-    box-shadow: 0 0 50px rgba(52,211,153,0.12);
-}
-.result-true::before { background: linear-gradient(90deg, transparent, #34d399, transparent); }
-
-.result-emoji { font-size: 3rem; display: block; margin-bottom: 0.6rem; }
-.result-tag {
-    display: inline-block;
-    border-radius: 999px;
-    padding: 4px 14px;
-    font-size: 0.6rem;
-    font-weight: 800;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
-}
-.result-tag-fake { background: rgba(239,68,68,0.12); color: #fca5a5; border: 1px solid rgba(239,68,68,0.25); }
-.result-tag-true { background: rgba(52,211,153,0.12); color: #6ee7b7; border: 1px solid rgba(52,211,153,0.25); }
-.result-title-fake { font-size: 1.5rem; font-weight: 900; color: #f87171; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
-.result-title-true { font-size: 1.5rem; font-weight: 900; color: #34d399; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
-.result-desc { color: #94a3b8; font-size: 0.84rem; line-height: 1.6; font-weight: 500; }
-.confidence-pill {
-    display: inline-block;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 999px;
-    padding: 3px 12px;
-    font-size: 0.72rem;
-    color: #e2e8f0;
-    margin-top: 8px;
-    font-weight: 600;
-}
-
-.divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
-    margin: 1.8rem 0;
-}
-.section-label {
-    font-size: 0.6rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #64748b;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.section-label::after {
-    content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.05);
-}
-.ex-group-label { font-size: 0.75rem; font-weight: 700; margin-bottom: 8px; }
-.ex-group-label.fake { color: #f87171; }
-.ex-group-label.cred { color: #34d399; }
-.chip {
-    display: inline-block; border-radius: 12px; padding: 6px 14px;
-    font-size: 0.75rem; font-weight: 600; margin: 3px 3px 3px 0;
-}
-.chip-f { background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.18); color: #fca5a5; }
-.chip-t { background: rgba(52,211,153,0.07); border: 1px solid rgba(52,211,153,0.18); color: #6ee7b7; }
-
-.h-item {
-    display: flex; align-items: center; gap: 12px; border-radius: 14px;
-    padding: 10px 14px; margin-bottom: 8px; font-size: 0.82rem; font-weight: 500;
-    color: #94a3b8;
-}
-.h-fake { background: rgba(239,68,68,0.05); border-left: 2px solid rgba(239,68,68,0.5); }
-.h-true { background: rgba(52,211,153,0.05); border-left: 2px solid rgba(52,211,153,0.5); }
-
-.stTabs [data-baseweb="tab-list"] { gap: 8px; margin-bottom: 1rem; }
+/* Tabs Styling */
+.stTabs [data-baseweb="tab-list"] { gap: 10px; margin-bottom: 1.5rem; }
 .stTabs [data-baseweb="tab"] {
-    background: rgba(255,255,255,0.02);
-    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 12px;
     color: #94a3b8;
-    border: 1px solid rgba(255,255,255,0.05);
-    padding: 8px 18px;
-    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 10px 20px;
+    font-size: 0.88rem;
     font-weight: 600;
 }
 .stTabs [aria-selected="true"] {
-    background: rgba(109,40,217,0.25) !important;
-    color: #c4b5fd !important;
-    border-color: rgba(139,92,246,0.4) !important;
+    background: rgba(99, 102, 241, 0.2) !important;
+    color: #c7d2fe !important;
+    border-color: rgba(99, 102, 241, 0.4) !important;
 }
+
+/* Result Displays */
+.result-card {
+    border-radius: 16px;
+    padding: 1.6rem;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+.result-fake {
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+.result-true {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-fake { background: rgba(239, 68, 68, 0.2); color: #fca5a5; padding: 4px 12px; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }
+.badge-true { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; padding: 4px 12px; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }
 
 .footer {
     text-align: center;
-    padding: 2rem 0 1rem;
-    border-top: 1px solid rgba(255,255,255,0.04);
-    margin-top: 2rem;
-}
-.footer-logo {
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: #e2e8f0;
-    margin-bottom: 6px;
-    letter-spacing: -0.3px;
-}
-.footer-logo span { color: #a78bfa; }
-.footer-sub {
-    font-size: 0.72rem;
-    color: #64748b;
-    font-weight: 500;
-    line-height: 1.8;
+    padding: 2.5rem 0 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 3rem;
 }
 </style>
 """, unsafe_allow_html=True)
 
+# Input Validation
 def validate_input(text):
     text = text.strip()
     if len(text) < MIN_CHARS:
-        return False, "Claim too short. Minimum " + str(MIN_CHARS) + " characters required."
+        return False, f"Claim is too short. Please enter at least {MIN_CHARS} characters."
     if len(text) > MAX_CHARS:
-        return False, "Claim too long. Maximum " + str(MAX_CHARS) + " characters allowed."
+        return False, f"Claim exceeds maximum length of {MAX_CHARS} characters."
     if not ALLOWED_PATTERN.match(text):
-        return False, "Invalid characters detected. Only letters, numbers, and basic punctuation allowed."
+        return False, "Invalid characters detected. Only letters, numbers, and standard punctuation allowed."
     return True, text
 
 def sanitize_display(text):
     return html.escape(text)
 
+# PDF Report Generation
 def generate_pdf(claim, result_status, confidence):
     buffer = BytesIO()
     doc = SimpleDocTemplate(buffer, pagesize=letter)
     styles = getSampleStyleSheet()
-    conf_str = "{:.2f}%".format(confidence)
+    conf_str = f"{confidence:.2f}%"
     story = [
-        Paragraph("<b>MedVerify AI - Medical Fact Check Report</b>", styles['Title']),
+        Paragraph("<b>MedVerify AI - Medical Verification Report</b>", styles['Title']),
         Spacer(1, 15),
-        Paragraph("<b>Analyzed Health Claim:</b> " + html.escape(claim), styles['Normal']),
+        Paragraph(f"<b>Analyzed Claim:</b> {html.escape(claim)}", styles['Normal']),
         Spacer(1, 10),
-        Paragraph("<b>Verification Status:</b> " + result_status, styles['Normal']),
-        Paragraph("<b>AI Confidence Score:</b> " + conf_str, styles['Normal']),
+        Paragraph(f"<b>Status:</b> {result_status}", styles['Normal']),
+        Paragraph(f"<b>AI Confidence Rating:</b> {conf_str}", styles['Normal']),
         Spacer(1, 25),
-        Paragraph("<i>Disclaimer: Generated automatically by MedVerify AI System. Always consult certified healthcare professionals.</i>", styles['Italic'])
+        Paragraph("<i>Disclaimer: Generated automatically by MedVerify AI engine. Always consult qualified healthcare professionals for medical decisions.</i>", styles['Italic'])
     ]
     doc.build(story)
     buffer.seek(0)
     return buffer
 
+# Load Trained Model
 @st.cache_resource
 def load_model():
     m = joblib.load("svm_model.pkl")
@@ -425,98 +306,85 @@ try:
     model_ok = True
 except Exception as e:
     model_ok = False
-    st.error("Model load nahi hua. Please check model files.")
+    st.error("Model could not be loaded. Please ensure required `.pkl` files are present.")
 
-for key, val in [("history",[]),("total",0),("fake",0),("cred",0)]:
+# Session State Initialization
+for key, val in [("history", []), ("total", 0), ("fake", 0), ("cred", 0)]:
     if key not in st.session_state:
         st.session_state[key] = val
 
+# Header Navigation
 st.markdown("""
 <div class="topbar">
     <div class="topbar-logo">
         <div class="topbar-icon">🔬</div>
-        <div class="topbar-name">Med<span>Verify</span> AI <small style='font-size:0.65rem; color:#a78bfa;'>v2.0 Pro</small></div>
+        <div class="topbar-name">Med<span>Verify</span> AI</div>
     </div>
-    <div class="topbar-badge">🟢 Live</div>
+    <div class="topbar-badge">v2.0 Enterprise</div>
 </div>
 """, unsafe_allow_html=True)
 
+# Hero Section
 st.markdown("""
 <div class="hero">
-    <div class="hero-eyebrow">
-        <span class="hero-eyebrow-dot"></span>
-        AI-Powered Health Fact Checker
-    </div>
-    <div class="hero-title">Detect Health<br>Misinformation</div>
+    <div class="hero-eyebrow">Advanced NLP Fact Verification</div>
+    <div class="hero-title">Medical Misinformation<br>Detection Engine</div>
     <div class="hero-desc">
-        Instantly verify claims, analyze bulk datasets, and view platform metrics using advanced Machine Learning.
+        Validate clinical claims, execute batch CSV analysis, and view real-time intelligence analytics powered by Machine Learning.
     </div>
-    <div class="hero-credit">Built by <strong>Shahid Nawaz</strong> &nbsp;·&nbsp; SoftaVerse Tech House</div>
+    <div class="hero-credit">Engineered by <strong>Shahid Nawaz</strong> &nbsp;•&nbsp; SoftaVerse Tech House</div>
 </div>
 """, unsafe_allow_html=True)
 
-tot = st.session_state.total
-c_val = st.session_state.cred
-f_val = st.session_state.fake
+# KPI Metrics Dashboard
+st.markdown(f"""
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-val purple">{st.session_state.total}</div>
+        <div class="stat-lbl">Analyzed Claims</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-val green">{st.session_state.cred}</div>
+        <div class="stat-lbl">Verified Credible</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-val red">{st.session_state.fake}</div>
+        <div class="stat-lbl">Misinformation</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
-st.markdown(
-    '<div class="stats">'
-    '<div class="stat purple">'
-    '<div class="stat-icon">📊</div>'
-    '<div class="stat-n purple">' + str(tot) + '</div>'
-    '<div class="stat-l">Analyzed</div></div>'
-    '<div class="stat green">'
-    '<div class="stat-icon">✅</div>'
-    '<div class="stat-n green">' + str(c_val) + '</div>'
-    '<div class="stat-l">Credible</div></div>'
-    '<div class="stat red">'
-    '<div class="stat-icon">🚨</div>'
-    '<div class="stat-n red">' + str(f_val) + '</div>'
-    '<div class="stat-l">Misinformation</div></div>'
-    '</div>',
-    unsafe_allow_html=True
-)
-
-tab1, tab2, tab3 = st.tabs(["🎯 Single Claim Check", "📁 Bulk CSV Analysis", "📊 Analytics Dashboard"])
+# Main Application Tabs
+tab1, tab2, tab3 = st.tabs(["🎯 Single Claim Analysis", "📁 Bulk CSV Verification", "📊 Platform Analytics"])
 
 with tab1:
-    st.markdown('<div class="input-card"><div class="input-label">Enter Health Claim</div>', unsafe_allow_html=True)
+    st.markdown('<div class="input-card">', unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #94a3b8; letter-spacing: 1px; margin-bottom: 8px;'>Input Statement for Evaluation</p>", unsafe_allow_html=True)
 
     user_input = st.text_area(
-        "x",
-        placeholder="e.g. Vaccines cause autism in children...",
+        "label_hidden",
+        placeholder="e.g., Clinical trials confirm regular exercise lowers cardiovascular disease risk...",
         height=120,
         max_chars=MAX_CHARS,
         label_visibility="collapsed"
     )
 
-    char_count = len(user_input)
-    fill_pct   = int((char_count / MAX_CHARS) * 100)
-    char_class = "char-warn" if char_count > MAX_CHARS * 0.85 else ""
-
-    st.markdown(
-        '<div class="char-bar-wrap">'
-        '<div class="char-bar-bg"><div class="char-bar-fill" style="width:' + str(fill_pct) + '%"></div></div>'
-        '<div class="char-text ' + char_class + '">' + str(char_count) + ' / ' + str(MAX_CHARS) + '</div>'
-        '</div>',
-        unsafe_allow_html=True
-    )
-
-    btn = st.button("🔍   Analyze Claim", use_container_width=True)
+    btn = st.button("🔍 Execute Verification", use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
     if btn:
         if not model_ok:
-            st.error("Model not available.")
+            st.error("System engine unavailable.")
         else:
             is_valid, result_or_error = validate_input(user_input)
             if not is_valid:
-                st.warning("⚠️ " + result_or_error)
+                st.warning(f"⚠️ {result_or_error}")
             else:
                 clean_input = result_or_error
                 try:
-                    with st.spinner("Analyzing claim..."):
+                    with st.spinner("Processing NLP algorithms..."):
                         time.sleep(0.3)
+                    
                     vec_input = vectorizer.transform([clean_input.lower()])
                     pred = model.predict(vec_input)[0]
                     
@@ -527,141 +395,112 @@ with tab1:
                         dist = model.decision_function(vec_input)[0]
                         confidence = min(99.5, max(65.0, 50.0 + abs(dist) * 22))
                     else:
-                        confidence = 90.0
+                        confidence = 92.5
 
                     st.session_state.total += 1
-                    conf_formatted = "{:.1f}".format(confidence)
+                    conf_formatted = f"{confidence:.1f}"
 
                     if pred == 0:
                         st.session_state.fake += 1
-                        status_str = "Misinformation Detected"
-                        st.markdown(
-                            '<div class="result result-fake">'
-                            '<span class="result-emoji">🚨</span>'
-                            '<div><span class="result-tag result-tag-fake">⚠ Warning</span></div>'
-                            '<div class="result-title-fake">Misinformation Detected</div>'
-                            '<div class="result-desc">This claim appears to be medically false or misleading.<br>Always verify with trusted health organizations like WHO or CDC.</div>'
-                            '<div class="confidence-pill">AI Confidence: ' + conf_formatted + '%</div>'
-                            '</div>',
-                            unsafe_allow_html=True
-                        )
+                        status_str = "Misinformation Flagged"
+                        st.markdown(f"""
+                        <div class="result-card result-fake">
+                            <span class="badge-fake">🚨 Misinformation Flagged</span>
+                            <h3 style="color: #f87171; font-weight: 800; margin: 12px 0 6px;">Potentially Inaccurate Claim</h3>
+                            <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 10px;">This statement aligns with flagged health misinformation patterns. Cross-verify with verified clinical repositories (WHO, CDC).</p>
+                            <span style="font-size: 0.8rem; background: rgba(255,255,255,0.05); padding: 4px 12px; border-radius: 999px; color: #e2e8f0;">Model Confidence: {conf_formatted}%</span>
+                        </div>
+                        """, unsafe_allow_html=True)
                         st.session_state.history.insert(0, ("❌", sanitize_display(clean_input), "f"))
                     else:
                         st.session_state.cred += 1
-                        status_str = "Credible Claim"
-                        st.markdown(
-                            '<div class="result result-true">'
-                            '<span class="result-emoji">✅</span>'
-                            '<div><span class="result-tag result-tag-true">✓ Verified</span></div>'
-                            '<div class="result-title-true">Credible Claim</div>'
-                            '<div class="result-desc">This claim appears to be medically accurate and evidence-based.<br>It aligns with established scientific and medical knowledge.</div>'
-                            '<div class="confidence-pill">AI Confidence: ' + conf_formatted + '%</div>'
-                            '</div>',
-                            unsafe_allow_html=True
-                        )
+                        status_str = "Credible Statement"
+                        st.markdown(f"""
+                        <div class="result-card result-true">
+                            <span class="badge-true">✅ Credible Statement</span>
+                            <h3 style="color: #34d399; font-weight: 800; margin: 12px 0 6px;">Evidence-Based Claim</h3>
+                            <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 10px;">This statement is consistent with established medical consensus and scientifically backed literature.</p>
+                            <span style="font-size: 0.8rem; background: rgba(255,255,255,0.05); padding: 4px 12px; border-radius: 999px; color: #e2e8f0;">Model Confidence: {conf_formatted}%</span>
+                        </div>
+                        """, unsafe_allow_html=True)
                         st.session_state.history.insert(0, ("✅", sanitize_display(clean_input), "t"))
 
                     pdf_data = generate_pdf(clean_input, status_str, confidence)
                     st.download_button(
-                        label="📄 Download Official PDF Report",
+                        label="📄 Export Analysis PDF Report",
                         data=pdf_data,
-                        file_name="MedVerify_Verification_Report.pdf",
+                        file_name="MedVerify_Report.pdf",
                         mime="application/pdf",
                         use_container_width=True
                     )
 
                 except Exception as e:
-                    logging.error("Prediction error: " + str(e))
-                    st.error("An error occurred during verification. Please try again.")
+                    logging.error(f"Prediction Error: {e}")
+                    st.error("An error occurred during verification execution.")
 
 with tab2:
-    st.markdown("<p style='color:#cbd5e1; font-size:0.85rem;'>Upload a <b>.csv</b> file containing a column titled <code>claim</code> to automatically fact-check multiple records at once.</p>", unsafe_allow_html=True)
-    uploaded_file = st.file_uploader("Upload CSV", type=["csv"], label_visibility="collapsed")
+    st.markdown("<p style='color:#94a3b8; font-size:0.9rem;'>Upload a dataset in <b>.csv</b> format containing a required column named <code>claim</code> for automated batch processing.</p>", unsafe_allow_html=True)
+    uploaded_file = st.file_uploader("Upload File", type=["csv"], label_visibility="collapsed")
     
     if uploaded_file and model_ok:
         try:
             df = pd.read_csv(uploaded_file)
             if 'claim' in df.columns:
-                with st.spinner("Processing batch file..."):
+                with st.spinner("Processing batch records..."):
                     vec_batch = vectorizer.transform(df['claim'].astype(str).str.lower())
                     preds = model.predict(vec_batch)
-                    df['Verification Result'] = ["Credible" if p == 1 else "Misinformation" for p in preds]
+                    df['Verification Status'] = ["Credible" if p == 1 else "Misinformation" for p in preds]
                 
-                st.success("Successfully processed " + str(len(df)) + " records!")
-                st.dataframe(df[['claim', 'Verification Result']].head(10), use_container_width=True)
+                st.success(f"Batch execution completed for {len(df)} records!")
+                st.dataframe(df[['claim', 'Verification Status']].head(10), use_container_width=True)
                 
                 csv_bytes = df.to_csv(index=False).encode('utf-8')
                 st.download_button(
-                    "📥 Download Processed Results CSV",
+                    "📥 Download Complete Results (CSV)",
                     data=csv_bytes,
-                    file_name="MedVerify_Bulk_Analysis.csv",
+                    file_name="MedVerify_Batch_Results.csv",
                     mime="text/csv",
                     use_container_width=True
                 )
             else:
-                st.error("Uploaded CSV must contain a column named 'claim'.")
+                st.error("CSV Structure Error: Missing required column header named 'claim'.")
         except Exception as e:
-            st.error("Error reading CSV file: " + str(e))
+            st.error(f"Error parsing file: {e}")
 
 with tab3:
-    st.markdown("<h4 style='color:#f8fafc; font-weight:800; margin-bottom:12px;'>Platform Analytics</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='color:#f8fafc; font-weight:700; margin-bottom:12px;'>Classification Distribution</h4>", unsafe_allow_html=True)
     if st.session_state.total > 0:
         fig = px.pie(
-            names=["Credible", "Misinformation"],
+            names=["Credible Claims", "Misinformation"],
             values=[st.session_state.cred, st.session_state.fake],
             color_discrete_sequence=["#34d399", "#ef4444"],
-            hole=0.45,
-            title="Classification Ratio"
+            hole=0.5
         )
         fig.update_layout(
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
-            font_color="#e2e8f0",
-            margin=dict(t=30, b=10, l=10, r=10)
+            font_color="#f8fafc",
+            margin=dict(t=20, b=20, l=20, r=20)
         )
         st.plotly_chart(fig, use_container_width=True)
     else:
-        st.info("No claims checked in this session yet. Run analyses in Tab 1 to populate the dashboard chart.")
+        st.info("No query activity recorded in the current session.")
 
-st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-st.markdown('<div class="section-label">Try These Examples</div>', unsafe_allow_html=True)
-
-c1, c2 = st.columns(2)
-with c1:
-    st.markdown("""
-    <div class="ex-group-label fake">❌ Misinformation</div>
-    <span class="chip chip-f">5G spreads coronavirus</span>
-    <span class="chip chip-f">Bleach cures COVID-19</span>
-    <span class="chip chip-f">Vaccines cause autism</span>
-    <span class="chip chip-f">Magnets cure arthritis</span>
-    """, unsafe_allow_html=True)
-with c2:
-    st.markdown("""
-    <div class="ex-group-label cred">✅ Credible</div>
-    <span class="chip chip-t">Exercise reduces heart disease</span>
-    <span class="chip chip-t">Smoking causes lung cancer</span>
-    <span class="chip chip-t">Handwashing prevents infections</span>
-    <span class="chip chip-t">Vaccines are safe and effective</span>
-    """, unsafe_allow_html=True)
-
+# Recent Session History
 if st.session_state.history:
-    st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
-    st.markdown('<div class="section-label">Recent Checks</div>', unsafe_allow_html=True)
+    st.markdown("<h5 style='color:#cbd5e1; font-weight:700; margin-top:2rem;'>Recent Audit Log</h5>", unsafe_allow_html=True)
     for icon, claim, label in st.session_state.history[:5]:
-        css = "h-true" if label == "t" else "h-fake"
-        short = claim[:65] + "..." if len(claim) > 65 else claim
-        st.markdown('<div class="h-item ' + css + '"><span>' + icon + '</span><span>' + short + '</span></div>', unsafe_allow_html=True)
-    if st.button("🗑  Clear History"):
-        for k, v in [("history",[]),("total",0),("fake",0),("cred",0)]:
-            st.session_state[k] = v
-        st.rerun()
+        status_color = "#34d399" if label == "t" else "#f87171"
+        st.markdown(f"""
+        <div style="background: rgba(15, 23, 42, 0.4); border-left: 3px solid {status_color}; padding: 10px 14px; border-radius: 8px; margin-bottom: 8px; font-size: 0.85rem; color: #cbd5e1;">
+            {icon} &nbsp; {claim}
+        </div>
+        """, unsafe_allow_html=True)
 
+# Application Footer
 st.markdown("""
 <div class="footer">
-    <div class="footer-logo">🔬 Med<span>Verify</span> AI</div>
-    <div class="footer-sub">
-        SoftaVerse Tech House &nbsp;·&nbsp; AI Health Misinformation Detection<br>
-        Python &nbsp;·&nbsp; Scikit-learn &nbsp;·&nbsp; NLP &nbsp;·&nbsp; Streamlit &nbsp;·&nbsp; 🔒 Secured v2.0 Pro
-    </div>
+    <p style="font-size:0.9rem; font-weight:700; color:#f8fafc; margin-bottom:4px;">🔬 MedVerify AI Platform</p>
+    <p style="font-size:0.75rem; color:#64748b;">Powered by SoftaVerse Tech House &nbsp;•&nbsp; Machine Learning & NLP Architecture</p>
 </div>
 """, unsafe_allow_html=True)
