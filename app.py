@@ -23,7 +23,6 @@ ALLOWED_PATTERN = re.compile(r"^[a-zA-Z0-9\s\.\,\!\?\-\'\"\(\)]+$")
 
 st.set_page_config(page_title="MedVerify AI - Pro", page_icon="🔬", layout="centered")
 
-# ── CUSTOM CSS ───────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
@@ -47,7 +46,6 @@ html, body, [class*="css"], .stApp {
 .block-container { padding: 0 1.5rem 3rem !important; max-width: 720px !important; }
 #MainMenu, footer, header { visibility: hidden; }
 
-/* ── TOP BAR ── */
 .topbar {
     display: flex;
     align-items: center;
@@ -88,7 +86,6 @@ html, body, [class*="css"], .stApp {
     text-transform: uppercase;
 }
 
-/* ── HERO ── */
 .hero {
     text-align: center;
     padding: 2rem 1rem 1rem;
@@ -141,7 +138,6 @@ html, body, [class*="css"], .stApp {
 }
 .hero-credit strong { color: #a78bfa; }
 
-/* ── STATS ── */
 .stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -176,7 +172,6 @@ html, body, [class*="css"], .stApp {
 .stat-n.red    { color: #f87171; }
 .stat-l { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #64748b; margin-top: 4px; }
 
-/* ── INPUT CARD ── */
 .input-card {
     background: rgba(255,255,255,0.025);
     border: 1px solid rgba(255,255,255,0.07);
@@ -236,7 +231,6 @@ html, body, [class*="css"], .stApp {
     outline: none !important;
 }
 
-/* ── BUTTON ── */
 .stButton > button {
     width: 100% !important;
     background: linear-gradient(135deg, #6d28d9 0%, #4f46e5 100%) !important;
@@ -257,7 +251,6 @@ html, body, [class*="css"], .stApp {
     box-shadow: 0 15px 40px rgba(109,40,217,0.6), inset 0 1px 0 rgba(255,255,255,0.2) !important;
 }
 
-/* ── RESULT ── */
 .result {
     border-radius: 20px;
     padding: 1.8rem 1.5rem;
@@ -313,7 +306,6 @@ html, body, [class*="css"], .stApp {
     font-weight: 600;
 }
 
-/* ── DIVIDER & LABELS ── */
 .divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
@@ -343,7 +335,6 @@ html, body, [class*="css"], .stApp {
 .chip-f { background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.18); color: #fca5a5; }
 .chip-t { background: rgba(52,211,153,0.07); border: 1px solid rgba(52,211,153,0.18); color: #6ee7b7; }
 
-/* ── HISTORY ── */
 .h-item {
     display: flex; align-items: center; gap: 12px; border-radius: 14px;
     padding: 10px 14px; margin-bottom: 8px; font-size: 0.82rem; font-weight: 500;
@@ -352,7 +343,6 @@ html, body, [class*="css"], .stApp {
 .h-fake { background: rgba(239,68,68,0.05); border-left: 2px solid rgba(239,68,68,0.5); }
 .h-true { background: rgba(52,211,153,0.05); border-left: 2px solid rgba(52,211,153,0.5); }
 
-/* ── TABS ── */
 .stTabs [data-baseweb="tab-list"] { gap: 8px; margin-bottom: 1rem; }
 .stTabs [data-baseweb="tab"] {
     background: rgba(255,255,255,0.02);
@@ -369,7 +359,6 @@ html, body, [class*="css"], .stApp {
     border-color: rgba(139,92,246,0.4) !important;
 }
 
-/* ── FOOTER ── */
 .footer {
     text-align: center;
     padding: 2rem 0 1rem;
@@ -442,7 +431,6 @@ for key, val in [("history",[]),("total",0),("fake",0),("cred",0)]:
     if key not in st.session_state:
         st.session_state[key] = val
 
-# ── TOP BAR ──────────────────────────────────────────────────────────────────
 st.markdown("""
 <div class="topbar">
     <div class="topbar-logo">
@@ -453,7 +441,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ── HERO ─────────────────────────────────────────────────────────────────────
 st.markdown("""
 <div class="hero">
     <div class="hero-eyebrow">
@@ -468,7 +455,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ── STATS COUNTER ─────────────────────────────────────────────────────────────
 tot = st.session_state.total
 c_val = st.session_state.cred
 f_val = st.session_state.fake
@@ -491,10 +477,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ── NAVIGATION TABS ──────────────────────────────────────────────────────────
 tab1, tab2, tab3 = st.tabs(["🎯 Single Claim Check", "📁 Bulk CSV Analysis", "📊 Analytics Dashboard"])
 
-# ── TAB 1: SINGLE CLAIM CHECK ────────────────────────────────────────────────
 with tab1:
     st.markdown('<div class="input-card"><div class="input-label">Enter Health Claim</div>', unsafe_allow_html=True)
 
@@ -565,9 +549,119 @@ with tab1:
                     else:
                         st.session_state.cred += 1
                         status_str = "Credible Claim"
-                        st.markdown( 
+                        st.markdown(
                             '<div class="result result-true">'
                             '<span class="result-emoji">✅</span>'
                             '<div><span class="result-tag result-tag-true">✓ Verified</span></div>'
                             '<div class="result-title-true">Credible Claim</div>'
-                            '<div class="result-desc">This claim appears to be medically accurate and evidence-based.<br>It aligns with established scientific and medical knowledge.</div>')
+                            '<div class="result-desc">This claim appears to be medically accurate and evidence-based.<br>It aligns with established scientific and medical knowledge.</div>'
+                            '<div class="confidence-pill">AI Confidence: ' + conf_formatted + '%</div>'
+                            '</div>',
+                            unsafe_allow_html=True
+                        )
+                        st.session_state.history.insert(0, ("✅", sanitize_display(clean_input), "t"))
+
+                    pdf_data = generate_pdf(clean_input, status_str, confidence)
+                    st.download_button(
+                        label="📄 Download Official PDF Report",
+                        data=pdf_data,
+                        file_name="MedVerify_Verification_Report.pdf",
+                        mime="application/pdf",
+                        use_container_width=True
+                    )
+
+                except Exception as e:
+                    logging.error("Prediction error: " + str(e))
+                    st.error("An error occurred during verification. Please try again.")
+
+with tab2:
+    st.markdown("<p style='color:#cbd5e1; font-size:0.85rem;'>Upload a <b>.csv</b> file containing a column titled <code>claim</code> to automatically fact-check multiple records at once.</p>", unsafe_allow_html=True)
+    uploaded_file = st.file_uploader("Upload CSV", type=["csv"], label_visibility="collapsed")
+    
+    if uploaded_file and model_ok:
+        try:
+            df = pd.read_csv(uploaded_file)
+            if 'claim' in df.columns:
+                with st.spinner("Processing batch file..."):
+                    vec_batch = vectorizer.transform(df['claim'].astype(str).str.lower())
+                    preds = model.predict(vec_batch)
+                    df['Verification Result'] = ["Credible" if p == 1 else "Misinformation" for p in preds]
+                
+                st.success("Successfully processed " + str(len(df)) + " records!")
+                st.dataframe(df[['claim', 'Verification Result']].head(10), use_container_width=True)
+                
+                csv_bytes = df.to_csv(index=False).encode('utf-8')
+                st.download_button(
+                    "📥 Download Processed Results CSV",
+                    data=csv_bytes,
+                    file_name="MedVerify_Bulk_Analysis.csv",
+                    mime="text/csv",
+                    use_container_width=True
+                )
+            else:
+                st.error("Uploaded CSV must contain a column named 'claim'.")
+        except Exception as e:
+            st.error("Error reading CSV file: " + str(e))
+
+with tab3:
+    st.markdown("<h4 style='color:#f8fafc; font-weight:800; margin-bottom:12px;'>Platform Analytics</h4>", unsafe_allow_html=True)
+    if st.session_state.total > 0:
+        fig = px.pie(
+            names=["Credible", "Misinformation"],
+            values=[st.session_state.cred, st.session_state.fake],
+            color_discrete_sequence=["#34d399", "#ef4444"],
+            hole=0.45,
+            title="Classification Ratio"
+        )
+        fig.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font_color="#e2e8f0",
+            margin=dict(t=30, b=10, l=10, r=10)
+        )
+        st.plotly_chart(fig, use_container_width=True)
+    else:
+        st.info("No claims checked in this session yet. Run analyses in Tab 1 to populate the dashboard chart.")
+
+st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+st.markdown('<div class="section-label">Try These Examples</div>', unsafe_allow_html=True)
+
+c1, c2 = st.columns(2)
+with c1:
+    st.markdown("""
+    <div class="ex-group-label fake">❌ Misinformation</div>
+    <span class="chip chip-f">5G spreads coronavirus</span>
+    <span class="chip chip-f">Bleach cures COVID-19</span>
+    <span class="chip chip-f">Vaccines cause autism</span>
+    <span class="chip chip-f">Magnets cure arthritis</span>
+    """, unsafe_allow_html=True)
+with c2:
+    st.markdown("""
+    <div class="ex-group-label cred">✅ Credible</div>
+    <span class="chip chip-t">Exercise reduces heart disease</span>
+    <span class="chip chip-t">Smoking causes lung cancer</span>
+    <span class="chip chip-t">Handwashing prevents infections</span>
+    <span class="chip chip-t">Vaccines are safe and effective</span>
+    """, unsafe_allow_html=True)
+
+if st.session_state.history:
+    st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-label">Recent Checks</div>', unsafe_allow_html=True)
+    for icon, claim, label in st.session_state.history[:5]:
+        css = "h-true" if label == "t" else "h-fake"
+        short = claim[:65] + "..." if len(claim) > 65 else claim
+        st.markdown('<div class="h-item ' + css + '"><span>' + icon + '</span><span>' + short + '</span></div>', unsafe_allow_html=True)
+    if st.button("🗑  Clear History"):
+        for k, v in [("history",[]),("total",0),("fake",0),("cred",0)]:
+            st.session_state[k] = v
+        st.rerun()
+
+st.markdown("""
+<div class="footer">
+    <div class="footer-logo">🔬 Med<span>Verify</span> AI</div>
+    <div class="footer-sub">
+        SoftaVerse Tech House &nbsp;·&nbsp; AI Health Misinformation Detection<br>
+        Python &nbsp;·&nbsp; Scikit-learn &nbsp;·&nbsp; NLP &nbsp;·&nbsp; Streamlit &nbsp;·&nbsp; 🔒 Secured v2.0 Pro
+    </div>
+</div>
+""", unsafe_allow_html=True)
