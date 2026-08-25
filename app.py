@@ -25,7 +25,8 @@ logging.basicConfig(
 # ----------------------------------------------------------------------------
 MIN_CHARS = 10
 MAX_CHARS = 500
-ALLOWED_PATTERN = re.compile(r"^[a-zA-Z0-9\s\.\,\!\?\-\'\"\(\)]+$")
+# Updated regex to allow standard medical/scientific symbols (%, /, :, +, =, ;, @)
+ALLOWED_PATTERN = re.compile(r"^[a-zA-Z0-9\s\.\,\!\?\-\'\"\(\)\%\/\:\+\=\;\@]+$")
 
 # ----------------------------------------------------------------------------
 # Page Configuration
@@ -38,7 +39,7 @@ st.set_page_config(
 )
 
 # ----------------------------------------------------------------------------
-# Global Design Tokens (kept in one place so colors stay consistent everywhere)
+# Global Design Tokens
 # ----------------------------------------------------------------------------
 COLOR_BG        = "#0b0f19"
 COLOR_SURFACE   = "rgba(15, 23, 42, 0.6)"
@@ -53,7 +54,7 @@ COLOR_SUCCESS   = "#34d399"
 COLOR_DANGER    = "#f87171"
 
 # ----------------------------------------------------------------------------
-# Professional Custom CSS Styling
+# Custom CSS Styling
 # ----------------------------------------------------------------------------
 st.markdown(f"""
 <style>
@@ -82,27 +83,18 @@ html, body, [class*="css"], .stApp {{
 
 #MainMenu, footer, header {{ visibility: hidden; }}
 
-/* ---------------------------------------------------------------------- */
-/* GLOBAL TEXT COLOR FIX                                                   */
-/* Streamlit widgets (labels, captions, uploader, dataframe, alerts) ship  */
-/* with their own default colors that clash with a dark theme. We force   */
-/* every generic text element to inherit our light palette so nothing     */
-/* renders as invisible/black-on-dark text.                               */
-/* ---------------------------------------------------------------------- */
 p, span, label, li, div, h1, h2, h3, h4, h5, h6,
 .stMarkdown, .stMarkdown p, .stMarkdown li,
-.stCaption, .st-emotion-cache-1wivap2, .st-emotion-cache-183lzff {{
+.stCaption {{
     color: {COLOR_TEXT};
 }}
 
-/* Widget labels (text area, file uploader, selectbox, etc.) */
 .stTextArea label, .stFileUploader label, .stSelectbox label,
 .stRadio label, .stCheckbox label, .stNumberInput label {{
     color: {COLOR_TEXT_DIM} !important;
     font-weight: 600 !important;
 }}
 
-/* File Uploader */
 [data-testid="stFileUploaderDropzone"] {{
     background: rgba(3, 7, 18, 0.5) !important;
     border: 1.5px dashed rgba(255, 255, 255, 0.18) !important;
@@ -117,32 +109,20 @@ p, span, label, li, div, h1, h2, h3, h4, h5, h6,
     border: none !important;
     border-radius: 10px !important;
 }}
-[data-testid="stFileUploaderFileName"] {{
-    color: {COLOR_TEXT} !important;
-}}
 
-/* DataFrame / Table */
 [data-testid="stDataFrame"] {{
     background: {COLOR_SURFACE} !important;
     border: 1px solid {COLOR_BORDER} !important;
     border-radius: 14px !important;
     overflow: hidden;
 }}
-[data-testid="stDataFrame"] div, [data-testid="stDataFrame"] span {{
-    color: {COLOR_TEXT} !important;
-}}
 
-/* Alerts: info / success / warning / error */
 div[data-testid="stAlert"] {{
     border-radius: 12px !important;
     background: rgba(15, 23, 42, 0.65) !important;
     border: 1px solid {COLOR_BORDER} !important;
 }}
-div[data-testid="stAlert"] p, div[data-testid="stAlert"] span {{
-    color: {COLOR_TEXT} !important;
-}}
 
-/* Download button (secondary style, distinct from primary action button) */
 .stDownloadButton > button {{
     background: rgba(99, 102, 241, 0.12) !important;
     color: {COLOR_ACCENT} !important;
@@ -157,21 +137,6 @@ div[data-testid="stAlert"] p, div[data-testid="stAlert"] span {{
     transform: translateY(-1px) !important;
 }}
 
-/* Spinner text */
-.stSpinner > div {{ color: {COLOR_TEXT_DIM} !important; }}
-
-/* Code inline chip (e.g. `claim` column reference) */
-code {{
-    background: rgba(99, 102, 241, 0.15) !important;
-    color: {COLOR_ACCENT} !important;
-    border: 1px solid rgba(99, 102, 241, 0.3) !important;
-    border-radius: 6px !important;
-    padding: 2px 8px !important;
-}}
-
-/* ---------------------------------------------------------------------- */
-/* Top Navigation Bar                                                      */
-/* ---------------------------------------------------------------------- */
 .topbar {{
     display: flex;
     align-items: center;
@@ -206,9 +171,6 @@ code {{
     text-transform: uppercase;
 }}
 
-/* ---------------------------------------------------------------------- */
-/* Hero Banner                                                             */
-/* ---------------------------------------------------------------------- */
 .hero {{ text-align: center; padding: 1rem 0 2rem; }}
 .hero-eyebrow {{
     display: inline-flex;
@@ -246,9 +208,6 @@ code {{
 .hero-credit {{ font-size: 0.8rem; color: {COLOR_TEXT_MUTE}; font-weight: 500; }}
 .hero-credit strong {{ color: {COLOR_ACCENT}; }}
 
-/* ---------------------------------------------------------------------- */
-/* Dashboard Metrics Grid                                                  */
-/* ---------------------------------------------------------------------- */
 .stats-grid {{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -271,9 +230,6 @@ code {{
 .stat-val.red    {{ color: {COLOR_DANGER}; }}
 .stat-lbl {{ font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: {COLOR_TEXT_MUTE}; }}
 
-/* ---------------------------------------------------------------------- */
-/* UI Inputs & Cards                                                       */
-/* ---------------------------------------------------------------------- */
 .input-card {{
     background: {COLOR_SURFACE};
     border: 1px solid {COLOR_BORDER};
@@ -314,11 +270,7 @@ code {{
     transform: translateY(-1px) !important;
     box-shadow: 0 6px 24px rgba(99, 102, 241, 0.5) !important;
 }}
-.stButton > button p {{ color: #ffffff !important; }}
 
-/* ---------------------------------------------------------------------- */
-/* Tabs Styling                                                            */
-/* ---------------------------------------------------------------------- */
 .stTabs [data-baseweb="tab-list"] {{ gap: 10px; margin-bottom: 1.5rem; }}
 .stTabs [data-baseweb="tab"] {{
     background: rgba(15, 23, 42, 0.4);
@@ -329,16 +281,12 @@ code {{
     font-size: 0.88rem;
     font-weight: 600;
 }}
-.stTabs [data-baseweb="tab"] p {{ color: inherit !important; }}
 .stTabs [aria-selected="true"] {{
     background: rgba(99, 102, 241, 0.2) !important;
     color: #c7d2fe !important;
     border-color: rgba(99, 102, 241, 0.4) !important;
 }}
 
-/* ---------------------------------------------------------------------- */
-/* Result Displays                                                         */
-/* ---------------------------------------------------------------------- */
 .result-card {{ border-radius: 16px; padding: 1.6rem; text-align: center; margin: 1.5rem 0; }}
 .result-fake {{ background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); }}
 .result-true {{ background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); }}
@@ -346,15 +294,7 @@ code {{
 .badge-fake {{ background: rgba(239, 68, 68, 0.2); color: #fca5a5; padding: 4px 12px; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }}
 .badge-true {{ background: rgba(16, 185, 129, 0.2); color: #6ee7b7; padding: 4px 12px; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }}
 
-/* ---------------------------------------------------------------------- */
-/* Section headings & example chips                                       */
-/* ---------------------------------------------------------------------- */
-.section-title {{
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: #f8fafc;
-    margin: 0.5rem 0 1rem;
-}}
+.section-title {{ font-size: 1.05rem; font-weight: 800; color: #f8fafc; margin: 0.5rem 0 1rem; }}
 .helper-text {{ color: {COLOR_TEXT_DIM}; font-size: 0.9rem; line-height: 1.6; }}
 
 .audit-row {{
@@ -375,9 +315,8 @@ code {{
 </style>
 """, unsafe_allow_html=True)
 
-
 # ----------------------------------------------------------------------------
-# Input Validation
+# Input Validation & Helper Functions
 # ----------------------------------------------------------------------------
 def validate_input(text: str):
     text = text.strip()
@@ -386,7 +325,7 @@ def validate_input(text: str):
     if len(text) > MAX_CHARS:
         return False, f"Claim exceeds maximum length of {MAX_CHARS} characters."
     if not ALLOWED_PATTERN.match(text):
-        return False, "Invalid characters detected. Only letters, numbers, and standard punctuation allowed."
+        return False, "Invalid characters detected. Only standard text and scientific symbols are permitted."
     return True, text
 
 
@@ -394,9 +333,6 @@ def sanitize_display(text: str) -> str:
     return html.escape(text)
 
 
-# ----------------------------------------------------------------------------
-# PDF Report Generation
-# ----------------------------------------------------------------------------
 def generate_pdf(claim: str, result_status: str, confidence: float) -> BytesIO:
     buffer = BytesIO()
     doc = SimpleDocTemplate(buffer, pagesize=letter)
@@ -420,9 +356,8 @@ def generate_pdf(claim: str, result_status: str, confidence: float) -> BytesIO:
     buffer.seek(0)
     return buffer
 
-
 # ----------------------------------------------------------------------------
-# Load Trained Model
+# Model Loader
 # ----------------------------------------------------------------------------
 @st.cache_resource
 def load_model():
@@ -434,9 +369,10 @@ def load_model():
 try:
     model, vectorizer = load_model()
     model_ok = True
-except Exception:
+except Exception as e:
     model_ok = False
-    st.error("Model could not be loaded. Please ensure required `.pkl` files are present.")
+    logging.error(f"Failed to load model artifacts: {e}")
+    st.error("Model could not be loaded. Please ensure `svm_model.pkl` and `tfidf_vectorizer.pkl` exist in the root directory.")
 
 # ----------------------------------------------------------------------------
 # Session State Initialization
@@ -508,7 +444,7 @@ with tab1:
 
     user_input = st.text_area(
         "label_hidden",
-        placeholder="e.g., Clinical trials confirm regular exercise lowers cardiovascular disease risk...",
+        placeholder="e.g., Clinical trials confirm regular exercise lowers cardiovascular disease risk by 30%...",
         height=120,
         max_chars=MAX_CHARS,
         label_visibility="collapsed",
@@ -636,7 +572,7 @@ with tab3:
     else:
         st.info("No query activity recorded in the current session.")
 
-  # ----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # Recent Session History
 # ----------------------------------------------------------------------------
 if st.session_state.history:
@@ -658,4 +594,3 @@ st.markdown("""
     <p style="font-size:0.75rem; color:#64748b;">Powered by SoftaVerse Tech House &nbsp;•&nbsp; Machine Learning & NLP Architecture</p>
 </div>
 """, unsafe_allow_html=True)
-
