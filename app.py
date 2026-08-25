@@ -263,7 +263,6 @@ html, body, [class*="css"], .stApp {
     padding: 1.8rem 1.5rem;
     text-align: center;
     margin: 1.2rem 0;
-    animation: popIn 0.5s cubic-bezier(0.175,0.885,0.32,1.275) both;
     position: relative;
     overflow: hidden;
 }
@@ -348,13 +347,12 @@ html, body, [class*="css"], .stApp {
 .h-item {
     display: flex; align-items: center; gap: 12px; border-radius: 14px;
     padding: 10px 14px; margin-bottom: 8px; font-size: 0.82rem; font-weight: 500;
-    color: #94a3b8; transition: all 0.2s;
+    color: #94a3b8;
 }
-.h-item:hover { transform: translateX(4px); }
 .h-fake { background: rgba(239,68,68,0.05); border-left: 2px solid rgba(239,68,68,0.5); }
 .h-true { background: rgba(52,211,153,0.05); border-left: 2px solid rgba(52,211,153,0.5); }
 
-/* ── TABS CUSTOMIZATION ── */
+/* ── TABS ── */
 .stTabs [data-baseweb="tab-list"] { gap: 8px; margin-bottom: 1rem; }
 .stTabs [data-baseweb="tab"] {
     background: rgba(255,255,255,0.02);
@@ -392,25 +390,15 @@ html, body, [class*="css"], .stApp {
     font-weight: 500;
     line-height: 1.8;
 }
-
-@keyframes popIn {
-    0%   { opacity:0; transform: scale(0.85) translateY(20px); }
-    100% { opacity:1; transform: scale(1) translateY(0); }
-}
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.4; }
-}
 </style>
 """, unsafe_allow_html=True)
-
 
 def validate_input(text):
     text = text.strip()
     if len(text) < MIN_CHARS:
-        return False, f"Claim too short. Minimum {MIN_CHARS} characters required."
+        return False, "Claim too short. Minimum " + str(MIN_CHARS) + " characters required."
     if len(text) > MAX_CHARS:
-        return False, f"Claim too long. Maximum {MAX_CHARS} characters allowed."
+        return False, "Claim too long. Maximum " + str(MAX_CHARS) + " characters allowed."
     if not ALLOWED_PATTERN.match(text):
         return False, "Invalid characters detected. Only letters, numbers, and basic punctuation allowed."
     return True, text
@@ -425,17 +413,16 @@ def generate_pdf(claim, result_status, confidence):
     story = [
         Paragraph("<b>MedVerify AI - Medical Fact Check Report</b>", styles['Title']),
         Spacer(1, 15),
-        Paragraph(f"<b>Analyzed Health Claim:</b> {html.escape(claim)}", styles['Normal']),
+        Paragraph("<b>Analyzed Health Claim:</b> " + html.escape(claim), styles['Normal']),
         Spacer(1, 10),
-        Paragraph(f"<b>Verification Status:</b> {result_status}", styles['Normal']),
-        Paragraph(f"<b>AI Confidence Score:</b> {confidence:.2f}%", styles['Normal']),
+        Paragraph("<b>Verification Status:</b> " + result_status, styles['Normal']),
+        Paragraph("<b>AI Confidence Score:</b> " + f"{confidence:.2f}%", styles['Normal']),
         Spacer(1, 25),
         Paragraph("<i>Disclaimer: Generated automatically by MedVerify AI System. Always consult certified healthcare professionals.</i>", styles['Italic'])
     ]
     doc.build(story)
     buffer.seek(0)
     return buffer
-
 
 @st.cache_resource
 def load_model():
@@ -481,23 +468,29 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── STATS COUNTER ─────────────────────────────────────────────────────────────
+tot = st.session_state.total
+c_val = st.session_state.cred
+f_val = st.session_state.fake
+
 st.markdown(
     '<div class="stats">'
     '<div class="stat purple">'
     '<div class="stat-icon">📊</div>'
-    '<div class="stat-n purple">' + str(st.session_state.total) + '</div>'
+    '<div class="stat-n purple">' + str(tot) + '</div>'
     '<div class="stat-l">Analyzed</div></div>'
     '<div class="stat green">'
     '<div class="stat-icon">✅</div>'
-    '<div class="stat-n green">' + str(st.session_state.cred) + '</div>'
+    '<div class="stat-n green">' + str(c_val) + '</div>'
     '<div class="stat-l">Credible</div></div>'
     '<div class="stat red">'
     '<div class="stat-icon">🚨</div>'
-    '<div class="stat-n red">' + str(st.session_state.fake) + '</div>'
+    '<div class="stat-n red">' + str(f_val) + '</div>'
     '<div class="stat-l">Misinformation</div></div>'
-    '</div>', unsafe_allow_html=True)
+    '</div>',
+    unsafe_allow_html=True
+)
 
-# ── NAVIGATION TABS (NEW ADVANCED FEATURES) ──────────────────────────────────
+# ── NAVIGATION TABS ──────────────────────────────────────────────────────────
 tab1, tab2, tab3 = st.tabs(["🎯 Single Claim Check", "📁 Bulk CSV Analysis", "📊 Analytics Dashboard"])
 
 # ── TAB 1: SINGLE CLAIM CHECK ────────────────────────────────────────────────
@@ -515,12 +508,14 @@ with tab1:
     char_count = len(user_input)
     fill_pct   = int((char_count / MAX_CHARS) * 100)
     char_class = "char-warn" if char_count > MAX_CHARS * 0.85 else ""
-    st.markdown(f"""
-    <div class="char-bar-wrap">
-        <div class="char-bar-bg"><div class="char-bar-fill" style="width:{fill_pct}%"></div></div>
-        <div class="char-text {char_class}">{char_count} / {MAX_CHARS}</div>
-    </div>
-    """, unsafe_allow_html=True)
+
+    st.markdown(
+        '<div class="char-bar-wrap">'
+        '<div class="char-bar-bg"><div class="char-bar-fill" style="width:' + str(fill_pct) + '%"></div></div>'
+        '<div class="char-text ' + char_class + '">' + str(char_count) + ' / ' + str(MAX_CHARS) + '</div>'
+        '</div>',
+        unsafe_allow_html=True
+    )
 
     btn = st.button("🔍   Analyze Claim", use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
@@ -531,7 +526,7 @@ with tab1:
         else:
             is_valid, result_or_error = validate_input(user_input)
             if not is_valid:
-                st.warning(f"⚠️ {result_or_error}")
+                st.warning("⚠️ " + result_or_error)
             else:
                 clean_input = result_or_error
                 try:
@@ -540,7 +535,6 @@ with tab1:
                     vec_input = vectorizer.transform([clean_input.lower()])
                     pred = model.predict(vec_input)[0]
                     
-                    # Calculate Confidence Level
                     if hasattr(model, "predict_proba"):
                         probs = model.predict_proba(vec_input)[0]
                         confidence = max(probs) * 100
@@ -555,21 +549,24 @@ with tab1:
                     if pred == 0:
                         st.session_state.fake += 1
                         status_str = "Misinformation Detected"
-                        st.markdown(f"""
-                        <div class="result result-fake">
-                            <span class="result-emoji">🚨</span>
-                            <div><span class="result-tag result-tag-fake">⚠ Warning</span></div>
-                            <div class="result-title-fake">Misinformation Detected</div>
-                            <div class="result-desc">This claim appears to be medically false or misleading.<br>Always verify with trusted health organizations like WHO or CDC.</div>
-                            <div class="confidence-pill">AI Confidence: {confidence:.1f}%</div>
-                        </div>""", unsafe_allow_html=True)
+                        st.markdown(
+                            '<div class="result result-fake">'
+                            '<span class="result-emoji">🚨</span>'
+                            '<div><span class="result-tag result-tag-fake">⚠ Warning</span></div>'
+                            '<div class="result-title-fake">Misinformation Detected</div>'
+                            '<div class="result-desc">This claim appears to be medically false or misleading.<br>Always verify with trusted health organizations like WHO or CDC.</div>'
+                            '<div class="confidence-pill">AI Confidence: ' + f"{confidence:.1f}" + '%</div>'
+                            '</div>',
+                            unsafe_allow_html=True
+                        )
                         st.session_state.history.insert(0, ("❌", sanitize_display(clean_input), "f"))
                     else:
                         st.session_state.cred += 1
                         status_str = "Credible Claim"
-                        st.markdown(f"""
-                        <div class="result result-true">
-                            <span class="result-emoji">✅</span>
-                            <div><span class="result-tag result-tag-true">✓ Verified</span></div>
-                            <div class="result-title-true">Credible Claim</div>
-                            <div class="result-desc">This claim appears to
+                        st.markdown(
+                            '<div class="result result-true">'
+                            '<span class="result-emoji">✅</span>'
+                            '<div><span class="result-tag result-tag-true">✓ Verified</span></div>'
+                            '<div class="result-title-true">Credible Claim</div>'
+                            '<div class="result-desc">This claim appears to be medically accurate and evidence-based.<br>It aligns with established scientific and medical knowledge.</div>'
+                            '<div class="confidence-pill">AI Confidence: ' + f"{confidence:.1f}" + '%<
