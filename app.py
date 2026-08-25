@@ -410,13 +410,14 @@ def generate_pdf(claim, result_status, confidence):
     buffer = BytesIO()
     doc = SimpleDocTemplate(buffer, pagesize=letter)
     styles = getSampleStyleSheet()
+    conf_str = "{:.2f}%".format(confidence)
     story = [
         Paragraph("<b>MedVerify AI - Medical Fact Check Report</b>", styles['Title']),
         Spacer(1, 15),
         Paragraph("<b>Analyzed Health Claim:</b> " + html.escape(claim), styles['Normal']),
         Spacer(1, 10),
         Paragraph("<b>Verification Status:</b> " + result_status, styles['Normal']),
-        Paragraph("<b>AI Confidence Score:</b> " + f"{confidence:.2f}%", styles['Normal']),
+        Paragraph("<b>AI Confidence Score:</b> " + conf_str, styles['Normal']),
         Spacer(1, 25),
         Paragraph("<i>Disclaimer: Generated automatically by MedVerify AI System. Always consult certified healthcare professionals.</i>", styles['Italic'])
     ]
@@ -545,6 +546,7 @@ with tab1:
                         confidence = 90.0
 
                     st.session_state.total += 1
+                    conf_formatted = "{:.1f}".format(confidence)
 
                     if pred == 0:
                         st.session_state.fake += 1
@@ -555,7 +557,7 @@ with tab1:
                             '<div><span class="result-tag result-tag-fake">⚠ Warning</span></div>'
                             '<div class="result-title-fake">Misinformation Detected</div>'
                             '<div class="result-desc">This claim appears to be medically false or misleading.<br>Always verify with trusted health organizations like WHO or CDC.</div>'
-                            '<div class="confidence-pill">AI Confidence: ' + f"{confidence:.1f}" + '%</div>'
+                            '<div class="confidence-pill">AI Confidence: ' + conf_formatted + '%</div>'
                             '</div>',
                             unsafe_allow_html=True
                         )
@@ -569,4 +571,3 @@ with tab1:
                             '<div><span class="result-tag result-tag-true">✓ Verified</span></div>'
                             '<div class="result-title-true">Credible Claim</div>'
                             '<div class="result-desc">This claim appears to be medically accurate and evidence-based.<br>It aligns with established scientific and medical knowledge.</div>'
-                            '<div class="confidence-pill">AI Confidence: ' + f"{confidence:.1f}" + '%<
