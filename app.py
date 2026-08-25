@@ -239,19 +239,46 @@ div[data-testid="stAlert"] {{
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }}
 
-.stTextArea > div > div > textarea {{
-    background: rgba(3, 7, 18, 0.6) !important;
-    color: #f8fafc !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+/* ---------------------------------------------------------------------- */
+/* Textarea — Professional, high-contrast input field                     */
+/* ---------------------------------------------------------------------- */
+.stTextArea textarea {{
+    background: #0d1424 !important;
+    color: #ffffff !important;
+    border: 1.5px solid rgba(99, 102, 241, 0.35) !important;
     border-radius: 14px !important;
-    font-size: 0.95rem !important;
-    padding: 14px !important;
-    line-height: 1.5 !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 0.98rem !important;
+    font-weight: 500 !important;
+    padding: 16px !important;
+    line-height: 1.65 !important;
+    caret-color: {COLOR_ACCENT} !important;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+    transition: all 0.25s ease !important;
 }}
-.stTextArea > div > div > textarea::placeholder {{ color: {COLOR_TEXT_MUTE} !important; }}
-.stTextArea > div > div > textarea:focus {{
+
+.stTextArea textarea::placeholder {{
+    color: #64748b !important;
+    opacity: 1 !important;
+}}
+
+.stTextArea textarea:hover {{
+    border-color: rgba(99, 102, 241, 0.6) !important;
+    background: #111a30 !important;
+}}
+
+.stTextArea textarea:focus {{
     border-color: {COLOR_PRIMARY} !important;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
+    background: #111a30 !important;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25), inset 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+    outline: none !important;
+}}
+
+/* Removes leftover light background from Streamlit's internal wrapper */
+.stTextArea > div, .stTextArea [data-baseweb="textarea"] {{
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }}
 
 .stButton > button {{
