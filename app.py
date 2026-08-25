@@ -571,3 +571,4 @@ with tab1:
                             '<div><span class="result-tag result-tag-true">✓ Verified</span></div>'
                             '<div class="result-title-true">Credible Claim</div>'
                             '<div class="result-desc">This claim appears to be medically accurate and evidence-based.<br>It aligns with established scientific and medical knowledge.</div>'
+                            )
