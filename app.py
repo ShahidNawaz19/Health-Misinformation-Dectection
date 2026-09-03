@@ -10,7 +10,8 @@ from io import BytesIO
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
-import google.generativeai as genai  # noqa
+import google.generativeai as genai
+import requests as req_lib
  
 # ----------------------------------------------------------------------------
 # Logging Configuration
@@ -38,34 +39,28 @@ gemini_model = genai.GenerativeModel("gemini-1.5-flash")
 def get_gemini_explanation(claim: str, is_misinfo: bool) -> str:
     try:
         if is_misinfo:
-            prompt = f"""You are a medical fact-checker. A health claim has been detected as MISINFORMATION by an AI model.
- 
+            prompt = f"""You are a medical fact-checker. A health claim has been detected as MISINFORMATION.
 Health Claim: "{claim}"
- 
-Please provide:
-1. Why this claim is medically false or misleading (2-3 sentences)
-2. What the correct medical fact is (1-2 sentences)
-3. A trusted source to verify (WHO, CDC, NIH, or similar)
- 
-Keep your response concise and clear. Format it in 3 short paragraphs."""
+Explain in 3 short paragraphs:
+1. Why this claim is medically false
+2. What the correct medical fact is
+3. A trusted source (WHO, CDC, NIH)"""
         else:
-            prompt = f"""You are a medical fact-checker. A health claim has been verified as CREDIBLE by an AI model.
- 
+            prompt = f"""You are a medical fact-checker. A health claim has been verified as CREDIBLE.
 Health Claim: "{claim}"
- 
-Please provide:
-1. Why this claim is medically accurate (2-3 sentences)
-2. Additional context or benefit of this fact (1-2 sentences)
-3. A trusted source that confirms this (WHO, CDC, NIH, or similar)
- 
-Keep your response concise and clear. Format it in 3 short paragraphs."""
- 
-        response = gemini_model.generate_content(prompt)
-        return response.text
+Explain in 3 short paragraphs:
+1. Why this claim is medically accurate
+2. Additional context or benefit
+3. A trusted source (WHO, CDC, NIH)"""
+
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
+        payload = {"contents": [{"parts": [{"text": prompt}]}]}
+        response = req_lib.post(url, json=payload, timeout=15)
+        data = response.json()
+        return data["candidates"][0]["content"]["parts"][0]["text"]
     except Exception as e:
         logging.error(f"Gemini API error: {e}")
-        return "AI explanation currently unavailable. Please verify with WHO or CDC."
- 
+        return "AI explanation currently unavailable. Please verify with WHO or CDC." 
 # ----------------------------------------------------------------------------
 # Page Configuration
 # ----------------------------------------------------------------------------
