@@ -10,7 +10,6 @@ from io import BytesIO
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
-import google.generativeai as genai
 import requests as req_lib
  
 # ----------------------------------------------------------------------------
@@ -32,34 +31,38 @@ ALLOWED_PATTERN = re.compile(r"^[a-zA-Z0-9\s\.\,\!\?\-\'\"\(\)\%\/\:\+\=\;\@]+$"
 # ----------------------------------------------------------------------------
 # Gemini API Configuration
 # ----------------------------------------------------------------------------
-GEMINI_API_KEY = "AQ.Ab8RN6LTABKLj-FyxNp6dhFSKW5jIXE0CZ4gZxxuDzpMq94wvA"
-genai.configure(api_key=GEMINI_API_KEY)
-gemini_model = genai.GenerativeModel("gemini-1.5-flash")
- 
+OPENROUTER_API_KEY = "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"
 def get_gemini_explanation(claim: str, is_misinfo: bool) -> str:
     try:
         if is_misinfo:
-            prompt = f"""You are a medical fact-checker. A health claim has been detected as MISINFORMATION.
+            prompt = f"""You are a medical fact-checker. This health claim is MISINFORMATION.
 Health Claim: "{claim}"
 Explain in 3 short paragraphs:
 1. Why this claim is medically false
 2. What the correct medical fact is
 3. A trusted source (WHO, CDC, NIH)"""
         else:
-            prompt = f"""You are a medical fact-checker. A health claim has been verified as CREDIBLE.
+            prompt = f"""You are a medical fact-checker. This health claim is CREDIBLE.
 Health Claim: "{claim}"
 Explain in 3 short paragraphs:
 1. Why this claim is medically accurate
 2. Additional context or benefit
 3. A trusted source (WHO, CDC, NIH)"""
 
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
-        payload = {"contents": [{"parts": [{"text": prompt}]}]}
-        response = req_lib.post(url, json=payload, timeout=15)
+        url = "https://openrouter.ai/api/v1/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+            "Content-Type": "application/json"
+        }
+        payload = {
+            "model": "nvidia/nemotron-3.5-lightning:free",
+            "messages": [{"role": "user", "content": prompt}]
+        }
+        response = req_lib.post(url, json=payload, headers=headers, timeout=30)
         data = response.json()
-        return data["candidates"][0]["content"]["parts"][0]["text"]
+        return data["choices"][0]["message"]["content"]
     except Exception as e:
-        logging.error(f"Gemini API error: {e}")
+        logging.error(f"OpenRouter API error: {e}")
         return "AI explanation currently unavailable. Please verify with WHO or CDC." 
 # ----------------------------------------------------------------------------
 # Page Configuration
