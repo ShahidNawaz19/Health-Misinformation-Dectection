@@ -61,7 +61,11 @@ Explain in 3 short paragraphs:
         }
         response = req_lib.post(url, json=payload, headers=headers, timeout=30)
         data = response.json()
-        return data["choices"][0]["message"]["content"]
+        if "choices" in data and len(data["choices"]) > 0:
+            return data["choices"][0]["message"]["content"]
+        else:
+            logging.error(f"API Payload Error: {data}")
+            return "AI explanation could not be generated from the response. Please verify with WHO or CDC."
     except Exception as e:
         logging.error(f"OpenRouter API error: {e}")
         return "AI explanation currently unavailable. Please verify with WHO or CDC." 
@@ -99,7 +103,7 @@ for key, val in [("history", []), ("total", 0), ("fake", 0), ("cred", 0)]:
         st.session_state[key] = val
 
 # ----------------------------------------------------------------------------
-# Custom CSS Styling (Optimized and Container Fixed)
+# Custom CSS Styling
 # ----------------------------------------------------------------------------
 st.markdown(f"""
 <style>
@@ -223,7 +227,6 @@ div[data-testid="stAlert"] {{
 .stat-val.red    {{ color: {COLOR_DANGER}; }}
 .stat-lbl {{ font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: {COLOR_TEXT_MUTE}; }}
 
-/* Streamlit Tabs Container Alignments Fix */
 .stTabs [data-baseweb="tab-list"] {{ gap: 10px; margin-bottom: 1.5rem; width: 100%; }}
 .stTabs [data-baseweb="tab"] {{
     background: rgba(15, 23, 42, 0.4); border-radius: 12px;
@@ -455,7 +458,7 @@ with tab1:
                         st.session_state.cred += 1
                         status_str = "Credible Statement"
 
-                    # ── Gemini Explanation ──────────────────────────────────
+                    # ── Gemini Explanation API Call ─────────────────────────
                     with st.spinner("🤖 Gemini AI generating explanation..."):
                         explanation = get_gemini_explanation(clean_input, is_misinfo)
 
@@ -496,9 +499,6 @@ with tab1:
                         mime="application/pdf",
                         use_container_width=True,
                     )
-                    
-                    # Page rerun to sync top KPI cards instantly
-                    st.rerun()
 
                 except Exception as e:
                     logging.error(f"Prediction Error: {e}")
