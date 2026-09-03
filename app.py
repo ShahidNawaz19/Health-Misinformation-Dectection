@@ -10,7 +10,7 @@ from io import BytesIO
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
-import google.generativeai as genai
+import google.generativeai as genai  # noqa
  
 # ----------------------------------------------------------------------------
 # Logging Configuration
