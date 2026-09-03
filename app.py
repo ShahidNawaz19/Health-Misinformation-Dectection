@@ -11,7 +11,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 import requests as req_lib
- 
+
 # ----------------------------------------------------------------------------
 # Logging Configuration
 # ----------------------------------------------------------------------------
@@ -20,18 +20,19 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s"
 )
- 
+
 # ----------------------------------------------------------------------------
 # Constants & Guardrails
 # ----------------------------------------------------------------------------
 MIN_CHARS = 10
 MAX_CHARS = 500
 ALLOWED_PATTERN = re.compile(r"^[a-zA-Z0-9\s\.\,\!\?\-\'\"\(\)\%\/\:\+\=\;\@]+$")
- 
+
 # ----------------------------------------------------------------------------
 # Gemini API Configuration
 # ----------------------------------------------------------------------------
 OPENROUTER_API_KEY = "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"
+
 def get_gemini_explanation(claim: str, is_misinfo: bool) -> str:
     try:
         if is_misinfo:
@@ -64,6 +65,7 @@ Explain in 3 short paragraphs:
     except Exception as e:
         logging.error(f"OpenRouter API error: {e}")
         return "AI explanation currently unavailable. Please verify with WHO or CDC." 
+
 # ----------------------------------------------------------------------------
 # Page Configuration
 # ----------------------------------------------------------------------------
@@ -73,7 +75,7 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="collapsed"
 )
- 
+
 # ----------------------------------------------------------------------------
 # Global Design Tokens
 # ----------------------------------------------------------------------------
@@ -88,22 +90,29 @@ COLOR_PRIMARY_2 = "#4f46e5"
 COLOR_ACCENT    = "#818cf8"
 COLOR_SUCCESS   = "#34d399"
 COLOR_DANGER    = "#f87171"
- 
+
 # ----------------------------------------------------------------------------
-# Custom CSS Styling
+# Session State Initialization
+# ----------------------------------------------------------------------------
+for key, val in [("history", []), ("total", 0), ("fake", 0), ("cred", 0)]:
+    if key not in st.session_state:
+        st.session_state[key] = val
+
+# ----------------------------------------------------------------------------
+# Custom CSS Styling (Optimized and Container Fixed)
 # ----------------------------------------------------------------------------
 st.markdown(f"""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
- 
+
 *, *::before, *::after {{ box-sizing: border-box; }}
- 
+
 html, body, [class*="css"], .stApp {{
     font-family: 'Plus Jakarta Sans', sans-serif !important;
     background-color: {COLOR_BG} !important;
     color: {COLOR_TEXT} !important;
 }}
- 
+
 .stApp {{
     background:
         radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
@@ -111,18 +120,18 @@ html, body, [class*="css"], .stApp {{
         {COLOR_BG} !important;
     min-height: 100vh;
 }}
- 
+
 .block-container {{ padding: 1.5rem 1rem 3rem !important; max-width: 800px !important; }}
 #MainMenu, footer, header {{ visibility: hidden; }}
- 
+
 p, span, label, li, div, h1, h2, h3, h4, h5, h6,
 .stMarkdown, .stMarkdown p, .stMarkdown li, .stCaption {{ color: {COLOR_TEXT}; }}
- 
+
 .stTextArea label, .stFileUploader label, .stSelectbox label,
 .stRadio label, .stCheckbox label, .stNumberInput label {{
     color: {COLOR_TEXT_DIM} !important; font-weight: 600 !important;
 }}
- 
+
 [data-testid="stFileUploaderDropzone"] {{
     background: rgba(3, 7, 18, 0.5) !important;
     border: 1.5px dashed rgba(255, 255, 255, 0.18) !important;
@@ -133,19 +142,19 @@ p, span, label, li, div, h1, h2, h3, h4, h5, h6,
     background: linear-gradient(135deg, {COLOR_PRIMARY} 0%, {COLOR_PRIMARY_2} 100%) !important;
     color: #ffffff !important; border: none !important; border-radius: 10px !important;
 }}
- 
+
 [data-testid="stDataFrame"] {{
     background: {COLOR_SURFACE} !important;
     border: 1px solid {COLOR_BORDER} !important;
     border-radius: 14px !important; overflow: hidden;
 }}
- 
+
 div[data-testid="stAlert"] {{
     border-radius: 12px !important;
     background: rgba(15, 23, 42, 0.65) !important;
     border: 1px solid {COLOR_BORDER} !important;
 }}
- 
+
 .stDownloadButton > button {{
     background: rgba(99, 102, 241, 0.12) !important;
     color: {COLOR_ACCENT} !important;
@@ -156,7 +165,7 @@ div[data-testid="stAlert"] {{
 .stDownloadButton > button:hover {{
     background: rgba(99, 102, 241, 0.22) !important; transform: translateY(-1px) !important;
 }}
- 
+
 .topbar {{
     display: flex; align-items: center; justify-content: space-between;
     padding: 0.8rem 1.2rem;
@@ -177,7 +186,7 @@ div[data-testid="stAlert"] {{
     border-radius: 999px; padding: 4px 14px; font-size: 0.7rem; font-weight: 700;
     color: {COLOR_SUCCESS}; letter-spacing: 1.2px; text-transform: uppercase;
 }}
- 
+
 .hero {{ text-align: center; padding: 1rem 0 2rem; }}
 .hero-eyebrow {{
     display: inline-flex; align-items: center; gap: 8px;
@@ -197,9 +206,10 @@ div[data-testid="stAlert"] {{
 }}
 .hero-credit {{ font-size: 0.8rem; color: {COLOR_TEXT_MUTE}; font-weight: 500; }}
 .hero-credit strong {{ color: {COLOR_ACCENT}; }}
- 
+
 .stats-grid {{
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0 2rem;
+    width: 100%;
 }}
 .stat-card {{
     background: rgba(15, 23, 42, 0.5); border: 1px solid {COLOR_BORDER};
@@ -212,13 +222,24 @@ div[data-testid="stAlert"] {{
 .stat-val.green  {{ color: {COLOR_SUCCESS}; }}
 .stat-val.red    {{ color: {COLOR_DANGER}; }}
 .stat-lbl {{ font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: {COLOR_TEXT_MUTE}; }}
- 
-.input-card {{
-    background: {COLOR_SURFACE}; border: 1px solid {COLOR_BORDER};
-    border-radius: 20px; padding: 1.5rem; backdrop-filter: blur(16px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+
+/* Streamlit Tabs Container Alignments Fix */
+.stTabs [data-baseweb="tab-list"] {{ gap: 10px; margin-bottom: 1.5rem; width: 100%; }}
+.stTabs [data-baseweb="tab"] {{
+    background: rgba(15, 23, 42, 0.4); border-radius: 12px;
+    color: {COLOR_TEXT_DIM} !important; border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 10px 20px; font-size: 0.88rem; font-weight: 600; flex: 1; text-align: center;
 }}
- 
+.stTabs [aria-selected="true"] {{
+    background: rgba(99, 102, 241, 0.2) !important;
+    color: #c7d2fe !important; border-color: rgba(99, 102, 241, 0.4) !important;
+}}
+
+.input-label-header {{
+    font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+    color: #94a3b8; letter-spacing: 1px; margin-bottom: 8px; margin-top: 0px;
+}}
+
 .stTextArea textarea {{
     background: #0d1424 !important; color: #ffffff !important;
     border: 1.5px solid rgba(99, 102, 241, 0.35) !important; border-radius: 14px !important;
@@ -236,39 +257,25 @@ div[data-testid="stAlert"] {{
     box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25), inset 0 2px 8px rgba(0, 0, 0, 0.5) !important;
     outline: none !important;
 }}
-.stTextArea > div, .stTextArea [data-baseweb="textarea"] {{
-    background: transparent !important; border: none !important; box-shadow: none !important;
-}}
- 
+
 .stButton > button {{
     background: linear-gradient(135deg, {COLOR_PRIMARY} 0%, {COLOR_PRIMARY_2} 100%) !important;
     color: #ffffff !important; border: none !important; border-radius: 12px !important;
     padding: 0.85rem 1.5rem !important; font-size: 0.95rem !important; font-weight: 700 !important;
     letter-spacing: 0.3px !important; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35) !important;
-    transition: all 0.2s ease !important;
+    transition: all 0.2s ease !important; margin-top: 10px;
 }}
 .stButton > button:hover {{
     transform: translateY(-1px) !important; box-shadow: 0 6px 24px rgba(99, 102, 241, 0.5) !important;
 }}
- 
-.stTabs [data-baseweb="tab-list"] {{ gap: 10px; margin-bottom: 1.5rem; }}
-.stTabs [data-baseweb="tab"] {{
-    background: rgba(15, 23, 42, 0.4); border-radius: 12px;
-    color: {COLOR_TEXT_DIM} !important; border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 10px 20px; font-size: 0.88rem; font-weight: 600;
-}}
-.stTabs [aria-selected="true"] {{
-    background: rgba(99, 102, 241, 0.2) !important;
-    color: #c7d2fe !important; border-color: rgba(99, 102, 241, 0.4) !important;
-}}
- 
+
 .result-card {{ border-radius: 16px; padding: 1.6rem; text-align: center; margin: 1.5rem 0; }}
 .result-fake {{ background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); }}
 .result-true {{ background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); }}
- 
+
 .badge-fake {{ background: rgba(239, 68, 68, 0.2); color: #fca5a5; padding: 4px 12px; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }}
 .badge-true {{ background: rgba(16, 185, 129, 0.2); color: #6ee7b7; padding: 4px 12px; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }}
- 
+
 .gemini-box {{
     background: rgba(99, 102, 241, 0.07);
     border: 1px solid rgba(99, 102, 241, 0.25);
@@ -280,7 +287,7 @@ div[data-testid="stAlert"] {{
     display: flex; align-items: center; gap: 6px;
 }}
 .gemini-text {{ color: #94a3b8; font-size: 0.88rem; line-height: 1.7; }}
- 
+
 .section-title {{ font-size: 1.05rem; font-weight: 800; color: #f8fafc; margin: 0.5rem 0 1rem; }}
 .helper-text {{ color: {COLOR_TEXT_DIM}; font-size: 0.9rem; line-height: 1.6; }}
 .audit-row {{
@@ -293,7 +300,7 @@ div[data-testid="stAlert"] {{
 }}
 </style>
 """, unsafe_allow_html=True)
- 
+
 # ----------------------------------------------------------------------------
 # Helper Functions
 # ----------------------------------------------------------------------------
@@ -306,10 +313,10 @@ def validate_input(text: str):
     if not ALLOWED_PATTERN.match(text):
         return False, "Invalid characters detected. Only standard text and scientific symbols are permitted."
     return True, text
- 
+
 def sanitize_display(text: str) -> str:
     return html.escape(text)
- 
+
 def generate_pdf(claim: str, result_status: str, confidence: float, explanation: str) -> BytesIO:
     buffer = BytesIO()
     doc = SimpleDocTemplate(buffer, pagesize=letter)
@@ -334,7 +341,7 @@ def generate_pdf(claim: str, result_status: str, confidence: float, explanation:
     doc.build(story)
     buffer.seek(0)
     return buffer
- 
+
 # ----------------------------------------------------------------------------
 # Model Loader
 # ----------------------------------------------------------------------------
@@ -343,7 +350,7 @@ def load_model():
     m = joblib.load("svm_model.pkl")
     v = joblib.load("tfidf_vectorizer.pkl")
     return m, v
- 
+
 try:
     model, vectorizer = load_model()
     model_ok = True
@@ -351,14 +358,7 @@ except Exception as e:
     model_ok = False
     logging.error(f"Failed to load model: {e}")
     st.error("Model could not be loaded.")
- 
-# ----------------------------------------------------------------------------
-# Session State
-# ----------------------------------------------------------------------------
-for key, val in [("history", []), ("total", 0), ("fake", 0), ("cred", 0)]:
-    if key not in st.session_state:
-        st.session_state[key] = val
- 
+
 # ----------------------------------------------------------------------------
 # Top Bar
 # ----------------------------------------------------------------------------
@@ -371,7 +371,7 @@ st.markdown("""
     <div class="topbar-badge">v3.0 Gemini Powered</div>
 </div>
 """, unsafe_allow_html=True)
- 
+
 # ----------------------------------------------------------------------------
 # Hero
 # ----------------------------------------------------------------------------
@@ -386,7 +386,7 @@ st.markdown("""
     <div class="hero-credit">Engineered by <strong>Shahid Nawaz</strong> &nbsp;•&nbsp; SoftaVerse Tech House</div>
 </div>
 """, unsafe_allow_html=True)
- 
+
 # ----------------------------------------------------------------------------
 # KPI Dashboard
 # ----------------------------------------------------------------------------
@@ -406,19 +406,14 @@ st.markdown(f"""
     </div>
 </div>
 """, unsafe_allow_html=True)
- 
+
 # ----------------------------------------------------------------------------
 # Tabs
 # ----------------------------------------------------------------------------
 tab1, tab2, tab3 = st.tabs(["🎯 Single Claim Analysis", "📁 Bulk CSV Verification", "📊 Platform Analytics"])
- 
+
 with tab1:
-    st.markdown('<div class="input-card">', unsafe_allow_html=True)
-    st.markdown(
-        "<p style='font-size: 0.8rem; font-weight: 700; text-transform: uppercase; "
-        "color: #94a3b8; letter-spacing: 1px; margin-bottom: 8px;'>Input Statement for Evaluation</p>",
-        unsafe_allow_html=True,
-    )
+    st.markdown('<p class="input-label-header">Input Statement for Evaluation</p>', unsafe_allow_html=True)
     user_input = st.text_area(
         "label_hidden",
         placeholder="e.g., Clinical trials confirm regular exercise lowers cardiovascular disease risk...",
@@ -427,8 +422,7 @@ with tab1:
         label_visibility="collapsed",
     )
     btn = st.button("🔍 Execute Verification", use_container_width=True)
-    st.markdown("</div>", unsafe_allow_html=True)
- 
+
     if btn:
         if not model_ok:
             st.error("System engine unavailable.")
@@ -441,26 +435,31 @@ with tab1:
                 try:
                     with st.spinner("Processing NLP algorithms..."):
                         time.sleep(0.3)
- 
+
                     vec_input = vectorizer.transform([clean_input.lower()])
                     pred = model.predict(vec_input)[0]
- 
+
                     if hasattr(model, "predict_proba"):
                         probs = model.predict_proba(vec_input)[0]
                         confidence = max(probs) * 100
                     else:
                         confidence = 92.5
- 
+
                     st.session_state.total += 1
                     is_misinfo = pred == 0
- 
-                    # ── Gemini Explanation ──────────────────────────────────
-                    with st.spinner("🤖 Gemini AI generating explanation..."):
-                        explanation = get_gemini_explanation(clean_input, is_misinfo)
- 
+
                     if is_misinfo:
                         st.session_state.fake += 1
                         status_str = "Misinformation Flagged"
+                    else:
+                        st.session_state.cred += 1
+                        status_str = "Credible Statement"
+
+                    # ── Gemini Explanation ──────────────────────────────────
+                    with st.spinner("🤖 Gemini AI generating explanation..."):
+                        explanation = get_gemini_explanation(clean_input, is_misinfo)
+
+                    if is_misinfo:
                         st.markdown(f"""
                         <div class="result-card result-fake">
                             <span class="badge-fake">🚨 Misinformation Flagged</span>
@@ -475,8 +474,6 @@ with tab1:
                         """, unsafe_allow_html=True)
                         st.session_state.history.insert(0, ("❌", sanitize_display(clean_input), "f"))
                     else:
-                        st.session_state.cred += 1
-                        status_str = "Credible Statement"
                         st.markdown(f"""
                         <div class="result-card result-true">
                             <span class="badge-true">✅ Credible Statement</span>
@@ -490,7 +487,7 @@ with tab1:
                         </div>
                         """, unsafe_allow_html=True)
                         st.session_state.history.insert(0, ("✅", sanitize_display(clean_input), "t"))
- 
+
                     pdf_data = generate_pdf(clean_input, status_str, confidence, explanation)
                     st.download_button(
                         label="📄 Export Analysis PDF Report",
@@ -499,18 +496,21 @@ with tab1:
                         mime="application/pdf",
                         use_container_width=True,
                     )
- 
+                    
+                    # Page rerun to sync top KPI cards instantly
+                    st.rerun()
+
                 except Exception as e:
                     logging.error(f"Prediction Error: {e}")
                     st.error("An error occurred during verification.")
- 
+
 with tab2:
     st.markdown(
         "<p class='helper-text'>Upload a <b>.csv</b> file with a column named <code>claim</code> for batch processing.</p>",
         unsafe_allow_html=True,
     )
     uploaded_file = st.file_uploader("Upload File", type=["csv"], label_visibility="collapsed")
- 
+
     if uploaded_file and model_ok:
         try:
             df = pd.read_csv(uploaded_file)
@@ -519,10 +519,10 @@ with tab2:
                     vec_batch = vectorizer.transform(df["claim"].astype(str).str.lower())
                     preds = model.predict(vec_batch)
                     df["Verification Status"] = ["Credible" if p == 1 else "Misinformation" for p in preds]
- 
+
                 st.success(f"Batch completed for {len(df)} records!")
                 st.dataframe(df[["claim", "Verification Status"]].head(10), use_container_width=True)
- 
+
                 csv_bytes = df.to_csv(index=False).encode("utf-8")
                 st.download_button(
                     "📥 Download Results (CSV)",
@@ -535,7 +535,7 @@ with tab2:
                 st.error("CSV missing required column: 'claim'")
         except Exception as e:
             st.error(f"File error: {e}")
- 
+
 with tab3:
     st.markdown("<p class='section-title'>Classification Distribution</p>", unsafe_allow_html=True)
     if st.session_state.total > 0:
@@ -555,7 +555,7 @@ with tab3:
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("No activity recorded yet. Analyze a claim to see analytics.")
- 
+
 # ----------------------------------------------------------------------------
 # Recent Audit Log
 # ----------------------------------------------------------------------------
@@ -568,7 +568,7 @@ if st.session_state.history:
             {icon} &nbsp; {claim}
         </div>
         """, unsafe_allow_html=True)
- 
+
 # ----------------------------------------------------------------------------
 # Footer
 # ----------------------------------------------------------------------------
@@ -578,4 +578,3 @@ st.markdown("""
     <p style="font-size:0.75rem;color:#64748b;">Powered by SoftaVerse Tech House &nbsp;•&nbsp; ML + Google Gemini AI &nbsp;•&nbsp; NLP Architecture</p>
 </div>
 """, unsafe_allow_html=True)
- 
