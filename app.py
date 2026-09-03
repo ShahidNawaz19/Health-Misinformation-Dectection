@@ -31,7 +31,7 @@ ALLOWED_PATTERN = re.compile(r"^[a-zA-Z0-9\s\.\,\!\?\-\'\"\(\)\%\/\:\+\=\;\@]+$"
 # ----------------------------------------------------------------------------
 # Gemini API Configuration
 # ----------------------------------------------------------------------------
-GEMINI_API_KEY = st.secrets["AQ.Ab8RN6LTABKLj-FyxNp6dhFSKW5jIXE0CZ4gZxxuDzpMq94wvA"]
+GEMINI_API_KEY = "AQ.Ab8RN6LTABKLj-FyxNp6dhFSKW5jIXE0CZ4gZxxuDzpMq94wvA"
 genai.configure(api_key=GEMINI_API_KEY)
 gemini_model = genai.GenerativeModel("gemini-1.5-flash")
  
