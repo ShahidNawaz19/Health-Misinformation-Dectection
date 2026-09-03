@@ -391,24 +391,29 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ----------------------------------------------------------------------------
-# KPI Dashboard
+# KPI Dashboard (Dynamic Realtime Update Container)
 # ----------------------------------------------------------------------------
-st.markdown(f"""
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-val purple">{st.session_state.total}</div>
-        <div class="stat-lbl">Analyzed Claims</div>
+stats_container = st.empty()
+
+def render_stats():
+    stats_container.markdown(f"""
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-val purple">{st.session_state.total}</div>
+            <div class="stat-lbl">Analyzed Claims</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-val green">{st.session_state.cred}</div>
+            <div class="stat-lbl">Verified Credible</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-val red">{st.session_state.fake}</div>
+            <div class="stat-lbl">Misinformation</div>
+        </div>
     </div>
-    <div class="stat-card">
-        <div class="stat-val green">{st.session_state.cred}</div>
-        <div class="stat-lbl">Verified Credible</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-val red">{st.session_state.fake}</div>
-        <div class="stat-lbl">Misinformation</div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+
+render_stats()
 
 # ----------------------------------------------------------------------------
 # Tabs
@@ -457,6 +462,9 @@ with tab1:
                     else:
                         st.session_state.cred += 1
                         status_str = "Credible Statement"
+
+                    # Instant Stats Cards Refresh
+                    render_stats()
 
                     # ── Gemini Explanation API Call ─────────────────────────
                     with st.spinner("🤖 Gemini AI generating explanation..."):
