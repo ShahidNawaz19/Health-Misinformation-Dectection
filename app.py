@@ -10,7 +10,8 @@ from io import BytesIO
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
-
+import google.generativeai as genai
+ 
 # ----------------------------------------------------------------------------
 # Logging Configuration
 # ----------------------------------------------------------------------------
@@ -19,15 +20,52 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)s | %(message)s"
 )
-
+ 
 # ----------------------------------------------------------------------------
 # Constants & Guardrails
 # ----------------------------------------------------------------------------
 MIN_CHARS = 10
 MAX_CHARS = 500
-# Updated regex to allow standard medical/scientific symbols (%, /, :, +, =, ;, @)
 ALLOWED_PATTERN = re.compile(r"^[a-zA-Z0-9\s\.\,\!\?\-\'\"\(\)\%\/\:\+\=\;\@]+$")
-
+ 
+# ----------------------------------------------------------------------------
+# Gemini API Configuration
+# ----------------------------------------------------------------------------
+GEMINI_API_KEY = st.secrets["AQ.Ab8RN6LTABKLj-FyxNp6dhFSKW5jIXE0CZ4gZxxuDzpMq94wvA"]
+genai.configure(api_key=GEMINI_API_KEY)
+gemini_model = genai.GenerativeModel("gemini-1.5-flash")
+ 
+def get_gemini_explanation(claim: str, is_misinfo: bool) -> str:
+    try:
+        if is_misinfo:
+            prompt = f"""You are a medical fact-checker. A health claim has been detected as MISINFORMATION by an AI model.
+ 
+Health Claim: "{claim}"
+ 
+Please provide:
+1. Why this claim is medically false or misleading (2-3 sentences)
+2. What the correct medical fact is (1-2 sentences)
+3. A trusted source to verify (WHO, CDC, NIH, or similar)
+ 
+Keep your response concise and clear. Format it in 3 short paragraphs."""
+        else:
+            prompt = f"""You are a medical fact-checker. A health claim has been verified as CREDIBLE by an AI model.
+ 
+Health Claim: "{claim}"
+ 
+Please provide:
+1. Why this claim is medically accurate (2-3 sentences)
+2. Additional context or benefit of this fact (1-2 sentences)
+3. A trusted source that confirms this (WHO, CDC, NIH, or similar)
+ 
+Keep your response concise and clear. Format it in 3 short paragraphs."""
+ 
+        response = gemini_model.generate_content(prompt)
+        return response.text
+    except Exception as e:
+        logging.error(f"Gemini API error: {e}")
+        return "AI explanation currently unavailable. Please verify with WHO or CDC."
+ 
 # ----------------------------------------------------------------------------
 # Page Configuration
 # ----------------------------------------------------------------------------
@@ -37,7 +75,7 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="collapsed"
 )
-
+ 
 # ----------------------------------------------------------------------------
 # Global Design Tokens
 # ----------------------------------------------------------------------------
@@ -52,22 +90,22 @@ COLOR_PRIMARY_2 = "#4f46e5"
 COLOR_ACCENT    = "#818cf8"
 COLOR_SUCCESS   = "#34d399"
 COLOR_DANGER    = "#f87171"
-
+ 
 # ----------------------------------------------------------------------------
 # Custom CSS Styling
 # ----------------------------------------------------------------------------
 st.markdown(f"""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-
+ 
 *, *::before, *::after {{ box-sizing: border-box; }}
-
+ 
 html, body, [class*="css"], .stApp {{
     font-family: 'Plus Jakarta Sans', sans-serif !important;
     background-color: {COLOR_BG} !important;
     color: {COLOR_TEXT} !important;
 }}
-
+ 
 .stApp {{
     background:
         radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
@@ -75,153 +113,100 @@ html, body, [class*="css"], .stApp {{
         {COLOR_BG} !important;
     min-height: 100vh;
 }}
-
-.block-container {{
-    padding: 1.5rem 1rem 3rem !important;
-    max-width: 800px !important;
-}}
-
+ 
+.block-container {{ padding: 1.5rem 1rem 3rem !important; max-width: 800px !important; }}
 #MainMenu, footer, header {{ visibility: hidden; }}
-
+ 
 p, span, label, li, div, h1, h2, h3, h4, h5, h6,
-.stMarkdown, .stMarkdown p, .stMarkdown li,
-.stCaption {{
-    color: {COLOR_TEXT};
-}}
-
+.stMarkdown, .stMarkdown p, .stMarkdown li, .stCaption {{ color: {COLOR_TEXT}; }}
+ 
 .stTextArea label, .stFileUploader label, .stSelectbox label,
 .stRadio label, .stCheckbox label, .stNumberInput label {{
-    color: {COLOR_TEXT_DIM} !important;
-    font-weight: 600 !important;
+    color: {COLOR_TEXT_DIM} !important; font-weight: 600 !important;
 }}
-
+ 
 [data-testid="stFileUploaderDropzone"] {{
     background: rgba(3, 7, 18, 0.5) !important;
     border: 1.5px dashed rgba(255, 255, 255, 0.18) !important;
     border-radius: 14px !important;
 }}
-[data-testid="stFileUploaderDropzone"] * {{
-    color: {COLOR_TEXT_DIM} !important;
-}}
+[data-testid="stFileUploaderDropzone"] * {{ color: {COLOR_TEXT_DIM} !important; }}
 [data-testid="stFileUploaderDropzone"] button {{
     background: linear-gradient(135deg, {COLOR_PRIMARY} 0%, {COLOR_PRIMARY_2} 100%) !important;
-    color: #ffffff !important;
-    border: none !important;
-    border-radius: 10px !important;
+    color: #ffffff !important; border: none !important; border-radius: 10px !important;
 }}
-
+ 
 [data-testid="stDataFrame"] {{
     background: {COLOR_SURFACE} !important;
     border: 1px solid {COLOR_BORDER} !important;
-    border-radius: 14px !important;
-    overflow: hidden;
+    border-radius: 14px !important; overflow: hidden;
 }}
-
+ 
 div[data-testid="stAlert"] {{
     border-radius: 12px !important;
     background: rgba(15, 23, 42, 0.65) !important;
     border: 1px solid {COLOR_BORDER} !important;
 }}
-
+ 
 .stDownloadButton > button {{
     background: rgba(99, 102, 241, 0.12) !important;
     color: {COLOR_ACCENT} !important;
     border: 1px solid rgba(99, 102, 241, 0.35) !important;
-    border-radius: 12px !important;
-    font-weight: 700 !important;
-    padding: 0.75rem 1.4rem !important;
-    transition: all 0.2s ease !important;
+    border-radius: 12px !important; font-weight: 700 !important;
+    padding: 0.75rem 1.4rem !important; transition: all 0.2s ease !important;
 }}
 .stDownloadButton > button:hover {{
-    background: rgba(99, 102, 241, 0.22) !important;
-    transform: translateY(-1px) !important;
+    background: rgba(99, 102, 241, 0.22) !important; transform: translateY(-1px) !important;
 }}
-
+ 
 .topbar {{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     padding: 0.8rem 1.2rem;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid {COLOR_BORDER};
-    border-radius: 16px;
-    margin-bottom: 2rem;
+    background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px);
+    border: 1px solid {COLOR_BORDER}; border-radius: 16px; margin-bottom: 2rem;
 }}
 .topbar-logo {{ display: flex; align-items: center; gap: 12px; }}
 .topbar-icon {{
     width: 40px; height: 40px;
     background: linear-gradient(135deg, {COLOR_PRIMARY}, {COLOR_PRIMARY_2});
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
 }}
 .topbar-name {{ font-size: 1.1rem; font-weight: 800; color: #ffffff; letter-spacing: -0.3px; }}
 .topbar-name span {{ color: {COLOR_ACCENT}; }}
 .topbar-badge {{
-    background: rgba(16, 185, 129, 0.15);
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    border-radius: 999px;
-    padding: 4px 14px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: {COLOR_SUCCESS};
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
+    background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 999px; padding: 4px 14px; font-size: 0.7rem; font-weight: 700;
+    color: {COLOR_SUCCESS}; letter-spacing: 1.2px; text-transform: uppercase;
 }}
-
+ 
 .hero {{ text-align: center; padding: 1rem 0 2rem; }}
 .hero-eyebrow {{
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(99, 102, 241, 0.12);
-    border: 1px solid rgba(99, 102, 241, 0.25);
-    border-radius: 999px;
-    padding: 6px 18px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: #a5b4fc;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(99, 102, 241, 0.12); border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 999px; padding: 6px 18px; font-size: 0.72rem; font-weight: 700;
+    color: #a5b4fc; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1rem;
 }}
 .hero-title {{
-    font-size: 2.6rem;
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -1px;
-    margin-bottom: 0.8rem;
+    font-size: 2.6rem; font-weight: 800; line-height: 1.15;
+    letter-spacing: -1px; margin-bottom: 0.8rem;
     background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 70%, {COLOR_SUCCESS} 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }}
 .hero-desc {{
-    color: {COLOR_TEXT_DIM};
-    font-size: 0.98rem;
-    font-weight: 400;
-    line-height: 1.6;
-    max-width: 520px;
-    margin: 0 auto 0.5rem;
+    color: {COLOR_TEXT_DIM}; font-size: 0.98rem; font-weight: 400;
+    line-height: 1.6; max-width: 520px; margin: 0 auto 0.5rem;
 }}
 .hero-credit {{ font-size: 0.8rem; color: {COLOR_TEXT_MUTE}; font-weight: 500; }}
 .hero-credit strong {{ color: {COLOR_ACCENT}; }}
-
+ 
 .stats-grid {{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin: 1.5rem 0 2rem;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0 2rem;
 }}
 .stat-card {{
-    background: rgba(15, 23, 42, 0.5);
-    border: 1px solid {COLOR_BORDER};
-    border-radius: 16px;
-    padding: 1.2rem 1rem;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    background: rgba(15, 23, 42, 0.5); border: 1px solid {COLOR_BORDER};
+    border-radius: 16px; padding: 1.2rem 1rem; text-align: center;
+    backdrop-filter: blur(10px); transition: all 0.3s ease;
 }}
 .stat-card:hover {{ border-color: rgba(99, 102, 241, 0.3); transform: translateY(-2px); }}
 .stat-val {{ font-size: 1.8rem; font-weight: 800; line-height: 1.1; margin-bottom: 4px; }}
@@ -229,121 +214,90 @@ div[data-testid="stAlert"] {{
 .stat-val.green  {{ color: {COLOR_SUCCESS}; }}
 .stat-val.red    {{ color: {COLOR_DANGER}; }}
 .stat-lbl {{ font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: {COLOR_TEXT_MUTE}; }}
-
+ 
 .input-card {{
-    background: {COLOR_SURFACE};
-    border: 1px solid {COLOR_BORDER};
-    border-radius: 20px;
-    padding: 1.5rem;
-    backdrop-filter: blur(16px);
+    background: {COLOR_SURFACE}; border: 1px solid {COLOR_BORDER};
+    border-radius: 20px; padding: 1.5rem; backdrop-filter: blur(16px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }}
-
-/* ---------------------------------------------------------------------- */
-/* Textarea — Professional, high-contrast input field                     */
-/* ---------------------------------------------------------------------- */
+ 
 .stTextArea textarea {{
-    background: #0d1424 !important;
-    color: #ffffff !important;
-    border: 1.5px solid rgba(99, 102, 241, 0.35) !important;
-    border-radius: 14px !important;
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-size: 0.98rem !important;
-    font-weight: 500 !important;
-    padding: 16px !important;
-    line-height: 1.65 !important;
-    caret-color: {COLOR_ACCENT} !important;
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+    background: #0d1424 !important; color: #ffffff !important;
+    border: 1.5px solid rgba(99, 102, 241, 0.35) !important; border-radius: 14px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important; font-size: 0.98rem !important;
+    font-weight: 500 !important; padding: 16px !important; line-height: 1.65 !important;
+    caret-color: {COLOR_ACCENT} !important; box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5) !important;
     transition: all 0.25s ease !important;
 }}
-
-.stTextArea textarea::placeholder {{
-    color: #64748b !important;
-    opacity: 1 !important;
-}}
-
+.stTextArea textarea::placeholder {{ color: #64748b !important; opacity: 1 !important; }}
 .stTextArea textarea:hover {{
-    border-color: rgba(99, 102, 241, 0.6) !important;
-    background: #111a30 !important;
+    border-color: rgba(99, 102, 241, 0.6) !important; background: #111a30 !important;
 }}
-
 .stTextArea textarea:focus {{
-    border-color: {COLOR_PRIMARY} !important;
-    background: #111a30 !important;
+    border-color: {COLOR_PRIMARY} !important; background: #111a30 !important;
     box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25), inset 0 2px 8px rgba(0, 0, 0, 0.5) !important;
     outline: none !important;
 }}
-
-/* Removes leftover light background from Streamlit's internal wrapper */
 .stTextArea > div, .stTextArea [data-baseweb="textarea"] {{
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
+    background: transparent !important; border: none !important; box-shadow: none !important;
 }}
-
+ 
 .stButton > button {{
     background: linear-gradient(135deg, {COLOR_PRIMARY} 0%, {COLOR_PRIMARY_2} 100%) !important;
-    color: #ffffff !important;
-    border: none !important;
-    border-radius: 12px !important;
-    padding: 0.85rem 1.5rem !important;
-    font-size: 0.95rem !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.3px !important;
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35) !important;
+    color: #ffffff !important; border: none !important; border-radius: 12px !important;
+    padding: 0.85rem 1.5rem !important; font-size: 0.95rem !important; font-weight: 700 !important;
+    letter-spacing: 0.3px !important; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35) !important;
     transition: all 0.2s ease !important;
 }}
 .stButton > button:hover {{
-    transform: translateY(-1px) !important;
-    box-shadow: 0 6px 24px rgba(99, 102, 241, 0.5) !important;
+    transform: translateY(-1px) !important; box-shadow: 0 6px 24px rgba(99, 102, 241, 0.5) !important;
 }}
-
+ 
 .stTabs [data-baseweb="tab-list"] {{ gap: 10px; margin-bottom: 1.5rem; }}
 .stTabs [data-baseweb="tab"] {{
-    background: rgba(15, 23, 42, 0.4);
-    border-radius: 12px;
-    color: {COLOR_TEXT_DIM} !important;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 10px 20px;
-    font-size: 0.88rem;
-    font-weight: 600;
+    background: rgba(15, 23, 42, 0.4); border-radius: 12px;
+    color: {COLOR_TEXT_DIM} !important; border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 10px 20px; font-size: 0.88rem; font-weight: 600;
 }}
 .stTabs [aria-selected="true"] {{
     background: rgba(99, 102, 241, 0.2) !important;
-    color: #c7d2fe !important;
-    border-color: rgba(99, 102, 241, 0.4) !important;
+    color: #c7d2fe !important; border-color: rgba(99, 102, 241, 0.4) !important;
 }}
-
+ 
 .result-card {{ border-radius: 16px; padding: 1.6rem; text-align: center; margin: 1.5rem 0; }}
 .result-fake {{ background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); }}
 .result-true {{ background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); }}
-
+ 
 .badge-fake {{ background: rgba(239, 68, 68, 0.2); color: #fca5a5; padding: 4px 12px; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }}
 .badge-true {{ background: rgba(16, 185, 129, 0.2); color: #6ee7b7; padding: 4px 12px; border-radius: 999px; font-size: 0.7rem; font-weight: 700; }}
-
+ 
+.gemini-box {{
+    background: rgba(99, 102, 241, 0.07);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 14px; padding: 1.2rem 1.4rem; margin-top: 1rem; text-align: left;
+}}
+.gemini-title {{
+    font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+    letter-spacing: 2px; color: #a5b4fc; margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 6px;
+}}
+.gemini-text {{ color: #94a3b8; font-size: 0.88rem; line-height: 1.7; }}
+ 
 .section-title {{ font-size: 1.05rem; font-weight: 800; color: #f8fafc; margin: 0.5rem 0 1rem; }}
 .helper-text {{ color: {COLOR_TEXT_DIM}; font-size: 0.9rem; line-height: 1.6; }}
-
 .audit-row {{
-    background: rgba(15, 23, 42, 0.4);
-    padding: 10px 14px;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    font-size: 0.85rem;
-    color: #cbd5e1;
+    background: rgba(15, 23, 42, 0.4); padding: 10px 14px;
+    border-radius: 8px; margin-bottom: 8px; font-size: 0.85rem; color: #cbd5e1;
 }}
-
 .footer {{
-    text-align: center;
-    padding: 2.5rem 0 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    margin-top: 3rem;
+    text-align: center; padding: 2.5rem 0 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06); margin-top: 3rem;
 }}
 </style>
 """, unsafe_allow_html=True)
-
+ 
 # ----------------------------------------------------------------------------
-# Input Validation & Helper Functions
+# Helper Functions
 # ----------------------------------------------------------------------------
 def validate_input(text: str):
     text = text.strip()
@@ -354,35 +308,35 @@ def validate_input(text: str):
     if not ALLOWED_PATTERN.match(text):
         return False, "Invalid characters detected. Only standard text and scientific symbols are permitted."
     return True, text
-
-
+ 
 def sanitize_display(text: str) -> str:
     return html.escape(text)
-
-
-def generate_pdf(claim: str, result_status: str, confidence: float) -> BytesIO:
+ 
+def generate_pdf(claim: str, result_status: str, confidence: float, explanation: str) -> BytesIO:
     buffer = BytesIO()
     doc = SimpleDocTemplate(buffer, pagesize=letter)
     styles = getSampleStyleSheet()
-    conf_str = f"{confidence:.2f}%"
     story = [
         Paragraph("<b>MedVerify AI - Medical Verification Report</b>", styles["Title"]),
         Spacer(1, 15),
         Paragraph(f"<b>Analyzed Claim:</b> {html.escape(claim)}", styles["Normal"]),
         Spacer(1, 10),
-        Paragraph(f"<b>Status:</b> {result_status}", styles["Normal"]),
-        Paragraph(f"<b>AI Confidence Rating:</b> {conf_str}", styles["Normal"]),
-        Spacer(1, 25),
+        Paragraph(f"<b>Verification Status:</b> {result_status}", styles["Normal"]),
+        Paragraph(f"<b>AI Confidence Rating:</b> {confidence:.1f}%", styles["Normal"]),
+        Spacer(1, 15),
+        Paragraph("<b>Gemini AI Explanation:</b>", styles["Normal"]),
+        Spacer(1, 5),
+        Paragraph(explanation.replace("\n", "<br/>"), styles["Normal"]),
+        Spacer(1, 20),
         Paragraph(
-            "<i>Disclaimer: Generated automatically by MedVerify AI engine. "
-            "Always consult qualified healthcare professionals for medical decisions.</i>",
+            "<i>Disclaimer: Generated automatically by MedVerify AI. Always consult qualified healthcare professionals.</i>",
             styles["Italic"],
         ),
     ]
     doc.build(story)
     buffer.seek(0)
     return buffer
-
+ 
 # ----------------------------------------------------------------------------
 # Model Loader
 # ----------------------------------------------------------------------------
@@ -391,25 +345,24 @@ def load_model():
     m = joblib.load("svm_model.pkl")
     v = joblib.load("tfidf_vectorizer.pkl")
     return m, v
-
-
+ 
 try:
     model, vectorizer = load_model()
     model_ok = True
 except Exception as e:
     model_ok = False
-    logging.error(f"Failed to load model artifacts: {e}")
-    st.error("Model could not be loaded. Please ensure `svm_model.pkl` and `tfidf_vectorizer.pkl` exist in the root directory.")
-
+    logging.error(f"Failed to load model: {e}")
+    st.error("Model could not be loaded.")
+ 
 # ----------------------------------------------------------------------------
-# Session State Initialization
+# Session State
 # ----------------------------------------------------------------------------
 for key, val in [("history", []), ("total", 0), ("fake", 0), ("cred", 0)]:
     if key not in st.session_state:
         st.session_state[key] = val
-
+ 
 # ----------------------------------------------------------------------------
-# Header Navigation
+# Top Bar
 # ----------------------------------------------------------------------------
 st.markdown("""
 <div class="topbar">
@@ -417,27 +370,27 @@ st.markdown("""
         <div class="topbar-icon">🔬</div>
         <div class="topbar-name">Med<span>Verify</span> AI</div>
     </div>
-    <div class="topbar-badge">v2.0 Enterprise</div>
+    <div class="topbar-badge">v3.0 Gemini Powered</div>
 </div>
 """, unsafe_allow_html=True)
-
+ 
 # ----------------------------------------------------------------------------
-# Hero Section
+# Hero
 # ----------------------------------------------------------------------------
 st.markdown("""
 <div class="hero">
-    <div class="hero-eyebrow">Advanced NLP Fact Verification</div>
+    <div class="hero-eyebrow">🤖 Gemini AI + NLP Fact Verification</div>
     <div class="hero-title">Medical Misinformation<br>Detection Engine</div>
     <div class="hero-desc">
-        Validate clinical claims, execute batch CSV analysis, and view real-time
-        intelligence analytics powered by Machine Learning.
+        Validate health claims using Machine Learning + Google Gemini AI explanations.
+        Get instant predictions with intelligent reasoning powered by advanced NLP.
     </div>
     <div class="hero-credit">Engineered by <strong>Shahid Nawaz</strong> &nbsp;•&nbsp; SoftaVerse Tech House</div>
 </div>
 """, unsafe_allow_html=True)
-
+ 
 # ----------------------------------------------------------------------------
-# KPI Metrics Dashboard
+# KPI Dashboard
 # ----------------------------------------------------------------------------
 st.markdown(f"""
 <div class="stats-grid">
@@ -455,12 +408,12 @@ st.markdown(f"""
     </div>
 </div>
 """, unsafe_allow_html=True)
-
+ 
 # ----------------------------------------------------------------------------
-# Main Application Tabs
+# Tabs
 # ----------------------------------------------------------------------------
 tab1, tab2, tab3 = st.tabs(["🎯 Single Claim Analysis", "📁 Bulk CSV Verification", "📊 Platform Analytics"])
-
+ 
 with tab1:
     st.markdown('<div class="input-card">', unsafe_allow_html=True)
     st.markdown(
@@ -468,18 +421,16 @@ with tab1:
         "color: #94a3b8; letter-spacing: 1px; margin-bottom: 8px;'>Input Statement for Evaluation</p>",
         unsafe_allow_html=True,
     )
-
     user_input = st.text_area(
         "label_hidden",
-        placeholder="e.g., Clinical trials confirm regular exercise lowers cardiovascular disease risk by 30%...",
+        placeholder="e.g., Clinical trials confirm regular exercise lowers cardiovascular disease risk...",
         height=120,
         max_chars=MAX_CHARS,
         label_visibility="collapsed",
     )
-
     btn = st.button("🔍 Execute Verification", use_container_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
-
+ 
     if btn:
         if not model_ok:
             st.error("System engine unavailable.")
@@ -492,31 +443,36 @@ with tab1:
                 try:
                     with st.spinner("Processing NLP algorithms..."):
                         time.sleep(0.3)
-
+ 
                     vec_input = vectorizer.transform([clean_input.lower()])
                     pred = model.predict(vec_input)[0]
-
+ 
                     if hasattr(model, "predict_proba"):
                         probs = model.predict_proba(vec_input)[0]
                         confidence = max(probs) * 100
-                    elif hasattr(model, "decision_function"):
-                        dist = model.decision_function(vec_input)[0]
-                        confidence = min(99.5, max(65.0, 50.0 + abs(dist) * 22))
                     else:
                         confidence = 92.5
-
+ 
                     st.session_state.total += 1
-                    conf_formatted = f"{confidence:.1f}"
-
-                    if pred == 0:
+                    is_misinfo = pred == 0
+ 
+                    # ── Gemini Explanation ──────────────────────────────────
+                    with st.spinner("🤖 Gemini AI generating explanation..."):
+                        explanation = get_gemini_explanation(clean_input, is_misinfo)
+ 
+                    if is_misinfo:
                         st.session_state.fake += 1
                         status_str = "Misinformation Flagged"
                         st.markdown(f"""
                         <div class="result-card result-fake">
                             <span class="badge-fake">🚨 Misinformation Flagged</span>
-                            <h3 style="color: #f87171; font-weight: 800; margin: 12px 0 6px;">Potentially Inaccurate Claim</h3>
-                            <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 10px;">This statement aligns with flagged health misinformation patterns. Cross-verify with verified clinical repositories (WHO, CDC).</p>
-                            <span style="font-size: 0.8rem; background: rgba(255,255,255,0.05); padding: 4px 12px; border-radius: 999px; color: #e2e8f0;">Model Confidence: {conf_formatted}%</span>
+                            <h3 style="color:#f87171;font-weight:800;margin:12px 0 6px;">Potentially Inaccurate Claim</h3>
+                            <p style="color:#94a3b8;font-size:0.88rem;margin-bottom:10px;">This statement aligns with flagged health misinformation patterns.</p>
+                            <span style="font-size:0.8rem;background:rgba(255,255,255,0.05);padding:4px 12px;border-radius:999px;color:#e2e8f0;">Model Confidence: {confidence:.1f}%</span>
+                        </div>
+                        <div class="gemini-box">
+                            <div class="gemini-title">🤖 Gemini AI Explanation</div>
+                            <div class="gemini-text">{html.escape(explanation).replace(chr(10), '<br>')}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.session_state.history.insert(0, ("❌", sanitize_display(clean_input), "f"))
@@ -526,14 +482,18 @@ with tab1:
                         st.markdown(f"""
                         <div class="result-card result-true">
                             <span class="badge-true">✅ Credible Statement</span>
-                            <h3 style="color: #34d399; font-weight: 800; margin: 12px 0 6px;">Evidence-Based Claim</h3>
-                            <p style="color: #94a3b8; font-size: 0.88rem; margin-bottom: 10px;">This statement is consistent with established medical consensus and scientifically backed literature.</p>
-                            <span style="font-size: 0.8rem; background: rgba(255,255,255,0.05); padding: 4px 12px; border-radius: 999px; color: #e2e8f0;">Model Confidence: {conf_formatted}%</span>
+                            <h3 style="color:#34d399;font-weight:800;margin:12px 0 6px;">Evidence-Based Claim</h3>
+                            <p style="color:#94a3b8;font-size:0.88rem;margin-bottom:10px;">This statement is consistent with established medical consensus.</p>
+                            <span style="font-size:0.8rem;background:rgba(255,255,255,0.05);padding:4px 12px;border-radius:999px;color:#e2e8f0;">Model Confidence: {confidence:.1f}%</span>
+                        </div>
+                        <div class="gemini-box">
+                            <div class="gemini-title">🤖 Gemini AI Explanation</div>
+                            <div class="gemini-text">{html.escape(explanation).replace(chr(10), '<br>')}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.session_state.history.insert(0, ("✅", sanitize_display(clean_input), "t"))
-
-                    pdf_data = generate_pdf(clean_input, status_str, confidence)
+ 
+                    pdf_data = generate_pdf(clean_input, status_str, confidence, explanation)
                     st.download_button(
                         label="📄 Export Analysis PDF Report",
                         data=pdf_data,
@@ -541,19 +501,18 @@ with tab1:
                         mime="application/pdf",
                         use_container_width=True,
                     )
-
+ 
                 except Exception as e:
                     logging.error(f"Prediction Error: {e}")
-                    st.error("An error occurred during verification execution.")
-
+                    st.error("An error occurred during verification.")
+ 
 with tab2:
     st.markdown(
-        "<p class='helper-text'>Upload a dataset in <b>.csv</b> format containing a required "
-        "column named <code>claim</code> for automated batch processing.</p>",
+        "<p class='helper-text'>Upload a <b>.csv</b> file with a column named <code>claim</code> for batch processing.</p>",
         unsafe_allow_html=True,
     )
     uploaded_file = st.file_uploader("Upload File", type=["csv"], label_visibility="collapsed")
-
+ 
     if uploaded_file and model_ok:
         try:
             df = pd.read_csv(uploaded_file)
@@ -562,23 +521,23 @@ with tab2:
                     vec_batch = vectorizer.transform(df["claim"].astype(str).str.lower())
                     preds = model.predict(vec_batch)
                     df["Verification Status"] = ["Credible" if p == 1 else "Misinformation" for p in preds]
-
-                st.success(f"Batch execution completed for {len(df)} records!")
+ 
+                st.success(f"Batch completed for {len(df)} records!")
                 st.dataframe(df[["claim", "Verification Status"]].head(10), use_container_width=True)
-
+ 
                 csv_bytes = df.to_csv(index=False).encode("utf-8")
                 st.download_button(
-                    "📥 Download Complete Results (CSV)",
+                    "📥 Download Results (CSV)",
                     data=csv_bytes,
                     file_name="MedVerify_Batch_Results.csv",
                     mime="text/csv",
                     use_container_width=True,
                 )
             else:
-                st.error("CSV Structure Error: Missing required column header named 'claim'.")
+                st.error("CSV missing required column: 'claim'")
         except Exception as e:
-            st.error(f"Error parsing file: {e}")
-
+            st.error(f"File error: {e}")
+ 
 with tab3:
     st.markdown("<p class='section-title'>Classification Distribution</p>", unsafe_allow_html=True)
     if st.session_state.total > 0:
@@ -597,10 +556,10 @@ with tab3:
         )
         st.plotly_chart(fig, use_container_width=True)
     else:
-        st.info("No query activity recorded in the current session.")
-
+        st.info("No activity recorded yet. Analyze a claim to see analytics.")
+ 
 # ----------------------------------------------------------------------------
-# Recent Session History
+# Recent Audit Log
 # ----------------------------------------------------------------------------
 if st.session_state.history:
     st.markdown("<p class='section-title' style='margin-top:2rem;'>Recent Audit Log</p>", unsafe_allow_html=True)
@@ -611,13 +570,14 @@ if st.session_state.history:
             {icon} &nbsp; {claim}
         </div>
         """, unsafe_allow_html=True)
-
+ 
 # ----------------------------------------------------------------------------
-# Application Footer
+# Footer
 # ----------------------------------------------------------------------------
 st.markdown("""
 <div class="footer">
-    <p style="font-size:0.9rem; font-weight:700; color:#f8fafc; margin-bottom:4px;">🔬 MedVerify AI Platform</p>
-    <p style="font-size:0.75rem; color:#64748b;">Powered by SoftaVerse Tech House &nbsp;•&nbsp; Machine Learning & NLP Architecture</p>
+    <p style="font-size:0.9rem;font-weight:700;color:#f8fafc;margin-bottom:4px;">🔬 MedVerify AI Platform</p>
+    <p style="font-size:0.75rem;color:#64748b;">Powered by SoftaVerse Tech House &nbsp;•&nbsp; ML + Google Gemini AI &nbsp;•&nbsp; NLP Architecture</p>
 </div>
 """, unsafe_allow_html=True)
+ 
