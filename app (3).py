@@ -29,7 +29,7 @@ MAX_CHARS = 500
 ALLOWED_PATTERN = re.compile(r"^[a-zA-Z0-9\s\.\,\!\?\-\'\"\(\)\%\/\:\+\=\;\@]+$")
 
 # ----------------------------------------------------------------------------
-# OpenRouter API Configuration
+# Gemini API Configuration
 # ----------------------------------------------------------------------------
 OPENROUTER_API_KEY = "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"
 
@@ -68,7 +68,7 @@ Explain in 3 short paragraphs:
             return "AI explanation could not be generated from the response. Please verify with WHO or CDC."
     except Exception as e:
         logging.error(f"OpenRouter API error: {e}")
-        return "AI explanation currently unavailable. Please verify with WHO or CDC."
+        return "AI explanation currently unavailable. Please verify with WHO or CDC." 
 
 # ----------------------------------------------------------------------------
 # Page Configuration
@@ -332,7 +332,7 @@ def generate_pdf(claim: str, result_status: str, confidence: float, explanation:
         Paragraph(f"<b>Verification Status:</b> {result_status}", styles["Normal"]),
         Paragraph(f"<b>AI Confidence Rating:</b> {confidence:.1f}%", styles["Normal"]),
         Spacer(1, 15),
-        Paragraph("<b>AI Explanation:</b>", styles["Normal"]),
+        Paragraph("<b>Gemini AI Explanation:</b>", styles["Normal"]),
         Spacer(1, 5),
         Paragraph(explanation.replace("\n", "<br/>"), styles["Normal"]),
         Spacer(1, 20),
@@ -371,7 +371,7 @@ st.markdown("""
         <div class="topbar-icon">🔬</div>
         <div class="topbar-name">Med<span>Verify</span> AI</div>
     </div>
-    <div class="topbar-badge">v3.0 AI Powered</div>
+    <div class="topbar-badge">v3.0 Gemini Powered</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -380,10 +380,10 @@ st.markdown("""
 # ----------------------------------------------------------------------------
 st.markdown("""
 <div class="hero">
-    <div class="hero-eyebrow">🤖 AI + NLP Fact Verification</div>
+    <div class="hero-eyebrow">🤖 Gemini AI + NLP Fact Verification</div>
     <div class="hero-title">Medical Misinformation<br>Detection Engine</div>
     <div class="hero-desc">
-        Validate health claims using Machine Learning + AI explanations.
+        Validate health claims using Machine Learning + Google Gemini AI explanations.
         Get instant predictions with intelligent reasoning powered by advanced NLP.
     </div>
     <div class="hero-credit">Engineered by <strong>Shahid Nawaz</strong> &nbsp;•&nbsp; SoftaVerse Tech House</div>
@@ -391,7 +391,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ----------------------------------------------------------------------------
-# KPI Dashboard
+# KPI Dashboard (Dynamic Realtime Update Container)
 # ----------------------------------------------------------------------------
 stats_container = st.empty()
 
@@ -454,8 +454,6 @@ with tab1:
                         confidence = 92.5
 
                     st.session_state.total += 1
-
-                    # FIXED: 1 = Misinformation, 0 = Credible
                     is_misinfo = pred == 1
 
                     if is_misinfo:
@@ -465,9 +463,11 @@ with tab1:
                         st.session_state.cred += 1
                         status_str = "Credible Statement"
 
+                    # Instant Stats Cards Refresh
                     render_stats()
 
-                    with st.spinner("🤖 AI generating explanation..."):
+                    # ── Gemini Explanation API Call ─────────────────────────
+                    with st.spinner("🤖 Gemini AI generating explanation..."):
                         explanation = get_gemini_explanation(clean_input, is_misinfo)
 
                     if is_misinfo:
@@ -479,7 +479,7 @@ with tab1:
                             <span style="font-size:0.8rem;background:rgba(255,255,255,0.05);padding:4px 12px;border-radius:999px;color:#e2e8f0;">Model Confidence: {confidence:.1f}%</span>
                         </div>
                         <div class="gemini-box">
-                            <div class="gemini-title">🤖 AI Explanation</div>
+                            <div class="gemini-title">🤖 Gemini AI Explanation</div>
                             <div class="gemini-text">{html.escape(explanation).replace(chr(10), '<br>')}</div>
                         </div>
                         """, unsafe_allow_html=True)
@@ -493,7 +493,7 @@ with tab1:
                             <span style="font-size:0.8rem;background:rgba(255,255,255,0.05);padding:4px 12px;border-radius:999px;color:#e2e8f0;">Model Confidence: {confidence:.1f}%</span>
                         </div>
                         <div class="gemini-box">
-                            <div class="gemini-title">🤖 AI Explanation</div>
+                            <div class="gemini-title">🤖 Gemini AI Explanation</div>
                             <div class="gemini-text">{html.escape(explanation).replace(chr(10), '<br>')}</div>
                         </div>
                         """, unsafe_allow_html=True)
@@ -526,7 +526,6 @@ with tab2:
                 with st.spinner("Processing batch records..."):
                     vec_batch = vectorizer.transform(df["claim"].astype(str).str.lower())
                     preds = model.predict(vec_batch)
-                    # FIXED: 1 = Misinformation, 0 = Credible
                     df["Verification Status"] = ["Misinformation" if p == 1 else "Credible" for p in preds]
 
                 st.success(f"Batch completed for {len(df)} records!")
@@ -584,6 +583,5 @@ if st.session_state.history:
 st.markdown("""
 <div class="footer">
     <p style="font-size:0.9rem;font-weight:700;color:#f8fafc;margin-bottom:4px;">🔬 MedVerify AI Platform</p>
-    <p style="font-size:0.75rem;color:#64748b;">Powered by SoftaVerse Tech House &nbsp;•&nbsp; ML + AI &nbsp;•&nbsp; NLP Architecture</p>
+    <p style="font-size:0.75rem;color:#64748b;">Powered by SoftaVerse Tech House &nbsp;•&nbsp; ML + Google Gemini AI &nbsp;•&nbsp; NLP Architecture</p>
 </div>
-""", unsafe_allow_html=True)
