@@ -27,9 +27,8 @@ logging.basicConfig(
 MIN_CHARS = 10
 MAX_CHARS = 500
 ALLOWED_PATTERN = re.compile(r"^[a-zA-Z0-9\s\.\,\!\?\-\'\"\(\)\%\/\:\+\=\;\@]+$")
-
 # ----------------------------------------------------------------------------
-# OpenRouter API Configuration
+# Gemini API Configuration
 # ----------------------------------------------------------------------------
 OPENROUTER_API_KEY = "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"
 
@@ -68,8 +67,7 @@ Explain in 3 short paragraphs:
             return "AI explanation could not be generated from the response. Please verify with WHO or CDC."
     except Exception as e:
         logging.error(f"OpenRouter API error: {e}")
-        return "AI explanation currently unavailable. Please verify with WHO or CDC."
-
+        return "AI explanation currently unavailable. Please verify with WHO or CDC." 
 # ----------------------------------------------------------------------------
 # Page Configuration
 # ----------------------------------------------------------------------------
@@ -578,15 +576,6 @@ if st.session_state.history:
         </div>
         """, unsafe_allow_html=True)
 
-# ----------------------------------------------------------------------------
-# Footer
-# ----------------------------------------------------------------------------
-st.markdown("""
-<div class="footer">
-    <p style="font-size:0.9rem;font-weight:700;color:#f8fafc;margin-bottom:4px;">🔬 MedVerify AI Platform</p>
-    <p style="font-size:0.75rem;color:#64748b;">Powered by SoftaVerse Tech House &nbsp;•&nbsp; ML + AI &nbsp;•&nbsp; NLP Architecture</p>
-</div>
-""", unsafe_allow_html=True)
 # ----------------------------------------------------------------------------
 # Footer
 # ----------------------------------------------------------------------------
