@@ -584,5 +584,14 @@ if st.session_state.history:
 st.markdown("""
 <div class="footer">
     <p style="font-size:0.9rem;font-weight:700;color:#f8fafc;margin-bottom:4px;">🔬 MedVerify AI Platform</p>
+    <p style="font-size:0.75rem;color:#64748b;">Powered by SoftaVerse Tech House &nbsp;•&nbsp; ML + AI &nbsp;•&nbsp; NLP Architecture</p>
+</div>
+""", unsafe_allow_html=True)
+# ----------------------------------------------------------------------------
+# Footer
+# ----------------------------------------------------------------------------
+st.markdown("""
+<div class="footer">
+    <p style="font-size:0.9rem;font-weight:700;color:#f8fafc;margin-bottom:4px;">🔬 MedVerify AI Platform</p>
     <p style="font-size:0.75rem;color:#64748b;">Powered by SoftaVerse Tech House &nbsp;•&nbsp; ML + Google Gemini AI &nbsp;•&nbsp; NLP Architecture</p>
 </div>
