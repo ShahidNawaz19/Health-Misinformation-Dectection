@@ -31,7 +31,7 @@ ALLOWED_PATTERN = re.compile(r"^[a-zA-Z0-9\s\.\,\!\?\-\'\"\(\)\%\/\:\+\=\;\@]+$"
 # ----------------------------------------------------------------------------
 # Gemini API Configuration
 # ----------------------------------------------------------------------------
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = "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"
 
 def get_gemini_explanation(claim: str, is_misinfo: bool) -> str:
     try:
