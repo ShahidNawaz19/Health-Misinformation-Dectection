@@ -11,6 +11,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 import requests as req_lib
+from groq import Groq
  
 # ----------------------------------------------------------------------------
 # Logging Configuration
@@ -29,10 +30,12 @@ MAX_CHARS = 500
 ALLOWED_PATTERN = re.compile(r"^[a-zA-Z0-9\s\.\,\!\?\-\'\"\(\)\%\/\:\+\=\;\@]+$")
  
 # ----------------------------------------------------------------------------
-# OpenRouter API Configuration
+# Groq API Configuration
 # ----------------------------------------------------------------------------
-OPENROUTER_API_KEY = "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"
- 
+
+client = Groq(api_key="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")
+
+
 def get_gemini_explanation(claim: str, is_misinfo: bool) -> str:
     try:
         if is_misinfo:
@@ -49,27 +52,33 @@ Explain in 3 short paragraphs:
 1. Why this claim is medically accurate
 2. Additional context or benefit
 3. A trusted source (WHO, CDC, NIH)"""
- 
-        url = "https://openrouter.ai/api/v1/chat/completions"
-        headers = {
-            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-            "Content-Type": "application/json"
-        }
-        payload = {
-            "model": "nvidia/nemotron-3.5-lightning:free",
-            "messages": [{"role": "user", "content": prompt}]
-        }
-        response = req_lib.post(url, json=payload, headers=headers, timeout=30)
-        data = response.json()
-        if "choices" in data and len(data["choices"]) > 0:
-            return data["choices"][0]["message"]["content"]
+
+        response = client.chat.completions.create(
+            model="openai/gpt-oss-120b",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a medical fact-checking assistant. Give clear, simple explanations and do not invent medical facts."
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            temperature=0.2,
+            max_tokens=500
+        )
+
+        if response.choices:
+            return response.choices[0].message.content
         else:
-            logging.error(f"API Payload Error: {data}")
-            return "AI explanation could not be generated from the response. Please verify with WHO or CDC."
+            logging.error("Groq API returned no choices.")
+            return "AI explanation could not be generated. Please verify with WHO or CDC."
+
     except Exception as e:
-        logging.error(f"OpenRouter API error: {e}")
+        logging.error(f"Groq API error: {e}")
         return "AI explanation currently unavailable. Please verify with WHO or CDC."
- 
+
 # ----------------------------------------------------------------------------
 # Page Configuration
 # ----------------------------------------------------------------------------
