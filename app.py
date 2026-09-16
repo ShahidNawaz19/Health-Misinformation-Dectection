@@ -1,3 +1,4 @@
+from text_utils import stemmed_tokenizer, simple_stem
 import streamlit as st
 import joblib
 import time
